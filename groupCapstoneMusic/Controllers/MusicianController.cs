@@ -3,8 +3,10 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace groupCapstoneMusic.Controllers
 {
@@ -117,5 +119,20 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
+
+        //public async System.Threading.Tasks.Task<ActionResult> VenueLocationAsync(int id)
+        //{
+        //    Concert concert = db.Concerts.Find(id);
+
+
+        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "AIzaSyBODztrEdGOpQ8GjPFCTYgWpPz_VHxXBBg";
+        //    HttpClient client = new HttpClient();
+        //    HttpResponseMessage response = await client.VenueLocationAsync(url);
+        //    string jsonResult = await response.Content.ReadAsStringAsync();
+        //    if (response.IsSuccessStatusCode)
+        //    {
+
+        //    }
+        //}
     }
 }
