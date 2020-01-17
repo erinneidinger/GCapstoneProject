@@ -20,13 +20,18 @@ namespace groupCapstoneMusic.Controllers
             return View(oneCustomer);
         }
 
-        //GET: Customer/Edit/5
         public ActionResult CreateEvent(int id)
         {
             var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
             return View(foundCustomer);
         }
-        // GET: Customer/Details/5
+
+        public void GetLngAndLat(Customer customer)
+        {
+            
+
+        }
+
         public ActionResult Details(int id)
         {
             return View();

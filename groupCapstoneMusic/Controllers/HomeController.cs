@@ -30,43 +30,43 @@ namespace groupCapstoneMusic.Controllers
 
             return View();
         }
-        //public jsonresult sendrating(string r, string s, string id, string url)
+        //public JsonResult SendRating(string r, string s, string id, string url)
         //{
-        //    int autoid = 0;
-        //    int16 thisvote = 0;
-        //    int16 sectionid = 0;
-        //    int16.tryparse(s, out sectionid);
-        //    int16.tryparse(r, out thisvote);
-        //    int.tryparse(id, out autoid);
+        //    int autoId = 0;
+        //    Int16 thisVote = 0;
+        //    Int16 sectionId = 0;
+        //    Int16.TryParse(s, out sectionId);
+        //    Int16.TryParse(r, out thisVote);
+        //    int.TryParse(id, out autoId);
 
-        //    if (!user.identity.isauthenticated)
+        //    if (!User.Identity.IsAuthenticated)
         //    {
-        //        return json("not authenticated!");
+        //        return Json("Not authenticated!");
         //    }
 
-        //    if (autoid.equals(0))
+        //    if (autoId.Equals(0))
         //    {
-        //        return json("sorry, record to vote doesn't exists");
+        //        return Json("Sorry, record to vote doesn't exists");
         //    }
 
         //    switch (s)
         //    {
         //        case "5": // user voting
         //                  // check if he has already voted
-        //        var isIt = db.VoteModels.Where(v => v.SectionId == sectionId &&
+        //        var isIt = db.Votes.Where(v => v.SectionId == sectionId &&
         //            v.UserName.Equals(User.Identity.Name, StringComparison.CurrentCultureIgnoreCase) && v.VoteForId == autoId).FirstOrDefault();
         //        if (isIt != null)
         //        {
-        //            // keep the school voting flag to stop voting by this member
+        //            // keep the voting flag to stop voting by this member
         //            HttpCookie cookie = new HttpCookie(url, "true");
         //            Response.Cookies.Add(cookie);
         //            return Json("<br />You have already rated this post, thanks !");
         //        }
 
-        //        var sch = db.SchoolModels.Where(sc => sc.AutoId == autoId).FirstOrDefault();
-        //        if (sch != null)
+        //        var musician = db.Musicians.Where(sc => sc.ID == autoId).FirstOrDefault();
+        //        if (musician != null)
         //        {
-        //            object obj = sch.Votes;
+        //            object obj = musician.Rating;
 
         //            string updatedVotes = string.Empty;
         //            string[] votes = null;
@@ -87,41 +87,110 @@ namespace groupCapstoneMusic.Controllers
         //                else
         //                {
         //                    votes = new string[] { "0", "0", "0", "0", "0" };
-        //                    votes[thisvote - 1] = "1";
+        //                    votes[thisVote - 1] = "1";
         //                }
-        //                //concatenate all arrays now
-        //                foreach (string ss in votes)
-        //                {
-        //                    updatedvotes += ss + ",";
-        //                }
-        //                updatedvotes = updatedvotes.substring(0, updatedvotes.length - 1);
-
-        //                db.entry(sch).state = entitystate.modified;
-        //                sch.votes = updatedvotes;
-        //                db.savechanges();
-
-        //                votemodel vm = new votemodel()
-        //                {
-        //                    active = true,
-        //                    sectionid = int16.parse(s),
-        //                    username = user.identity.name,
-        //                    vote = thisvote,
-        //                    voteforid = autoid
-        //                };
-
-        //                db.votemodels.add(vm);
-
-        //                db.savechanges();
-
-        //                // keep the school voting flag to stop voting by this member
-        //                httpcookie cookie = new httpcookie(url, "true");
-        //                response.cookies.add(cookie);
         //            }
-        //            break;
+        //            else
+        //            {
+        //                votes = new string[] { "0", "0", "0", "0", "0" };
+        //                votes[thisVote - 1] = "1";
+        //            }
+
+        //            // concatenate all arrays now
+        //            foreach (string ss in votes)
+        //            {
+        //                updatedVotes += ss + ",";
+        //            }
+        //            updatedVotes = updatedVotes.Substring(0, updatedVotes.Length - 1);
+
+        //            db.Entry(musician).State = EntityState.Modified;
+        //            musician.Rating = Convert.ToDouble(updatedVotes);
+        //            db.SaveChangesAsync();
+
+        //            VoteLog vm = new VoteLog()
+        //            {
+        //                Active = true,
+        //                SectionId = Int16.Parse(s),
+        //                UserName = User.Identity.Name,
+        //                Rating = thisVote,
+        //                VoteForId = autoId
+        //            };
+
+        //            db.Votes.Add(vm);
+
+        //            db.SaveChangesAsync();
+
+        //            // keep the voting flag to stop voting by this member
+        //            HttpCookie cookie = new HttpCookie(url, "true");
+        //            Response.Cookies.Add(cookie);
+        //        }
+
+        //        var customer = db.Customers.Where(sc => sc.CustomerId == autoId).FirstOrDefault();
+        //        if (customer != null)
+        //        {
+        //            object obj = customer.Rating;
+
+        //            string updatedVotes = string.Empty;
+        //            string[] votes = null;
+        //            if (obj != null && obj.ToString().Length > 0)
+        //            {
+        //                string currentVotes = obj.ToString(); // votes pattern will be 0,0,0,0,0
+        //                votes = currentVotes.Split(',');
+        //                // if proper vote data is there in the database
+        //                if (votes.Length.Equals(5))
+        //                {
+        //                    // get the current number of vote count of the selected vote, always say -1 than the current vote in the array 
+        //                    int currentNumberOfVote = int.Parse(votes[thisVote - 1]);
+        //                    // increase 1 for this vote
+        //                    currentNumberOfVote++;
+        //                    // set the updated value into the selected votes
+        //                    votes[thisVote - 1] = currentNumberOfVote.ToString();
+        //                }
+        //                else
+        //                {
+        //                    votes = new string[] { "0", "0", "0", "0", "0" };
+        //                    votes[thisVote - 1] = "1";
+        //                }
+        //            }
+        //            else
+        //            {
+        //                votes = new string[] { "0", "0", "0", "0", "0" };
+        //                votes[thisVote - 1] = "1";
+        //            }
+
+        //            // concatenate all arrays now
+        //            foreach (string ss in votes)
+        //            {
+        //                updatedVotes += ss + ",";
+        //            }
+        //            updatedVotes = updatedVotes.Substring(0, updatedVotes.Length - 1);
+
+        //            db.Entry(customer).State = EntityState.Modified;
+        //            customer.Rating = Convert.ToDouble(updatedVotes);
+        //            db.SaveChangesAsync();
+
+        //            VoteLog vl = new VoteLog()
+        //            {
+        //                Active = true,
+        //                SectionId = Int16.Parse(s),
+        //                UserName = User.Identity.Name,
+        //                Rating = thisVote,
+        //                VoteForId = autoId
+        //            };
+
+        //            db.Votes.Add(vl);
+
+        //            db.SaveChangesAsync();
+
+        //            // keep the voting flag to stop voting by this member
+        //            HttpCookie cookie = new HttpCookie(url, "true");
+        //            Response.Cookies.Add(cookie);
+        //        }
+        //        break;
         //        default:
-        //            break;
+        //        break;
         //    }
-        //    return json("<br />you rated " + r + " star(s), thanks !");
+        //    return Json("<br />You rated " + r + " star(s), thanks !");
         //}
     }
 }
