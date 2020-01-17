@@ -10,7 +10,7 @@ namespace groupCapstoneMusic.Models
     public class Event
     {
         [Key]
-        public int EventId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
