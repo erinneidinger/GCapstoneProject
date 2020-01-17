@@ -15,9 +15,9 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Index()
         {
             var Id = User.Identity.GetUserId();
-            var foundEvent = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            var oneEvent = db.Concerts.Where(a => a.Id == foundEvent.Id).ToList();
-            return View();
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            var oneConcert = db.Concerts.Where(a => a.Id == foundConcert.Id).ToList();
+            return View(oneConcert);
         }
         public void GetLngAndLat(Customer customer)
         {
@@ -27,7 +27,7 @@ namespace groupCapstoneMusic.Controllers
 
         public ActionResult Details(int id)
         {
-            var eventDetails = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            var concertDetails = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
             return View();
         }
 
@@ -62,12 +62,21 @@ namespace groupCapstoneMusic.Controllers
 
         // POST: Event/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Concert concert)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Concert editedConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+                editedConcert.Venue = concert.Venue;
+                editedConcert.Audience = concert.Audience;
+                editedConcert.Genre = concert.Genre;
+                editedConcert.StreetAddress = concert.StreetAddress;
+                editedConcert.City = concert.City;
+                editedConcert.State = concert.State;
+                editedConcert.ConcertDate = concert.ConcertDate;
+                editedConcert.ConcertTime = concert.ConcertTime;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -79,16 +88,21 @@ namespace groupCapstoneMusic.Controllers
         // GET: Event/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Concert foundConcert = db.Concerts.Find(id);
+
+            return View(foundConcert);
         }
 
         // POST: Event/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Concert concert)
         {
             try
             {
                 // TODO: Add delete logic here
+                Concert foundConcert = db.Concerts.Find(id);
+                db.Concerts.Remove(foundConcert);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
