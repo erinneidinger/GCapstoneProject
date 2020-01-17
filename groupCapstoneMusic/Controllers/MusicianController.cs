@@ -21,11 +21,15 @@ namespace groupCapstoneMusic.Controllers
             return View(Musician);
         }
 
+        public void GetLngAndLat(Customer customer)
+        {
+
+
+        }
         // GET: Musician/Details/5
         public ActionResult Details(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
+            Musician musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
 
             return View();
         }
@@ -58,10 +62,8 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Edit/5
         public ActionResult Edit(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
-
-            return View();
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            return View(musician);
         }
 
         // POST: Musician/Edit/5

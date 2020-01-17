@@ -50,7 +50,7 @@ namespace groupCapstoneMusic
             if (!roleManager.RoleExists("Musician"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Employee";
+                role.Name = "Musician";
                 roleManager.Create(role);
             }
         }

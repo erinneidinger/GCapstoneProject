@@ -20,18 +20,6 @@ namespace groupCapstoneMusic.Controllers
             return View(oneCustomer);
         }
 
-        public ActionResult CreateEvent(int id)
-        {
-            var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
-            return View(foundCustomer);
-        }
-
-        public void GetLngAndLat(Customer customer)
-        {
-            
-
-        }
-
         public ActionResult Details(int id)
         {
             return View();
@@ -41,6 +29,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create()
         {
             Customer customer = new Customer();
+            var user = User.Identity.GetUserId();
             return View(customer);
         }
 
@@ -67,19 +56,33 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            Customer customer = db.Customers.Find(id);
+            var customer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
             return View(customer);
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             try
             {
-                Customer updatedCustomer = db.Customers.Find(id);
-                // TODO: Add update logic here
-
+                var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
+                updatedCustomer.ApplicationId = customer.ApplicationId;
+                updatedCustomer.ApplicationUser = customer.ApplicationUser;
+                updatedCustomer.Bio = customer.Bio;
+                updatedCustomer.City = customer.City;
+                updatedCustomer.CustomerId = customer.CustomerId;
+                updatedCustomer.Email = customer.Email;
+                updatedCustomer.events = customer.events;
+                updatedCustomer.FirstName = customer.FirstName;
+                updatedCustomer.LastName = customer.LastName;
+                updatedCustomer.MaxBudget = customer.MaxBudget;
+                updatedCustomer.MinBudget = customer.MinBudget;
+                updatedCustomer.Rating = customer.Rating;
+                updatedCustomer.State = customer.State;
+                updatedCustomer.StreetAddress = customer.StreetAddress;
+                updatedCustomer.ZipCode = customer.ZipCode;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
