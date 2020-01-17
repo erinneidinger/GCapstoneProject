@@ -22,7 +22,6 @@ namespace groupCapstoneMusic.Models
     {
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Event> events { get; set; }
         public DbSet<Musician> Musicians { get; set; }
 
         public DbSet<Event> Events { get; set; }

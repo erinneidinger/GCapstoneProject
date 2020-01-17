@@ -45,8 +45,8 @@ namespace groupCapstoneMusic.Models
         public double Rating { get; set; }
 
         public List<Event> events { get; set; }
-        
 
-      
+
+
     }
 }
