@@ -10,13 +10,6 @@
     <h4>Customer</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -87,7 +80,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MinBudget)
+            $@Html.DisplayFor(model => model.MinBudget).00
         </dd>
 
         <dt>
@@ -95,7 +88,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaxBudget)
+            $@Html.DisplayFor(model => model.MaxBudget).00
         </dd>
 
         <dt>
