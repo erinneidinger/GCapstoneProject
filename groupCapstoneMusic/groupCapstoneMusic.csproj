@@ -258,6 +258,13 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Role\AddRole.cshtml" />
     <Content Include="Views\Shared\_VoteShow.cshtml" />
+    <Content Include="Views\Concert\Create.cshtml" />
+    <Content Include="Views\Concert\Details.cshtml" />
+    <Content Include="Views\Concert\Delete.cshtml" />
+    <Content Include="Views\Concert\Edit.cshtml" />
+    <Content Include="Views\Concert\Index.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Musician\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -268,10 +275,10 @@
     <Content Include="Views\Musician\Delete.cshtml" />
     <Content Include="Views\Musician\Details.cshtml" />
     <Content Include="Views\Musician\Index.cshtml" />
+    <Content Include="Views\Musician\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Event\" />
     <Folder Include="Views\VoteLog\" />
   </ItemGroup>
   <ItemGroup>

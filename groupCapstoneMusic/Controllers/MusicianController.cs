@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace groupCapstoneMusic.Controllers
 {
@@ -20,11 +22,15 @@ namespace groupCapstoneMusic.Controllers
             return View(Musician);
         }
 
+        public void GetLngAndLat(Customer customer)
+        {
+
+
+        }
         // GET: Musician/Details/5
         public ActionResult Details(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
+            Musician musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
 
             return View();
         }
@@ -57,10 +63,8 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Edit/5
         public ActionResult Edit(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
-
-            return View();
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            return View(musician);
         }
 
         // POST: Musician/Edit/5
@@ -118,6 +122,7 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
+<<<<<<< HEAD
         //public JsonResult SendRating(string r, string s, string id, string url)
         //{
         //    int autoId = 0;
@@ -217,6 +222,22 @@ namespace groupCapstoneMusic.Controllers
         //        break;
         //    }
         //    return Json("<br />You rated " + r + " star(s), thanks !");
+=======
+
+        //public async System.Threading.Tasks.Task<ActionResult> VenueLocationAsync(int id)
+        //{
+        //    Concert concert = db.Concerts.Find(id);
+
+
+        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "AIzaSyBODztrEdGOpQ8GjPFCTYgWpPz_VHxXBBg";
+        //    HttpClient client = new HttpClient();
+        //    HttpResponseMessage response = await client.VenueLocationAsync(url);
+        //    string jsonResult = await response.Content.ReadAsStringAsync();
+        //    if (response.IsSuccessStatusCode)
+        //    {
+
+        //    }
+>>>>>>> 00ed503b4220e17509b7fe6752376dc4781e3c32
         //}
     }
 }        

@@ -10,13 +10,6 @@
     <h4>Customer</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -83,11 +76,13 @@
         </dd>
 
         <dt>
+<<<<<<< HEAD
+=======
             @Html.DisplayNameFor(model => model.MinBudget)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MinBudget)
+            $@Html.DisplayFor(model => model.MinBudget).00
         </dd>
 
         <dt>
@@ -95,10 +90,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaxBudget)
+            $@Html.DisplayFor(model => model.MaxBudget).00
         </dd>
 
         <dt>
+>>>>>>> cfeb98ce56081efa933ec6aebd3ee1d9ec99f8b6
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
 
