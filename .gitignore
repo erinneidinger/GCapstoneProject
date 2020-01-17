@@ -349,4 +349,9 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+<<<<<<< HEAD
+
 PrivateKeys.cs
+=======
+.PrivateKeys.cs
+>>>>>>> 1b5ce1eea7409b6ae812351528e6bdc5d9189ff9

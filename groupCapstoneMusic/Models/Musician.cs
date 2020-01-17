@@ -36,6 +36,9 @@ namespace groupCapstoneMusic.Models
         public double SetRate { get; set; }
 
         [Display(Name = "Dates Available")]
-        public string DatesAvailable { get; set; }      
+        public string DatesAvailable { get; set; }
+
+        [Display(Name = "Street Address")]
+        public string StreetAddress { get; set; }
     }
 }
