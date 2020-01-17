@@ -261,6 +261,10 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Musician\Create.cshtml" />
+    <Content Include="Views\Musician\Delete.cshtml" />
+    <Content Include="Views\Musician\Details.cshtml" />
+    <Content Include="Views\Musician\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
