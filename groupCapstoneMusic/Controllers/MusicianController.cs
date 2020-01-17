@@ -15,12 +15,16 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician
         public ActionResult Index()
         {
-            return View();
+            var Musician = db.Musicians;
+            return View(Musician);
         }
 
         // GET: Musician/Details/5
         public ActionResult Details(int id)
         {
+            Musician musician = db.Musicians.Where(m => m.ID == id)
+                .Select(m => m).FirstOrDefault();
+
             return View();
         }
 
@@ -52,17 +56,31 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Edit/5
         public ActionResult Edit(int id)
         {
+            Musician musician = db.Musicians.Where(m => m.ID == id)
+                .Select(m => m).FirstOrDefault();
+
             return View();
         }
 
         // POST: Musician/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Musician musician)
         {
             try
             {
                 // TODO: Add update logic here
-
+                var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).Single();
+                newMusician.StreetAddress = musician.StreetAddress;
+                newMusician.rating = musician.rating;
+                newMusician.Genre = musician.Genre;
+                newMusician.Bio = musician.Bio;
+                newMusician.Zip = musician.Zip;
+                newMusician.City = musician.City;
+                newMusician.Email = musician.Email;
+                newMusician.SetRate = musician.SetRate;
+                newMusician.FirstName = musician.FirstName;
+                newMusician.DatesAvailable = musician.DatesAvailable;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -74,17 +92,24 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Musician musician = db.Musicians.Where(m => m.ID == id)
+                .Select(m => m).FirstOrDefault();
+
+            return View(musician);
         }
 
         // POST: Musician/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Musician musician)
         {
             try
             {
                 // TODO: Add delete logic here
+                Musician newMusician = db.Musicians.Where(m => m.ID == musician.ID)
+                    .Select(m => m).FirstOrDefault();
 
+                db.Musicians.Remove(newMusician);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
