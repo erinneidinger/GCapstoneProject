@@ -19,6 +19,11 @@ namespace groupCapstoneMusic.Controllers
             var oneEvent = db.Concerts.Where(a => a.Id == foundEvent.Id).ToList();
             return View();
         }
+        public void GetLngAndLat(Customer customer)
+        {
+
+
+        }
 
         public ActionResult Details(int id)
         {
