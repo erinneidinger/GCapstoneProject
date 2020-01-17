@@ -7,7 +7,7 @@ using System.Web;
 
 namespace groupCapstoneMusic.Models
 {
-    public class Event
+    public class Concert
     {
         [Key]
         public int Id { get; set; }
@@ -29,11 +29,11 @@ namespace groupCapstoneMusic.Models
 
         public string Audience { get; set; }
 
-        [Display(Name = "Event Date")]
-        public string EventDate { get; set; }
+        [Display(Name = "Concert Date")]
+        public string ConcertDate { get; set; }
 
-        [Display(Name = "Event Time")]
-        public string EventTime { get; set; }
+        [Display(Name = "Concert Time")]
+        public string ConcertTime { get; set; }
 
         public string Lat { get; set; }
 

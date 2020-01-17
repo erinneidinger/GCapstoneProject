@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Controllers
 {
-    [Authorize]
     public class CustomerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,17 +20,21 @@ namespace groupCapstoneMusic.Controllers
             return View(oneCustomer);
         }
 
+        public ActionResult CreateEvent(int id)
+        {
+            var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            return View(foundCustomer);
+        }
+
         public void GetLngAndLat(Customer customer)
         {
             
 
         }
 
-        // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            var customerDetails = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
-            return View(customerDetails);
+            return View();
         }
 
         // GET: Customer/Create
@@ -51,7 +54,8 @@ namespace groupCapstoneMusic.Controllers
                 customer.ApplicationId = userId;
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                
+                // TODO: Add insert logic here
+
                 return View("Index");
             }
             catch
@@ -63,9 +67,8 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
-            return View(foundCustomer);
-            
+            Customer customer = db.Customers.Find(id);
+            return View(customer);
         }
 
         // POST: Customer/Edit/5
@@ -74,19 +77,9 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
+                Customer updatedCustomer = db.Customers.Find(id);
                 // TODO: Add update logic here
-                var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
-                foundCustomer.FirstName = customer.FirstName;
-                foundCustomer.LastName = customer.LastName;
-                foundCustomer.Email = customer.Email;
-                foundCustomer.Bio = customer.Bio;
-                foundCustomer.MaxBudget = customer.MaxBudget;
-                foundCustomer.MinBudget = customer.MinBudget;
-                foundCustomer.StreetAddress = customer.StreetAddress;
-                foundCustomer.City = customer.City;
-                foundCustomer.State = customer.State;
-                foundCustomer.ZipCode = customer.ZipCode;
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch
@@ -98,20 +91,17 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            Customer foundCustomer = db.Customers.Find(id);
-            return View(foundCustomer);
+            return View();
         }
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Customer customer)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                Customer foundCustomer = db.Customers.Find(id);
-                db.Customers.Remove(foundCustomer);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch
