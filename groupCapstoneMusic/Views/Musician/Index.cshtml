@@ -1,0 +1,93 @@
+﻿@model IEnumerable<groupCapstoneMusic.Models.Musician>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SetRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatesAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SetRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatesAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
