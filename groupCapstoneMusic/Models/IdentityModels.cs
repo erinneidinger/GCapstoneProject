@@ -26,7 +26,7 @@ namespace groupCapstoneMusic.Models
 
         public DbSet<Concert> Concerts { get; set; }
 
-        public DbSet<VoteLog> Votes { get; set; }
+        public DbSet<StarRating> Stars { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

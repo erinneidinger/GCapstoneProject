@@ -29,8 +29,9 @@ namespace groupCapstoneMusic.Models
 
         public string Genre { get; set; }
 
-        [Display(Name = "Set Rating")]
-        public double Rating { get; set; }
+        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+        [StringLength(5)]
+        public string Rating { get; set; }
 
         [Display(Name = "Set Rate")]
         public double SetRate { get; set; }
@@ -40,5 +41,18 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
+
+        public int RateCount
+        {
+            get { return ratings.Count; }
+        }
+        public int RateTotal
+        {
+            get
+            {
+                return (ratings.Sum(m => m.Rate));
+            }
+        }
+        public virtual ICollection<StarRating> ratings { get; set; }
     }
 }
