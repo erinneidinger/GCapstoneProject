@@ -8,50 +8,40 @@ using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Controllers
 {
-    public class CustomerController : Controller
+    public class ConcertController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Customer
+
         public ActionResult Index()
         {
             var Id = User.Identity.GetUserId();
-            var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            var oneCustomer = db.Customers.Where(a => a.CustomerId == foundCustomer.CustomerId).ToList();
-            return View(oneCustomer);
-        }
-
-        //GET: Customer/Edit/5
-        public ActionResult CreateEvent(int id)
-        {
-            var foundCustomer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
-            return View(foundCustomer);
-        }
-        // GET: Customer/Details/5
-        public ActionResult Details(int id)
-        {
+            var foundEvent = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            var oneEvent = db.Concerts.Where(a => a.Id == foundEvent.Id).ToList();
             return View();
         }
 
-        // GET: Customer/Create
-        public ActionResult Create()
+        public ActionResult Details(int id)
         {
-            Customer customer = new Customer();
-            return View(customer);
+            var eventDetails = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            return View();
         }
 
-        // POST: Customer/Create
+        public ActionResult Create()
+        {
+            Concert concert = new Concert();
+            return View(concert);
+        }
+
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Create(Concert concert)
         {
             try
             {
                 string userId = User.Identity.GetUserId();
-                customer.ApplicationId = userId;
-                db.Customers.Add(customer);
+                concert.ApplicationId = userId;
+                db.Concerts.Add(concert);
                 db.SaveChanges();
-                // TODO: Add insert logic here
-
-                return View("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -59,20 +49,18 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            return View(customer);
+            var foundConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            return View(foundConcert);
         }
 
-        // POST: Customer/Edit/5
+        // POST: Event/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Customer customer)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                Customer updatedCustomer = db.Customers.Find(id);
                 // TODO: Add update logic here
 
                 return RedirectToAction("Index");
@@ -83,13 +71,13 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        // GET: Customer/Delete/5
+        // GET: Event/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Customer/Delete/5
+        // POST: Event/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -104,5 +92,5 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-    }
+    }      
 }
