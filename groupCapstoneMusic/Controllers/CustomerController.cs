@@ -15,10 +15,26 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var Id = User.Identity.GetUserId();
-            var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            var oneCustomer = db.Customers.Where(a => a.CustomerId == foundCustomer.CustomerId).ToList();
-            return View(oneCustomer);
+            return View();
+            //var Id = User.Identity.GetUserId();
+            //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();
+            //return View(oneCustomer);
+        }
+
+        public ActionResult SearchParameters()
+        {
+            CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
+            var userID = User.Identity.GetUserId();
+            var customer = db.Customers.Where(u => u.ApplicationId == userID).FirstOrDefault();
+            customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == customer.City).ToList();
+            return View(customerMusiciansViewModel); //Change it to ratings or something after
+        }
+
+        [HttpPost]
+        public ActionResult SearchParameters(CustomerMusiciansViewModel customerMusiciansViewModel)
+        {
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -30,7 +46,6 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create()
         {
             Customer customer = new Customer();
-            var user = User.Identity.GetUserId();
             return View(customer);
         }
 
@@ -40,7 +55,7 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
                 db.Customers.Add(customer);
                 db.SaveChanges();

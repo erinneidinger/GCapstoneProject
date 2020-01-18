@@ -178,22 +178,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001172113459_thing.cs" />
-    <Compile Include="Migrations\202001172113459_thing.Designer.cs">
-      <DependentUpon>202001172113459_thing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.cs" />
-    <Compile Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.Designer.cs">
-      <DependentUpon>202001172249354_RemovedVoteLogReplacedWithStarRating.cs</DependentUpon>
+    <Compile Include="Migrations\202001180506589_NewMigration.cs" />
+    <Compile Include="Migrations\202001180506589_NewMigration.Designer.cs">
+      <DependentUpon>202001180506589_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomerMusiciansViewModel.cs" />
     <Compile Include="Models\GeoCode.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Concert.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Musician.cs" />
+    <Compile Include="Models\MusicianCustomersViewModel.cs" />
     <Compile Include="Models\StarRating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -265,17 +263,17 @@
     <Content Include="Views\Concert\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
+    <Content Include="Views\Musician\Create.cshtml" />
+    <Content Include="Views\Musician\Index.cshtml" />
+    <Content Include="Views\Customer\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Delete.cshtml" />
     <Content Include="Views\Musician\Details.cshtml" />
-    <Content Include="Views\Musician\Index.cshtml" />
-    <Content Include="Views\Musician\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,11 +293,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001172113459_thing.resx">
-      <DependentUpon>202001172113459_thing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.resx">
-      <DependentUpon>202001172249354_RemovedVoteLogReplacedWithStarRating.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001180506589_NewMigration.resx">
+      <DependentUpon>202001180506589_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

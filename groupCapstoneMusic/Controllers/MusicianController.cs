@@ -30,7 +30,7 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Details/5
         public ActionResult Details(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
 
             return View();
         }
@@ -48,7 +48,7 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
                 db.Musicians.Add(musician);
                 db.SaveChanges();
@@ -85,6 +85,9 @@ namespace groupCapstoneMusic.Controllers
                 newMusician.SetRate = musician.SetRate;
                 newMusician.FirstName = musician.FirstName;
                 newMusician.DatesAvailable = musician.DatesAvailable;
+                newMusician.BandName = musician.BandName;
+                newMusician.Lat = musician.Lat;
+                newMusician.Lng = musician.Lng;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -97,9 +100,7 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Delete/5
         public ActionResult Delete(int id)
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
-
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
         }
 
@@ -110,9 +111,7 @@ namespace groupCapstoneMusic.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Musician newMusician = db.Musicians.Where(m => m.ID == musician.ID)
-                    .Select(m => m).FirstOrDefault();
-
+                var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).FirstOrDefault();
                 db.Musicians.Remove(newMusician);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,107 +121,6 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-<<<<<<< HEAD
-        //public JsonResult SendRating(string r, string s, string id, string url)
-        //{
-        //    int autoId = 0;
-        //    Int16 thisVote = 0;
-        //    Int16 sectionId = 0;
-        //    Int16.TryParse(s, out sectionId);
-        //    Int16.TryParse(r, out thisVote);
-        //    int.TryParse(id, out autoId);
-
-        //    if (!User.Identity.IsAuthenticated)
-        //    {
-        //        return Json("Not authenticated!");
-        //    }
-
-        //    if (autoId.Equals(0))
-        //    {
-        //        return Json("Sorry, record to vote doesn't exists");
-        //    }
-
-        //    switch (s)
-        //    {
-        //        case "5": // user voting
-        //                  // check if he has already voted
-        //        var isIt = db.Votes.Where(v => v.SectionId == sectionId &&
-        //            v.UserName.Equals(User.Identity.Name, StringComparison.CurrentCultureIgnoreCase) && v.VoteForId == autoId).FirstOrDefault();
-        //        if (isIt != null)
-        //        {
-        //            // keep the voting flag to stop voting by this member
-        //            HttpCookie cookie = new HttpCookie(url, "true");
-        //            Response.Cookies.Add(cookie);
-        //            return Json("<br />You have already rated this post, thanks !");
-        //        }
-
-        //        var musician = db.Musicians.Where(sc => sc.ID == autoId).FirstOrDefault();
-        //        if (musician != null)
-        //        {
-        //            object obj = musician.Rating;
-
-        //            string updatedVotes = string.Empty;
-        //            string[] votes = null;
-        //            if (obj != null && obj.ToString().Length > 0)
-        //            {
-        //                string currentVotes = obj.ToString(); // votes pattern will be 0,0,0,0,0
-        //                votes = currentVotes.Split(',');
-        //                // if proper vote data is there in the database
-        //                if (votes.Length.Equals(5))
-        //                {
-        //                    // get the current number of vote count of the selected vote, always say -1 than the current vote in the array 
-        //                    int currentNumberOfVote = int.Parse(votes[thisVote - 1]);
-        //                    // increase 1 for this vote
-        //                    currentNumberOfVote++;
-        //                    // set the updated value into the selected votes
-        //                    votes[thisVote - 1] = currentNumberOfVote.ToString();
-        //                }
-        //                else
-        //                {
-        //                    votes = new string[] { "0", "0", "0", "0", "0" };
-        //                    votes[thisVote - 1] = "1";
-        //                }
-        //            }
-        //            else
-        //            {
-        //                votes = new string[] { "0", "0", "0", "0", "0" };
-        //                votes[thisVote - 1] = "1";
-        //            }
-
-        //            // concatenate all arrays now
-        //            foreach (string ss in votes)
-        //            {
-        //                updatedVotes += ss + ",";
-        //            }
-        //            updatedVotes = updatedVotes.Substring(0, updatedVotes.Length - 1);
-
-        //            db.Entry(musician).State = EntityState.Modified;
-        //            musician.Rating = Convert.ToDouble(updatedVotes);
-        //            db.SaveChangesAsync();
-
-        //            VoteLog vm = new VoteLog()
-        //            {
-        //                Active = true,
-        //                SectionId = Int16.Parse(s),
-        //                UserName = User.Identity.Name,
-        //                Rating = thisVote,
-        //                VoteForId = autoId
-        //            };
-
-        //            db.Votes.Add(vm);
-
-        //            db.SaveChangesAsync();
-
-        //            // keep the voting flag to stop voting by this member
-        //            HttpCookie cookie = new HttpCookie(url, "true");
-        //            Response.Cookies.Add(cookie);
-        //        }
-        //        break;
-        //        default:
-        //        break;
-        //    }
-        //    return Json("<br />You rated " + r + " star(s), thanks !");
-=======
 
         //public async System.Threading.Tasks.Task<ActionResult> VenueLocationAsync(int id)
         //{
@@ -237,7 +135,6 @@ namespace groupCapstoneMusic.Controllers
         //    {
 
         //    }
->>>>>>> 00ed503b4220e17509b7fe6752376dc4781e3c32
         //}
     }
 }        

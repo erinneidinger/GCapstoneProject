@@ -88,18 +88,18 @@ namespace groupCapstoneMusic.Controllers
                         var customer = db.Customers.Where(u => u.ApplicationId == user.Id).FirstOrDefault();
                         if(customer == null)
                         {
-                            return RedirectToAction("", ""); //If they never made profile after registration then they must go to "Create", "Customer"
+                            return RedirectToAction("Create", "Customer"); //If they never made profile after registration then they must go to "Create", "Customer"
                         }
-                        return RedirectToAction("", ""); //Redirect to there profile "Index", "Customer"
+                        return RedirectToAction("Index", "Customer"); //Redirect to there profile "Index", "Customer"
                     }
                     else if (roles.Contains("Musician"))
                     {
                         var musician = db.Musicians.Where(u => u.ApplicationId == user.Id).FirstOrDefault();
                         if(musician == null)
                         {
-                            return RedirectToAction("", ""); //If they never made profile after registration then they must go to "Create", "Musician"
+                            return RedirectToAction("Create", "Musician"); //If they never made profile after registration then they must go to "Create", "Musician"
                         }
-                        return RedirectToAction("", ""); //Redirect to there profile "Index", "Musicians"
+                        return RedirectToAction("Index", "Musician"); //Redirect to there profile "Index", "Musicians"
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -174,7 +174,7 @@ namespace groupCapstoneMusic.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
