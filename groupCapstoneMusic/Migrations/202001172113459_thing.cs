@@ -3,31 +3,33 @@ namespace groupCapstoneMusic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewMigration : DbMigration
+    public partial class thing : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Customers",
+                "dbo.Concerts",
                 c => new
                     {
-                        CustomerId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         ApplicationId = c.String(maxLength: 128),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Bio = c.String(),
-                        Email = c.String(),
+                        Venue = c.String(),
                         StreetAddress = c.String(),
                         City = c.String(),
                         State = c.String(),
-                        ZipCode = c.Int(nullable: false),
-                        MinBudget = c.Double(nullable: false),
-                        MaxBudget = c.Double(nullable: false),
-                        Rating = c.Double(nullable: false),
+                        Genre = c.String(),
+                        Audience = c.String(),
+                        ConcertDate = c.String(),
+                        ConcertTime = c.String(),
+                        Lat = c.String(),
+                        Lng = c.String(),
+                        Customer_CustomerId = c.Int(),
                     })
-                .PrimaryKey(t => t.CustomerId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .Index(t => t.ApplicationId);
+                .ForeignKey("dbo.Customers", t => t.Customer_CustomerId)
+                .Index(t => t.ApplicationId)
+                .Index(t => t.Customer_CustomerId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -88,28 +90,26 @@ namespace groupCapstoneMusic.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Events",
+                "dbo.Customers",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        CustomerId = c.Int(nullable: false, identity: true),
                         ApplicationId = c.String(maxLength: 128),
-                        Venue = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Bio = c.String(),
+                        Email = c.String(),
                         StreetAddress = c.String(),
                         City = c.String(),
                         State = c.String(),
-                        Genre = c.String(),
-                        Audience = c.String(),
-                        EventDate = c.String(),
-                        EventTime = c.String(),
-                        Lat = c.String(),
-                        Lng = c.String(),
-                        Customer_CustomerId = c.Int(),
+                        ZipCode = c.Int(nullable: false),
+                        MinBudget = c.Double(nullable: false),
+                        MaxBudget = c.Double(nullable: false),
+                        Rating = c.Double(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.CustomerId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.Customers", t => t.Customer_CustomerId)
-                .Index(t => t.ApplicationId)
-                .Index(t => t.Customer_CustomerId);
+                .Index(t => t.ApplicationId);
             
             CreateTable(
                 "dbo.Musicians",
@@ -126,6 +126,7 @@ namespace groupCapstoneMusic.Migrations
                         Rating = c.Double(nullable: false),
                         SetRate = c.Double(nullable: false),
                         DatesAvailable = c.String(),
+                        StreetAddress = c.String(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
@@ -141,36 +142,50 @@ namespace groupCapstoneMusic.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
+            CreateTable(
+                "dbo.VoteLogs",
+                c => new
+                    {
+                        AutoId = c.Int(nullable: false, identity: true),
+                        SectionId = c.Int(nullable: false),
+                        VoteForId = c.Int(nullable: false),
+                        UserName = c.String(),
+                        Rating = c.Int(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.AutoId);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Musicians", "ApplicationId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Events", "Customer_CustomerId", "dbo.Customers");
-            DropForeignKey("dbo.Events", "ApplicationId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Concerts", "Customer_CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Customers", "ApplicationId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Concerts", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Musicians", new[] { "ApplicationId" });
-            DropIndex("dbo.Events", new[] { "Customer_CustomerId" });
-            DropIndex("dbo.Events", new[] { "ApplicationId" });
+            DropIndex("dbo.Customers", new[] { "ApplicationId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Customers", new[] { "ApplicationId" });
+            DropIndex("dbo.Concerts", new[] { "Customer_CustomerId" });
+            DropIndex("dbo.Concerts", new[] { "ApplicationId" });
+            DropTable("dbo.VoteLogs");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Musicians");
-            DropTable("dbo.Events");
+            DropTable("dbo.Customers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Customers");
+            DropTable("dbo.Concerts");
         }
     }
 }

@@ -7,13 +7,13 @@ namespace groupCapstoneMusic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeEventToConcert : IMigrationMetadata
+    public sealed partial class RemovedVoteLogReplacedWithStarRating : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeEventToConcert));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedVoteLogReplacedWithStarRating));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001171953577_ChangeEventToConcert"; }
+            get { return "202001172249354_RemovedVoteLogReplacedWithStarRating"; }
         }
         
         string IMigrationMetadata.Source
