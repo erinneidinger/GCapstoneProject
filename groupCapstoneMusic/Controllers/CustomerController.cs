@@ -1,9 +1,11 @@
 ﻿using groupCapstoneMusic.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -57,6 +59,8 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
+                var email = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
+                customer.Email = email.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 // TODO: Add insert logic here
@@ -68,7 +72,6 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {

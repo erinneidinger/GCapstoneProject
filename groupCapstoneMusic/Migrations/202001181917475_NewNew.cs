@@ -3,7 +3,7 @@ namespace groupCapstoneMusic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewMigration : DbMigration
+    public partial class NewNew : DbMigration
     {
         public override void Up()
         {
@@ -112,22 +112,6 @@ namespace groupCapstoneMusic.Migrations
                 .Index(t => t.ApplicationId);
             
             CreateTable(
-                "dbo.StarRatings",
-                c => new
-                    {
-                        RateId = c.Int(nullable: false, identity: true),
-                        Rate = c.Int(nullable: false),
-                        IpAddress = c.String(),
-                        CustId = c.Int(nullable: false),
-                        MusicId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.RateId)
-                .ForeignKey("dbo.Customers", t => t.CustId, cascadeDelete: true)
-                .ForeignKey("dbo.Musicians", t => t.MusicId, cascadeDelete: true)
-                .Index(t => t.CustId)
-                .Index(t => t.MusicId);
-            
-            CreateTable(
                 "dbo.Musicians",
                 c => new
                     {
@@ -146,12 +130,28 @@ namespace groupCapstoneMusic.Migrations
                         SetRate = c.Double(nullable: false),
                         DatesAvailable = c.String(),
                         StreetAddress = c.String(),
-                        Lat = c.String(),
-                        Lng = c.String(),
+                        Lat = c.Double(nullable: false),
+                        Lng = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
                 .Index(t => t.ApplicationId);
+            
+            CreateTable(
+                "dbo.StarRatings",
+                c => new
+                    {
+                        RateId = c.Int(nullable: false, identity: true),
+                        Rate = c.Int(nullable: false),
+                        IpAddress = c.String(),
+                        CustId = c.Int(nullable: false),
+                        MusicId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.RateId)
+                .ForeignKey("dbo.Customers", t => t.CustId, cascadeDelete: true)
+                .ForeignKey("dbo.Musicians", t => t.MusicId, cascadeDelete: true)
+                .Index(t => t.CustId)
+                .Index(t => t.MusicId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -169,8 +169,8 @@ namespace groupCapstoneMusic.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.StarRatings", "MusicId", "dbo.Musicians");
-            DropForeignKey("dbo.Musicians", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.StarRatings", "CustId", "dbo.Customers");
+            DropForeignKey("dbo.Musicians", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Concerts", "Customer_CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Customers", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Concerts", "ApplicationId", "dbo.AspNetUsers");
@@ -178,9 +178,9 @@ namespace groupCapstoneMusic.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Musicians", new[] { "ApplicationId" });
             DropIndex("dbo.StarRatings", new[] { "MusicId" });
             DropIndex("dbo.StarRatings", new[] { "CustId" });
+            DropIndex("dbo.Musicians", new[] { "ApplicationId" });
             DropIndex("dbo.Customers", new[] { "ApplicationId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -190,8 +190,8 @@ namespace groupCapstoneMusic.Migrations
             DropIndex("dbo.Concerts", new[] { "Customer_CustomerId" });
             DropIndex("dbo.Concerts", new[] { "ApplicationId" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Musicians");
             DropTable("dbo.StarRatings");
+            DropTable("dbo.Musicians");
             DropTable("dbo.Customers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");

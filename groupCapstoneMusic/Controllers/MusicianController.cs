@@ -1,5 +1,6 @@
 ﻿using groupCapstoneMusic.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -50,14 +51,36 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
+                var email = db.Users.Where(e => e.Id == musician.ApplicationId).FirstOrDefault();
+                musician.Email = email.Email;
                 db.Musicians.Add(musician);
                 db.SaveChanges();
+                GetLatNLngAsync(musician);
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+        }
+
+        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)
+        {
+            var e = musician;
+            string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage responce = await client.GetAsync(url);
+            string jsonResult = await responce.Content.ReadAsStringAsync();
+            if (responce.IsSuccessStatusCode)
+            {
+                GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
+                e.Lat = location.results[0].geometry.location.lat;
+                e.Lng = location.results[0].geometry.location.lng;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Musician/Edit/5
