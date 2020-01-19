@@ -22,9 +22,18 @@ namespace groupCapstoneMusic.Controllers
             //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
             //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();
             //return View(oneCustomer);
+            //---------------By default what should the customer see upon logging in?-----------------
+            //put it here
         }
 
-        public ActionResult SearchParameters()
+        public ActionResult CreateConcert()
+        {
+            var userID = User.Identity.GetUserId();
+            var customer = db.Customers.Where(c => c.ApplicationId == userID).FirstOrDefault();
+            return RedirectToAction("Create", "Concert", customer);
+        }
+
+        public ActionResult Search()
         {
             CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
             var userID = User.Identity.GetUserId();
@@ -34,12 +43,12 @@ namespace groupCapstoneMusic.Controllers
         }
 
         [HttpPost]
-        public ActionResult SearchParameters(CustomerMusiciansViewModel customerMusiciansViewModel)
+        public ActionResult Search(CustomerMusiciansViewModel customerMusiciansViewModel)
         {
             return View();
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id) //view musicians information
         {
             return View();
         }
@@ -65,7 +74,7 @@ namespace groupCapstoneMusic.Controllers
                 db.SaveChanges();
                 // TODO: Add insert logic here
 
-                return View("Index");
+                return View("Index"); //This works
             }
             catch
             {
@@ -73,9 +82,10 @@ namespace groupCapstoneMusic.Controllers
             }
         }
         // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit() //Edit Profile
         {
-            var customer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var customer = db.Customers.Where(a => a.ApplicationId == userId).FirstOrDefault();
             return View(customer);
         }
 

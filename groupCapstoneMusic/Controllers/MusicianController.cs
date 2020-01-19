@@ -19,17 +19,13 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician
         public ActionResult Index()
         {
-            var Musician = db.Musicians;
+            var userId = User.Identity.GetUserId();
+            var Musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
             return View(Musician);
         }
 
-        public void GetLngAndLat(Customer customer)
-        {
-
-
-        }
         // GET: Musician/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
         {
             var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
 
@@ -40,7 +36,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create()
         {
             Musician musician = new Musician();
-            return View(musician);
+            return View(musician); //this works
         }
 
         // POST: Musician/Create
@@ -53,10 +49,7 @@ namespace groupCapstoneMusic.Controllers
                 musician.ApplicationId = userId;
                 var email = db.Users.Where(e => e.Id == musician.ApplicationId).FirstOrDefault();
                 musician.Email = email.Email;
-                db.Musicians.Add(musician);
-                db.SaveChanges();
-                GetLatNLngAsync(musician);
-                return RedirectToAction("Index");
+                return RedirectToAction("GetLatNLngAsync", musician); //This works
             }
             catch
             {
@@ -76,23 +69,26 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
+                db.Musicians.Add(e);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index"); //This works
 
             }
             return RedirectToAction("Index");
         }
 
         // GET: Musician/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit() // This works
         {
-            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            //var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
         }
 
         // POST: Musician/Edit/5
         [HttpPost]
-        public ActionResult Edit(Musician musician)
+        public ActionResult Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
         {
             try
             {
@@ -121,7 +117,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
             var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
@@ -129,7 +125,7 @@ namespace groupCapstoneMusic.Controllers
 
         // POST: Musician/Delete/5
         [HttpPost]
-        public ActionResult Delete(Musician musician)
+        public ActionResult Delete(Musician musician) //Delete Profile
         {
             try
             {
@@ -150,7 +146,7 @@ namespace groupCapstoneMusic.Controllers
         //    Concert concert = db.Concerts.Find(id);
 
 
-        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "AIzaSyBODztrEdGOpQ8GjPFCTYgWpPz_VHxXBBg";
+        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "";
         //    HttpClient client = new HttpClient();
         //    HttpResponseMessage response = await client.VenueLocationAsync(url);
         //    string jsonResult = await response.Content.ReadAsStringAsync();

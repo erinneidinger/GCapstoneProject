@@ -31,7 +31,7 @@ namespace groupCapstoneMusic.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Customer customer)
         {
             Concert concert = new Concert();
             return View(concert);
