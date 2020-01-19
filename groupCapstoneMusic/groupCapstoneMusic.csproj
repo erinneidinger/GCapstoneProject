@@ -178,13 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001182313111_RecentMigraton.cs" />
-    <Compile Include="Migrations\202001182313111_RecentMigraton.Designer.cs">
-      <DependentUpon>202001182313111_RecentMigraton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001192211354_GeoCodeMigration.cs" />
-    <Compile Include="Migrations\202001192211354_GeoCodeMigration.Designer.cs">
-      <DependentUpon>202001192211354_GeoCodeMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202001191958444_NewMigration.cs" />
+    <Compile Include="Migrations\202001191958444_NewMigration.Designer.cs">
+      <DependentUpon>202001191958444_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,10 +263,10 @@
     <Content Include="Views\Concert\Edit.cshtml" />
     <Content Include="Views\Concert\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
-    <Content Include="Views\Musician\Edit.cshtml" />
-    <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Index.cshtml" />
     <Content Include="Views\Customer\Search.cshtml" />
+    <Content Include="Views\Musician\Create.cshtml" />
+    <Content Include="Views\Musician\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -297,14 +293,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001182313111_RecentMigraton.resx">
-      <DependentUpon>202001182313111_RecentMigraton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001192211354_GeoCodeMigration.resx">
-      <DependentUpon>202001192211354_GeoCodeMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

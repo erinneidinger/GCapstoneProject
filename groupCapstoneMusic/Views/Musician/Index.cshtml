@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<groupCapstoneMusic.Models.Musician>
 
-@{
+@*@{
     Layout = null;
-}
+}*@
 
 <!DOCTYPE html>
 
@@ -38,21 +38,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.Genre)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Rating)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SetRate)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.DatesAvailable)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.RateCount)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.RateTotal)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     
@@ -79,30 +79,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SetRate)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.DatesAvailable)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StreetAddress)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.RateCount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RateTotal)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Lat)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Lng)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id=item.ID }) |
