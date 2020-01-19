@@ -1,8 +1,10 @@
 ﻿using groupCapstoneMusic.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -52,6 +54,24 @@ namespace groupCapstoneMusic.Controllers
             {
                 return View();
             }
+        }
+        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Concert concert)
+        {
+            var e = concert;
+            string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            string jsonResult = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
+                e.Lat = location.results[0].geometry.location.lat;
+                e.Lng = location.results[0].geometry.location.lng;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)

@@ -178,9 +178,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001181917475_NewNew.cs" />
-    <Compile Include="Migrations\202001181917475_NewNew.Designer.cs">
-      <DependentUpon>202001181917475_NewNew.cs</DependentUpon>
+    <Compile Include="Migrations\202001182313111_RecentMigraton.cs" />
+    <Compile Include="Migrations\202001182313111_RecentMigraton.Designer.cs">
+      <DependentUpon>202001182313111_RecentMigraton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001192211354_GeoCodeMigration.cs" />
+    <Compile Include="Migrations\202001192211354_GeoCodeMigration.Designer.cs">
+      <DependentUpon>202001192211354_GeoCodeMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,8 +299,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001181917475_NewNew.resx">
-      <DependentUpon>202001181917475_NewNew.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001182313111_RecentMigraton.resx">
+      <DependentUpon>202001182313111_RecentMigraton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001192211354_GeoCodeMigration.resx">
+      <DependentUpon>202001192211354_GeoCodeMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
