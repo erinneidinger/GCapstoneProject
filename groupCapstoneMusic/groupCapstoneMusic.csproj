@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202001191748328_updatedFullSweepMigration.Designer.cs">
       <DependentUpon>202001191748328_updatedFullSweepMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.cs" />
+    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.Designer.cs">
+      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -253,10 +257,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Role\AddRole.cshtml" />
-    <Content Include="Views\Shared\_VoteShow.cshtml" />
     <Content Include="Views\Concert\Create.cshtml" />
     <Content Include="Views\Concert\Details.cshtml" />
     <Content Include="Views\Concert\Delete.cshtml" />
@@ -267,8 +269,8 @@
     <Content Include="Views\Customer\Search.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
-    <Content Include="Views\Musician\_List.cshtml" />
-    <Content Include="Views\Customer\_List.cshtml" />
+    <Content Include="Views\Shared\_MusiRating.cshtml" />
+    <Content Include="Views\Shared\_CustRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -299,6 +301,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001191748328_updatedFullSweepMigration.resx">
       <DependentUpon>202001191748328_updatedFullSweepMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201321069_GetNewestInfoFromTeam.resx">
+      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
