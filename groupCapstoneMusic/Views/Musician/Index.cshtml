@@ -12,14 +12,10 @@
     <title>Index</title>
 </head>
 <body>
+    @{ Html.RenderPartial("_MusiRating"); } @*code to pull partialview w/ Rating for musician*@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    @*@{
-        var MusicianRatingSystem = Html.Partial("_MusiRating");
-        MusicianRatingSystem = new MvcHtmlString(MusicianRatingSystem.ToString() + "<h2> Musician Rating Partial View Test </h2>");
-    }
-    @MusicianRatingSystem*@
     <table class="table">
         <tr>
             <th>

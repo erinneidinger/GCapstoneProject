@@ -48,7 +48,13 @@ namespace groupCapstoneMusic.Models
 
         public List<Concert> events { get; set; }
 
+
         //public int RateCount //KEEP COMMMED OUT TILL IT GETS WORKING FOR TESTING PURP
+
+        //keep below code commented out for now. KEEP IT THOUGH
+
+        //public int RateCount
+
         //{
         //    get { return ratings.Count; }
         //}

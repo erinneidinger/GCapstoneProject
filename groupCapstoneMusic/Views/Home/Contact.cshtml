@@ -10,8 +10,9 @@
     <abbr title="Phone">P:</abbr>
     425.555.0100
 </address>
-
+@{ Html.RenderPartial("_MusiRating"); } @*code to pull partialview w/ Rating for musician*@
 <address>
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+@{ Html.RenderPartial("_CustRating"); } @*code to pull partialview w/ Rating for Customer*@

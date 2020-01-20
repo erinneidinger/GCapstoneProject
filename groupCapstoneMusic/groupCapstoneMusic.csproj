@@ -178,9 +178,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001201544045_AddedAPIMapCallMigration.cs" />
-    <Compile Include="Migrations\202001201544045_AddedAPIMapCallMigration.Designer.cs">
-      <DependentUpon>202001201544045_AddedAPIMapCallMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.cs" />
+    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.Designer.cs">
+      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.cs" />
+    <Compile Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.Designer.cs">
+      <DependentUpon>202001201523367_ErrorSaidINeededAFreshUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202001201726155_NEWNEWNEW.cs" />
     <Compile Include="Migrations\202001201726155_NEWNEWNEW.Designer.cs">
@@ -304,8 +308,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001201544045_AddedAPIMapCallMigration.resx">
-      <DependentUpon>202001201544045_AddedAPIMapCallMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001201321069_GetNewestInfoFromTeam.resx">
+      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.resx">
+      <DependentUpon>202001201523367_ErrorSaidINeededAFreshUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001201726155_NEWNEWNEW.resx">
       <DependentUpon>202001201726155_NEWNEWNEW.cs</DependentUpon>
