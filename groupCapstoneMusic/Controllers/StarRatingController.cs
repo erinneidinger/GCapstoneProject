@@ -92,9 +92,9 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-        public ActionResult mRate0(Musician musician)
+        public void mRate0()
         {
-            var rate0 = 
+
         }
         public void mRate1()
         {
@@ -113,6 +113,30 @@ namespace groupCapstoneMusic.Controllers
 
         }
         public void mRate5()
+        {
+
+        }
+        public void cRate0()
+        {
+
+        }
+        public void cRate1()
+        {
+
+        }
+        public void cRate2()
+        {
+
+        }
+        public void cRate3()
+        {
+
+        }
+        public void cRate4()
+        {
+
+        }
+        public void cRate5()
         {
 
         }
