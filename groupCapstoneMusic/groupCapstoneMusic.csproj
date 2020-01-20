@@ -171,7 +171,6 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ConcertController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IMessageServiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusicianController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
