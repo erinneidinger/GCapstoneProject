@@ -30,6 +30,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Details(int id)
         {
             var concertDetails = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            GetLatNLngAsync(concertDetails);
             return View();
         }
 
