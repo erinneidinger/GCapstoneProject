@@ -31,7 +31,7 @@ namespace groupCapstoneMusic.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Customer customer)
         {
             Concert concert = new Concert();
             return View(concert);
@@ -42,7 +42,7 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 concert.ApplicationId = userId;
                 db.Concerts.Add(concert);
                 db.SaveChanges();
@@ -67,7 +67,7 @@ namespace groupCapstoneMusic.Controllers
             try
             {
                 // TODO: Add update logic here
-                Concert editedConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+                var editedConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
                 editedConcert.Venue = concert.Venue;
                 editedConcert.Audience = concert.Audience;
                 editedConcert.Genre = concert.Genre;
@@ -88,7 +88,7 @@ namespace groupCapstoneMusic.Controllers
         // GET: Event/Delete/5
         public ActionResult Delete(int id)
         {
-            Concert foundConcert = db.Concerts.Find(id);
+            var foundConcert = db.Concerts.Find(id);
 
             return View(foundConcert);
         }
@@ -100,7 +100,7 @@ namespace groupCapstoneMusic.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Concert foundConcert = db.Concerts.Find(id);
+                var foundConcert = db.Concerts.Find(id);
                 db.Concerts.Remove(foundConcert);
                 db.SaveChanges();
 

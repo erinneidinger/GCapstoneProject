@@ -11,5 +11,10 @@ namespace groupCapstoneMusic.Models
         //if you need to use it, it is a static class, so just call googleKey in replace of the actual code
         //this way it will be hidden in the back end and wont be stolen.
         public static string googleKey = "AIzaSyBODztrEdGOpQ8GjPFCTYgWpPz_VHxXBBg";
+
+        public static string geoURLP1 = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+
+        public static string geoURLP2 = "&key=";
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using groupCapstoneMusic.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,19 +19,15 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician
         public ActionResult Index()
         {
-            var Musician = db.Musicians;
+            var userId = User.Identity.GetUserId();
+            var Musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
             return View(Musician);
         }
 
-        public void GetLngAndLat(Customer customer)
-        {
-
-
-        }
         // GET: Musician/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
 
             return View();
         }
@@ -39,7 +36,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create()
         {
             Musician musician = new Musician();
-            return View(musician);
+            return View(musician); //this works
         }
 
         // POST: Musician/Create
@@ -48,11 +45,11 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
-                db.Musicians.Add(musician);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var email = db.Users.Where(e => e.Id == musician.ApplicationId).FirstOrDefault();
+                musician.Email = email.Email;
+                return RedirectToAction("GetLatNLngAsync", musician); //This works
             }
             catch
             {
@@ -60,16 +57,38 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        // GET: Musician/Edit/5
-        public ActionResult Edit(int id)
+        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)
         {
-            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
+            var e = musician;
+            string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage responce = await client.GetAsync(url);
+            string jsonResult = await responce.Content.ReadAsStringAsync();
+            if (responce.IsSuccessStatusCode)
+            {
+                GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
+                e.Lat = location.results[0].geometry.location.lat;
+                e.Lng = location.results[0].geometry.location.lng;
+                db.Musicians.Add(e);
+                db.SaveChanges();
+                return RedirectToAction("Index"); //This works
+
+            }
+            return RedirectToAction("Index");
+        }
+
+        // GET: Musician/Edit/5
+        public ActionResult Edit() // This works
+        {
+            var userId = User.Identity.GetUserId();
+            var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            //var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
         }
 
         // POST: Musician/Edit/5
         [HttpPost]
-        public ActionResult Edit(Musician musician)
+        public ActionResult Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
         {
             try
             {
@@ -85,6 +104,9 @@ namespace groupCapstoneMusic.Controllers
                 newMusician.SetRate = musician.SetRate;
                 newMusician.FirstName = musician.FirstName;
                 newMusician.DatesAvailable = musician.DatesAvailable;
+                newMusician.BandName = musician.BandName;
+                newMusician.Lat = musician.Lat;
+                newMusician.Lng = musician.Lng;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -95,24 +117,20 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
-            Musician musician = db.Musicians.Where(m => m.ID == id)
-                .Select(m => m).FirstOrDefault();
-
+            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
         }
 
         // POST: Musician/Delete/5
         [HttpPost]
-        public ActionResult Delete(Musician musician)
+        public ActionResult Delete(Musician musician) //Delete Profile
         {
             try
             {
                 // TODO: Add delete logic here
-                Musician newMusician = db.Musicians.Where(m => m.ID == musician.ID)
-                    .Select(m => m).FirstOrDefault();
-
+                var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).FirstOrDefault();
                 db.Musicians.Remove(newMusician);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,6 +140,7 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
+
         public ActionResult List(string musicianRating, string searchString)
         {
             //bind the customer list in the dropdown list
@@ -162,19 +181,5 @@ namespace groupCapstoneMusic.Controllers
             return Json("You rated this " + rating.ToString() + " star(s)");
         }
 
-        //public async System.Threading.Tasks.Task<ActionResult> VenueLocationAsync(int id)
-        //{
-        //    Concert concert = db.Concerts.Find(id);
-
-
-        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "AIzaSyBODztrEdGOpQ8GjPFCTYgWpPz_VHxXBBg";
-        //    HttpClient client = new HttpClient();
-        //    HttpResponseMessage response = await client.VenueLocationAsync(url);
-        //    string jsonResult = await response.Content.ReadAsStringAsync();
-        //    if (response.IsSuccessStatusCode)
-        //    {
-
-        //    }
-        //}
     }
 }        

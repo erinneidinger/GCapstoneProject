@@ -352,3 +352,5 @@ MigrationBackup/
 .PrivateKeys.cs
 
 Migrations/**
+
+Migrations/

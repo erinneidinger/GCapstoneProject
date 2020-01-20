@@ -1,9 +1,11 @@
 ﻿using groupCapstoneMusic.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,13 +17,38 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var Id = User.Identity.GetUserId();
-            var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            var oneCustomer = db.Customers.Where(a => a.CustomerId == foundCustomer.CustomerId).ToList();
-            return View(oneCustomer);
+            return View();
+            //var Id = User.Identity.GetUserId();
+            //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();
+            //return View(oneCustomer);
+            //---------------By default what should the customer see upon logging in?-----------------
+            //put it here
         }
 
-        public ActionResult Details(int id)
+        public ActionResult CreateConcert()
+        {
+            var userID = User.Identity.GetUserId();
+            var customer = db.Customers.Where(c => c.ApplicationId == userID).FirstOrDefault();
+            return RedirectToAction("Create", "Concert", customer);
+        }
+
+        public ActionResult Search()
+        {
+            CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
+            var userID = User.Identity.GetUserId();
+            var customer = db.Customers.Where(u => u.ApplicationId == userID).FirstOrDefault();
+            customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == customer.City).ToList();
+            return View(customerMusiciansViewModel); //Change it to ratings or something after
+        }
+
+        [HttpPost]
+        public ActionResult Search(CustomerMusiciansViewModel customerMusiciansViewModel)
+        {
+            return View();
+        }
+
+        public ActionResult Details(int id) //view musicians information
         {
             return View();
         }
@@ -30,7 +57,6 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create()
         {
             Customer customer = new Customer();
-            var user = User.Identity.GetUserId();
             return View(customer);
         }
 
@@ -40,24 +66,26 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
-                string userId = User.Identity.GetUserId();
+                var userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
+                var email = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
+                customer.Email = email.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 // TODO: Add insert logic here
 
-                return View("Index");
+                return View("Index"); //This works
             }
             catch
             {
                 return View();
             }
         }
-
         // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit() //Edit Profile
         {
-            var customer = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var customer = db.Customers.Where(a => a.ApplicationId == userId).FirstOrDefault();
             return View(customer);
         }
 
