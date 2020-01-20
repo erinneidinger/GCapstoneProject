@@ -178,13 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001172113459_thing.cs" />
-    <Compile Include="Migrations\202001172113459_thing.Designer.cs">
-      <DependentUpon>202001172113459_thing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.cs" />
-    <Compile Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.Designer.cs">
-      <DependentUpon>202001172249354_RemovedVoteLogReplacedWithStarRating.cs</DependentUpon>
+    <Compile Include="Migrations\202001191748328_updatedFullSweepMigration.cs" />
+    <Compile Include="Migrations\202001191748328_updatedFullSweepMigration.Designer.cs">
+      <DependentUpon>202001191748328_updatedFullSweepMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -265,6 +261,8 @@
     <Content Include="Views\Concert\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
+    <Content Include="Views\Musician\_List.cshtml" />
+    <Content Include="Views\Customer\_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -295,11 +293,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001172113459_thing.resx">
-      <DependentUpon>202001172113459_thing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001172249354_RemovedVoteLogReplacedWithStarRating.resx">
-      <DependentUpon>202001172249354_RemovedVoteLogReplacedWithStarRating.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001191748328_updatedFullSweepMigration.resx">
+      <DependentUpon>202001191748328_updatedFullSweepMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
