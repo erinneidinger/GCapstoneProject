@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ConcertController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IMessageServiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusicianController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Models\Concert.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\Musician.cs" />
     <Compile Include="Models\MusicianCustomersViewModel.cs" />
     <Compile Include="Models\PrivateKeys.cs" />
@@ -281,6 +283,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Geo\" />
+    <Folder Include="Views\IMessageService\" />
     <Folder Include="Views\VoteLog\" />
   </ItemGroup>
   <ItemGroup>
