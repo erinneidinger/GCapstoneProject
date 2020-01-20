@@ -127,45 +127,7 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-        //public ActionResult List(string customerRating, string searchString)
-        //{
-        //    //bind the customer list in the dropdown list
-        //    var CustomerList = new List<string>();
-        //    var CustomerQuery = from d in db.Customers
-        //                      orderby d.Rating
-        //                      select d.Rating;
-        //    CustomerList.AddRange(CustomerQuery.Distinct());
-        //    ViewBag.customerRating = new SelectList(CustomerList);
 
-        //    //string searchString = CustomerId;
-        //    var custys = from c in db.Customers
-        //                 select c;
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        custys = custys.Where(c => c.FirstName.Contains(searchString));
-        //    }
-        //    if (!string.IsNullOrEmpty(customerRating))
-        //    {
-        //        custys = custys.Where(c => c.Rating == customerRating);
-        //    }
-        //    return PartialView("_List", custys.ToList());
-        //}
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public JsonResult PostRating(int rating, int mid)
-        //{
-        //    //save data into the database
-        //    StarRating rt = new StarRating();
-        //    string ip = Request.ServerVariables["REMOTE_ADDR"];
-        //    rt.Rate = rating;
-        //    rt.IpAddress = ip;
-        //    rt.CustId = mid;
-
-        //    //save into the database
-        //    db.Stars.Add(rt);
-        //    db.SaveChangesAsync();
-
-        //    return Json("You rated this " + rating.ToString() + " star(s)");
-        //}
         //public PartialViewResult Customer()
         //{
         //    return PartialView("_CustRating");

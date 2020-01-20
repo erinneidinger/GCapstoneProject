@@ -50,22 +50,6 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
-        //keep below code commented out for now. KEEP IT THOUGH
-
-        //public int RateCount
-        //{
-        //    get { return ratings.Count; }
-        //}
-        //public int RateTotal
-        //{
-        //    get
-        //    {
-        //        return (ratings.Sum(m => m.Rate));
-        //    }
-        //}
-        //public virtual ICollection<StarRating> ratings { get; set; }
-
-
         public double Lat { get; set; }
 
         public double Lng { get; set; }

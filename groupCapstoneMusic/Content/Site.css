@@ -22,3 +22,50 @@ select,
 textarea {
     max-width: 280px;
 }
+.button0 {
+    background: url(/images/0.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+
+.button1 {
+    background: url(/images/1.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+
+.button2 {
+    background: url(/images/2.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+
+.button3 {
+    background: url(/images/3.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+
+.button4 {
+    background: url(/images/4.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
+
+.button5 {
+    background: url(/images/5.png) no-repeat;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    border: none;
+}
