@@ -7,13 +7,13 @@ namespace groupCapstoneMusic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class GeoCodeMigration : IMigrationMetadata
+    public sealed partial class AddedAPIMapCallMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(GeoCodeMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedAPIMapCallMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001192211354_GeoCodeMigration"; }
+            get { return "202001201544045_AddedAPIMapCallMigration"; }
         }
         
         string IMigrationMetadata.Source

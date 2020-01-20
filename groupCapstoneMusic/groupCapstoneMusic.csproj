@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusicianController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StarRatingController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,7 +297,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Geo\" />
-    <Folder Include="Views\VoteLog\" />
+    <Folder Include="Views\IMessageService\" />
+    <Folder Include="Views\StarRating\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
