@@ -39,6 +39,7 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
-        public string apiMapCall { get; set; }
+        public string apiMapCall = PrivateKeys.googleMap;
+
     }
 }

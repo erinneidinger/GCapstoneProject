@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202001201544045_AddedAPIMapCallMigration.Designer.cs">
       <DependentUpon>202001201544045_AddedAPIMapCallMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001201726155_NEWNEWNEW.cs" />
+    <Compile Include="Migrations\202001201726155_NEWNEWNEW.Designer.cs">
+      <DependentUpon>202001201726155_NEWNEWNEW.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -302,6 +306,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001201544045_AddedAPIMapCallMigration.resx">
       <DependentUpon>202001201544045_AddedAPIMapCallMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201726155_NEWNEWNEW.resx">
+      <DependentUpon>202001201726155_NEWNEWNEW.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

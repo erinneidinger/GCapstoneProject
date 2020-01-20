@@ -17,9 +17,9 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Index()
         {
             var Id = User.Identity.GetUserId();
-            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            var oneConcert = db.Concerts.Where(a => a.Id == foundConcert.Id).ToList();
-            return View(oneConcert);
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).ToList();
+            //var oneConcert = db.Concerts.Where(a => a.Id == foundConcert.Id).ToList();
+            return View(foundConcert);
         }
        
         public ActionResult Details(int id, Concert concert)
@@ -44,9 +44,8 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 concert.ApplicationId = userId;
-                db.Concerts.Add(concert);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("GetLatNLngAsync", concert);
             }
             catch
             {
@@ -65,6 +64,7 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
+                db.Concerts.Add(concert);
                 db.SaveChanges();
                 return RedirectToAction("Index");
 

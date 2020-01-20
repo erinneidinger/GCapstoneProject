@@ -4,43 +4,39 @@
         ViewBag.Title = "Details";
     }
     <h2>Details</h2>
-
-
-    <h2>Find my Concert Venue:</h2>
-    <div id="map"></div>
+<html>
+<head>
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
     </style>
+    </head>
+<body>
+    <h2>Find my Concert Venue:</h2>
+    <div id="map"></div>
     <script>
-function initMap() {
-        var options = {
-            zoom: 8,
-            center: {lat:@Model.Lat, lng: @Model.Lng}
-        }
+        function initMap() {
+            var venLocation = { lat: @Model.Lat, lng: @Model.Lng };
 
-    var map = new google.maps.Map(document.getElementById('map'), options);
+            var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: venLocation });
 
-    var marker = new google.maps.Marker({
-        position: { lat: @Model.Lat, lng: @Model.Lng },
-        map: map,
-        icon:'beachflag.png'
-    });
+            var marker = new google.maps.Marker({ position: venLocation, map: map, animation: google.maps.Animation.BOUNCE });
 
-    var infoWindow = new google.maps.InforWindow({
-        content: (".details")
-    });
+    //var infoWindow = new google.maps.InforWindow({
+    //    content: (".details")
+    //});
 
-    marker.addListener('click', function () {
-        infoWindow.open(map, marker);
-        });
+    //marker.addListener('click', function () {
+    //    infoWindow.open(map, marker);
+    //    });
     }
 
     </script>
-    <script async defer src= + @Model.apiMapCall></script>
-
+    <script src="@Model.apiMapCall" async defer></script>
+</body>
+</html>
 
     <div class="details">
 
