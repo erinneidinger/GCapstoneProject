@@ -21,16 +21,14 @@ namespace groupCapstoneMusic.Controllers
             var oneConcert = db.Concerts.Where(a => a.Id == foundConcert.Id).ToList();
             return View(oneConcert);
         }
-        public void GetLngAndLat(Customer customer)
+       
+        public ActionResult Details(int id, Concert concert)
         {
-
-
-        }
-
-        public ActionResult Details(int id)
-        {
+           
             var concertDetails = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
-            return View();
+            concert.apiMapCall = PrivateKeys.googleMap;
+            db.SaveChanges();
+            return View(concertDetails);
         }
 
         public ActionResult Create(Customer customer)
