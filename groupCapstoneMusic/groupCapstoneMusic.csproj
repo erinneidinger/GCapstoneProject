@@ -178,18 +178,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.cs" />
-    <Compile Include="Migrations\202001201321069_GetNewestInfoFromTeam.Designer.cs">
-      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.cs" />
-    <Compile Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.Designer.cs">
-      <DependentUpon>202001201523367_ErrorSaidINeededAFreshUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001201726155_NEWNEWNEW.cs" />
-    <Compile Include="Migrations\202001201726155_NEWNEWNEW.Designer.cs">
-      <DependentUpon>202001201726155_NEWNEWNEW.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -279,6 +267,7 @@
     <Content Include="Views\Musician\Edit.cshtml" />
     <Content Include="Views\Shared\_MusiRating.cshtml" />
     <Content Include="Views\Shared\_CustRating.cshtml" />
+    <Content Include="Views\Musician\FilteredMusicians.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -306,17 +295,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001201321069_GetNewestInfoFromTeam.resx">
-      <DependentUpon>202001201321069_GetNewestInfoFromTeam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001201523367_ErrorSaidINeededAFreshUpdate.resx">
-      <DependentUpon>202001201523367_ErrorSaidINeededAFreshUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001201726155_NEWNEWNEW.resx">
-      <DependentUpon>202001201726155_NEWNEWNEW.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
