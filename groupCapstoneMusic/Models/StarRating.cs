@@ -21,5 +21,7 @@ namespace groupCapstoneMusic.Models
         public int MusicId { get; set; }
         [ForeignKey("MusicId")]
         public virtual Musician musician { get; set; }
+
+
     }
 }

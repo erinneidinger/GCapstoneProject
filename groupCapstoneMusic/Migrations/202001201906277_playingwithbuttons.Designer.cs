@@ -7,13 +7,13 @@ namespace groupCapstoneMusic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ErrorSaidINeededAFreshUpdate : IMigrationMetadata
+    public sealed partial class playingwithbuttons : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ErrorSaidINeededAFreshUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(playingwithbuttons));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001201523367_ErrorSaidINeededAFreshUpdate"; }
+            get { return "202001201906277_playingwithbuttons"; }
         }
         
         string IMigrationMetadata.Source
