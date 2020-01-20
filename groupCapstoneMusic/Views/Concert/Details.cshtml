@@ -16,21 +16,21 @@
     </style>
     <script>
 function initMap() {
-    var myLatLng = new google.maps.myLatLng(latitude, longitude);
         var options = {
             zoom: 8,
-            center: myLatLng,
-    }
+            center: {lat:@Model.Lat, lng: @Model.Lng}
+        }
 
     var map = new google.maps.Map(document.getElementById('map'), options);
 
     var marker = new google.maps.Marker({
         position: { lat: @Model.Lat, lng: @Model.Lng },
-        map:map
+        map: map,
+        icon:'beachflag.png'
     });
 
     var infoWindow = new google.maps.InforWindow({
-        content: "details"
+        content: (".details")
     });
 
     marker.addListener('click', function () {
@@ -39,7 +39,7 @@ function initMap() {
     }
 
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?" + @ViewBag.PrivateKeys.geoURLP2 + @ViewBag.PrivateKeys.googleKey + @ViewBag.PrivateKeys.googleMap></script>
+    <script async defer src= + @Model.apiMapCall></script>
 
 
     <div class="details">

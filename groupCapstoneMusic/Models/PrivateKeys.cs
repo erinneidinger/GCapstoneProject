@@ -16,7 +16,7 @@ namespace groupCapstoneMusic.Models
 
         public static string geoURLP2 = "&key=";
 
-        public static string googleMap = "&callback = initMap";
+        public static string googleMap = "https://maps.googleapis.com/maps/api/js?" + geoURLP1+ googleKey+ "&callback = initMap";
 
         public static string directionsURLP1 = "https://maps.googleapis.com/maps/api/directions/json?";
 
