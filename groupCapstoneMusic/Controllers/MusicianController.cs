@@ -141,19 +141,45 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        //public async System.Threading.Tasks.Task<ActionResult> VenueLocationAsync(int id)
-        //{
-        //    Concert concert = db.Concerts.Find(id);
+        public ActionResult List(string musicianRating, string searchString)
+        {
+            //bind the customer list in the dropdown list
+            var MusicianList = new List<string>();
+            var MusicianQuery = from d in db.Musicians
+                                orderby d.Rating
+                                select d.Rating;
+            MusicianList.AddRange(MusicianQuery.Distinct());
+            ViewBag.customerRating = new SelectList(MusicianList);
 
+            //string searchString = id;
+            var musics = from m in db.Musicians
+                         select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                musics = musics.Where(m => m.FirstName.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(musicianRating))
+            {
+                musics = musics.Where(m => m.Rating == musicianRating);
+            }
+            return PartialView("_List", musics.ToList());
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult PostRating(int rating, int mid)
+        {
+            //save data into the database
+            StarRating rt = new StarRating();
+            string ip = Request.ServerVariables["REMOTE_ADDR"];
+            rt.Rate = rating;
+            rt.IpAddress = ip;
+            rt.MusicId = mid;
 
-        //    string url = "https://maps.googleapis.com/maps/api/geocode/json?address=++,++," + "&key=" + "";
-        //    HttpClient client = new HttpClient();
-        //    HttpResponseMessage response = await client.VenueLocationAsync(url);
-        //    string jsonResult = await response.Content.ReadAsStringAsync();
-        //    if (response.IsSuccessStatusCode)
-        //    {
+            //save into the database
+            db.Stars.Add(rt);
+            db.SaveChangesAsync();
 
-        //    }
-        //}
+            return Json("You rated this " + rating.ToString() + " star(s)");
+        }
+
     }
 }        

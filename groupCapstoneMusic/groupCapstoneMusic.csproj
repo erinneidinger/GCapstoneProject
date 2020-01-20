@@ -178,9 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001191958444_NewMigration.cs" />
-    <Compile Include="Migrations\202001191958444_NewMigration.Designer.cs">
-      <DependentUpon>202001191958444_NewMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202001191748328_updatedFullSweepMigration.cs" />
+    <Compile Include="Migrations\202001191748328_updatedFullSweepMigration.Designer.cs">
+      <DependentUpon>202001191748328_updatedFullSweepMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -207,6 +207,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\whitestar.gif" />
+    <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -268,6 +270,8 @@
     <Content Include="Views\Customer\Search.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
+    <Content Include="Views\Musician\_List.cshtml" />
+    <Content Include="Views\Customer\_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
