@@ -188,6 +188,7 @@
     <Compile Include="Models\GeoCode.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Concert.cs" />
+    <Compile Include="Models\GoogleDirections.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Musician.cs" />
