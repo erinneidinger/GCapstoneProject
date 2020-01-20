@@ -192,6 +192,7 @@
     <Compile Include="Models\GeoCode.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Concert.cs" />
+    <Compile Include="Models\GoogleDirections.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Musician.cs" />
@@ -210,6 +211,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\whitestar.gif" />
+    <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

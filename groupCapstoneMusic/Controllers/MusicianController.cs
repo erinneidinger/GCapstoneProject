@@ -62,9 +62,9 @@ namespace groupCapstoneMusic.Controllers
             var e = musician;
             string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
             HttpClient client = new HttpClient();
-            HttpResponseMessage responce = await client.GetAsync(url);
-            string jsonResult = await responce.Content.ReadAsStringAsync();
-            if (responce.IsSuccessStatusCode)
+            HttpResponseMessage response = await client.GetAsync(url);
+            string jsonResult = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
             {
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;

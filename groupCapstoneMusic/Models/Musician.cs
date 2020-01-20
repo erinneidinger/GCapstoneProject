@@ -16,7 +16,7 @@ namespace groupCapstoneMusic.Models
         public string ApplicationId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
-        [Display(Name = "First Name")]
+        [Display(Name = "Band Name")]
         public string FirstName { get; set; }
 
         [Display(Name ="Last Name")]
@@ -41,7 +41,7 @@ namespace groupCapstoneMusic.Models
         [StringLength(5)]
         public string Rating { get; set; }
 
-        [Display(Name = "Set Rate")]
+        [Display(Name = "Set Rate Per Hour")]
         public double SetRate { get; set; }
 
         [Display(Name = "Dates Available")]
