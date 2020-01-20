@@ -48,17 +48,19 @@ namespace groupCapstoneMusic.Models
 
         public List<Concert> events { get; set; }
 
-        public int RateCount //KEEP COMMMED OUT TILL IT GETS WORKING FOR TESTING PURP
-        {
-            get { return ratings.Count; }
-        }
-        public int RateTotal
-        {
-            get
-            {
-                return (ratings.Sum(m => m.Rate));
-            }
-        }
-        public virtual ICollection<StarRating> ratings { get; set; }
+        //keep below code commented out for now. KEEP IT THOUGH
+
+        //public int RateCount
+        //{
+        //    get { return ratings.Count; }
+        //}
+        //public int RateTotal
+        //{
+        //    get
+        //    {
+        //        return (ratings.Sum(m => m.Rate));
+        //    }
+        //}
+        //public virtual ICollection<StarRating> ratings { get; set; }
     }
 }

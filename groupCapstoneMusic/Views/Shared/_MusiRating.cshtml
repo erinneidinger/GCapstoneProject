@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<groupCapstoneMusic.Models.Musician>
-
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    <h2>MusiRating Partial View Test - If This Shows, The Partial View Is Working</h2>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
     @using (Html.BeginForm("Index", "Musicians", FormMethod.Get))
 </p>
     <div class"row">
@@ -172,4 +172,4 @@
             var img = $(img1).closest('tr').find("img[id='" + parseInt(rt) + "']");
             img.attr("src", "/images/yellowstar.gif").prevAll("img.rating").attr("src", "/images/yellowstar.gif");
         }
-    </script>
+    </script>*@
