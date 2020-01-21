@@ -17,7 +17,8 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View();
+            var musician = db.Musicians.ToList();
+            return View(musician);
             //var Id = User.Identity.GetUserId();
             //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
             //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();

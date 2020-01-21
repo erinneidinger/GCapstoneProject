@@ -193,6 +193,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001211609085_NewNew.cs" />
+    <Compile Include="Migrations\202001211609085_NewNew.Designer.cs">
+      <DependentUpon>202001211609085_NewNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -236,6 +240,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -285,10 +290,11 @@
     <Content Include="Views\Shared\_MusiRating.cshtml" />
     <Content Include="Views\Shared\_CustRating.cshtml" />
     <Content Include="Views\IMessage\Create.cshtml" />
+    <Content Include="Views\IMessage\Details.cshtml" />
+    <Content Include="Views\IMessage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Musician\Delete.cshtml" />
@@ -297,7 +303,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Geo\" />
-    <Folder Include="Views\IMessageService\" />
     <Folder Include="Views\StarRating\" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +317,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001211609085_NewNew.resx">
+      <DependentUpon>202001211609085_NewNew.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
