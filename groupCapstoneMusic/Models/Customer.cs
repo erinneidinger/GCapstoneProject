@@ -46,6 +46,9 @@ namespace groupCapstoneMusic.Models
 
         public double CustomerRating { get; set; }
 
+        [Display(Name = "Overall Rating")]
+        public double AverageCustomerRating { get; set; }
+
         public List<Concert> gigs { get; set; }
 
         [NotMapped]

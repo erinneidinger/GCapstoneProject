@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Models
 {
@@ -37,7 +38,17 @@ namespace groupCapstoneMusic.Models
 
         public string Genre { get; set; }
 
+        [Display(Name = "Selected Genre")]
+        public string SelectedGenre { get; set; } //FOR FILTERED SEARCH, not a double, keep
+
+        [Display(Name = "Genre Types")]
+        public SelectList ListOfGenres { get; set; } //FOR FILTERED SEARCH, keep
+
+        public List<Musician> musicians { get; set; } //For Filtered search, keep
         public double MusicianRating { get; set; }
+
+        [Display(Name = "Overall Rating")]
+        public double AverageMusicianRating { get; set; }
 
         public double CustomerRating { get; set; }
 

@@ -1,8 +1,12 @@
-﻿@model groupCapstoneMusic.Models.CustomerMusiciansViewModel
+﻿@model groupCapstoneMusic.Models.Musician
 
 @{
     ViewBag.Title = "FilteredSearch";
 }
+
+<h2>Filtered Search</h2>
+
+@*Dropdown...Figuring out whether I should use it*@
 
 @using (Html.BeginForm())
 {
@@ -12,13 +16,13 @@
         <h4>Find your desired genre:</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.selectGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.selectGenre, Model.ListOfGenres)
-                @Html.ValidationMessageFor(model => model.selectGenre, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
+                @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
             </div>
         </div>
-      
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -28,55 +32,111 @@
     </div>
 }
 
-<h2>FilteredSearch</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create", "Concert")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.selectGenre)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.selectZipCode)
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.selectRate)
+            @Html.DisplayNameFor(model => model.BandName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.selectCity)
+            @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.selectState)
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SetRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatesAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageMusicianRating)
         </th>
         <th></th>
     </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
 
-    @foreach (var item in Model.musicians)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SetRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.BandName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.City)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.State)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Zip)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Bio)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Genre)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.SetRate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.DatesAvailable)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.StreetAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.AverageMusicianRating)
+        </td>
+    </tr>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+    </td>
+    </tr>
     }
 
 </table>
