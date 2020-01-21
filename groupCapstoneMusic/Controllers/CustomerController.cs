@@ -88,7 +88,7 @@ namespace groupCapstoneMusic.Controllers
                 updatedCustomer.City = customer.City;
                 updatedCustomer.CustomerId = customer.CustomerId;
                 updatedCustomer.Email = customer.Email;
-                updatedCustomer.gigs = customer.gigs;
+                updatedCustomer.events = customer.events;
                 updatedCustomer.FirstName = customer.FirstName;
                 updatedCustomer.LastName = customer.LastName;
                 updatedCustomer.MaxBudget = customer.MaxBudget;

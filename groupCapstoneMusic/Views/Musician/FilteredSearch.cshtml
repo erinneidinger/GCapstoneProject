@@ -1,0 +1,90 @@
+﻿@model groupCapstoneMusic.Models.CustomerMusiciansViewModel
+
+@{
+    ViewBag.Title = "FilteredSearch";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <h4>Find your desired genre:</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.selectGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.selectGenre, Model.ListOfGenres)
+                @Html.ValidationMessageFor(model => model.selectGenre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <h4>Fit your budget:</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.selectRate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.selectRate, Model.RateRange)
+                @Html.ValidationMessageFor(model => model.selectRate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<h2>FilteredSearch</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Concert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.selectGenre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectState)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.musicians)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
