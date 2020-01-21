@@ -90,7 +90,6 @@ namespace groupCapstoneMusic.Controllers
                 updatedCustomer.LastName = customer.LastName;
                 updatedCustomer.MaxBudget = customer.MaxBudget;
                 updatedCustomer.MinBudget = customer.MinBudget;
-                updatedCustomer.Rating = customer.Rating;
                 updatedCustomer.State = customer.State;
                 updatedCustomer.StreetAddress = customer.StreetAddress;
                 updatedCustomer.ZipCode = customer.ZipCode;

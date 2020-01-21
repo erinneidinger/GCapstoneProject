@@ -42,11 +42,18 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Maximum Budget")]
         public double MaxBudget { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        public double MusicianRating { get; set; }
 
+        public double CustomerRating { get; set; }
+
+        public List<Concert> gigs { get; set; }
+
+        [NotMapped]
         public List<Concert> events { get; set; }
+
+
+        [NotMapped]
+        public List<StarRating> ratings { get; set; }
 
     }
 }

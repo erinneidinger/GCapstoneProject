@@ -41,5 +41,7 @@ namespace groupCapstoneMusic.Models
 
         public string apiMapCall = PrivateKeys.googleMap;
 
+        public bool ConfirmationOfMusician { get; set; }
+
     }
 }
