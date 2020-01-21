@@ -50,7 +50,5 @@ namespace groupCapstoneMusic.Models
 
         [NotMapped]
         public List<Concert> events { get; set; }
-
-
     }
 }
