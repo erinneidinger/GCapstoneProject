@@ -11,8 +11,14 @@ namespace groupCapstoneMusic.Models
     {
         [Key]
         public int RateId { get; set; }
-        public int Rate { get; set; }
-        public string IpAddress { get; set; }
+
+        [ForeignKey("ApplicationRater")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+        [StringLength(5)]
+        public string Rating { get; set; }
 
         public int CustId { get; set; }
         [ForeignKey("CustId")]

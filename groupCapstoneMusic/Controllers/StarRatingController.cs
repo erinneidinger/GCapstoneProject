@@ -13,35 +13,54 @@ namespace groupCapstoneMusic.Controllers
 {
     public class StarRatingController : Controller
     {
-        ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: StarRating
         public ActionResult Index()
         {
             return View();
+            //var userId = User.Identity.GetUserId();
+            //var Musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            //return View(Musician);
         }
 
         // GET: StarRating/Details/5
         public ActionResult Details(int id)
         {
+            var rater = db.Stars.Where(r => r.RateId == id).Select(m => m).FirstOrDefault();
             return View();
         }
 
         // GET: StarRating/Create
-        public ActionResult Create()
+        public ActionResult Create(Customer customer, Musician musician)
         {
-            
+            StarRating starrating = new StarRating();
+            if (User.IsInRole("Customer"))
+            {
+                return View(customer);
+            }
+            else if (User.IsInRole("Musician"))
+            {
+                return View(musician);
+            }
             return View();
         }
 
         // POST: StarRating/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Customer customer, Musician musician, StarRating starrating)
         {
             try
             {
-                // TODO: Add insert logic here
+                var userId = User.Identity.GetUserId();
+                customer.ApplicationId = userId;
+                var email = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
+                customer.Email = email.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
+                db.Customers.Add(customer);
+                db.SaveChanges();
 
-                return RedirectToAction("Index");
+
+                return View("Index"); //This works
             }
             catch
             {
@@ -92,53 +111,101 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-        public void mRate0()
+        public ActionResult mRate0(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 0).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void mRate1()
+        public ActionResult mRate1(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 1).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void mRate2()
+        public ActionResult mRate2(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 2).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void mRate3()
+        public ActionResult mRate3(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 3).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void mRate4()
+        public ActionResult mRate4(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 4).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void mRate5()
+        public ActionResult mRate5(StarRating starrating, Musician musician)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentMusician = db.Musicians.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(musician.Rating += 5).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(musician);
         }
-        public void cRate0()
+        public ActionResult cRate0(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 0).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
-        public void cRate1()
+        public ActionResult cRate1(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 1).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
-        public void cRate2()
+        public ActionResult cRate2(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 2).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
-        public void cRate3()
+        public ActionResult cRate3(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 3).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
-        public void cRate4()
+        public ActionResult cRate4(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 4).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
-        public void cRate5()
+        public ActionResult cRate5(StarRating starrating, Customer customer)
         {
-
+            string currentUserId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(c => c.ApplicationId == currentUserId).SingleOrDefault();
+            db.Entry(customer.Rating += 5).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(customer);
         }
     }
 }
