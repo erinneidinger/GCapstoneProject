@@ -51,8 +51,8 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
-                var email = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
-                customer.Email = email.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
+                var foundCustomer = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
+                customer.Email = foundCustomer.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 // TODO: Add insert logic here

@@ -44,7 +44,7 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 concert.ApplicationId = userId;
-
+                
                 return RedirectToAction("GetLatNLngAsync");
             }
             catch
