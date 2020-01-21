@@ -45,7 +45,7 @@ namespace groupCapstoneMusic.Controllers
                 var userId = User.Identity.GetUserId();
                 concert.ApplicationId = userId;
 
-                return RedirectToAction("GetLatNLngAsync", concert);
+                return RedirectToAction("GetLatNLngAsync");
             }
             catch
             {
@@ -64,7 +64,7 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
-                db.Concerts.Add(concert);
+                db.Concerts.Add(e);
                 db.SaveChanges();
                 return RedirectToAction("Index");
 

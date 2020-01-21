@@ -236,6 +236,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -278,17 +279,16 @@
     <Content Include="Views\Concert\Edit.cshtml" />
     <Content Include="Views\Concert\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
-    <Content Include="Views\Musician\Index.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
     <Content Include="Views\Shared\_MusiRating.cshtml" />
     <Content Include="Views\Shared\_CustRating.cshtml" />
     <Content Include="Views\IMessage\Create.cshtml" />
     <Content Include="Views\Musician\FilteredSearch.cshtml" />
+    <Content Include="Views\Musician\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Musician\Delete.cshtml" />
