@@ -17,33 +17,47 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var messages = db.Messages.Where(m => m.ReceiverId == userId || m.SenderId == userId).ToList();
+            var messages = db.Messages.Where(m => m.ReceiverId == userId).ToList();//Inbox showing only message sent to the user
             return View(messages);
+        }
+
+        public ActionResult SentMail()
+        {
+            var userId = User.Identity.GetUserId();
+            var sentMessages = db.Messages.Where(m => m.SenderId == userId).ToList();
+            return View(sentMessages); //Shows the user mail they sent
         }
 
         // GET: IMessage/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var message = db.Messages.Where(m => m.Id == id).FirstOrDefault();
+            message.UnRead = false;//Changes the bool not show a checkmark
+            db.SaveChanges();
+            return View(message);
         }
 
         // GET: IMessage/Create
         public ActionResult Create(string id)
         {
             Message message = new Message();
-            var userId = User.Identity.GetUserId();
-            message.SenderId = userId;
-            message.ReceiverId = id;
             return View(message);
         }
 
         // POST: IMessage/Create
         [HttpPost]
-        public ActionResult Create(Message message)
+        public ActionResult Create(Message message, string id)
         {
             try
-            {
+            {               
+                var userId = User.Identity.GetUserId();
+                var user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+                string userName = user.UserName;
+                message.SenderId = userId;
+                message.ReceiverId = id;
                 message.DatePosted = DateTime.Now;
+                message.From = userName;
+                message.UnRead = true;
                 db.Messages.Add(message);
                 db.SaveChanges();
 
@@ -88,27 +102,36 @@ namespace groupCapstoneMusic.Controllers
             {
                 return HttpNotFound();
             }
-            return View(message);
-        }
-
-        // POST: IMessage/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
             try
             {
-                // TODO: Add delete logic here
-                var message = db.Messages.Find(id);
                 db.Messages.Remove(message);
                 db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
+
             }
         }
+
+        //// POST: IMessage/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(Message message)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
+        //        //var message = db.Messages.Find(id);
+        //        db.Messages.Remove(message);
+        //        db.SaveChanges();
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }       
     }
 }

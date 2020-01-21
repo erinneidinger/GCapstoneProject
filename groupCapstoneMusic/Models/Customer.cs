@@ -45,6 +45,19 @@ namespace groupCapstoneMusic.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
+<<<<<<< HEAD
+       
+=======
+
+>>>>>>> 6ab191d58bcadb0fa12f47616478286018c60997
+        public List<Concert> gigs { get; set; }
+
+        [NotMapped]
         public List<Concert> events { get; set; }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6ab191d58bcadb0fa12f47616478286018c60997
+
     }
 }
