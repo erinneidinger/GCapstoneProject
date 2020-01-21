@@ -283,12 +283,12 @@
     <Content Include="Views\Concert\Index.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Musician\Index.cshtml" />
-    <Content Include="Views\Customer\Search.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
     <Content Include="Views\Musician\Edit.cshtml" />
     <Content Include="Views\Shared\_MusiRating.cshtml" />
     <Content Include="Views\Shared\_CustRating.cshtml" />
     <Content Include="Views\IMessage\Create.cshtml" />
+    <Content Include="Views\Musician\FilteredSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
