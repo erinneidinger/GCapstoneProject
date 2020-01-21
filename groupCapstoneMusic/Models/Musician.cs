@@ -37,9 +37,9 @@ namespace groupCapstoneMusic.Models
 
         public string Genre { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        public double MusicianRating { get; set; }
+
+        public double CustomerRating { get; set; }
 
         [Display(Name = "Set Rate Per Hour")]
         public double SetRate { get; set; }
@@ -53,6 +53,9 @@ namespace groupCapstoneMusic.Models
         public double Lat { get; set; }
 
         public double Lng { get; set; }
+
+        [NotMapped]
+        public List<StarRating> ratings { get; set; }
 
 
     }

@@ -120,7 +120,6 @@ namespace groupCapstoneMusic.Controllers
                 // TODO: Add update logic here
                 var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).Single();
                 newMusician.StreetAddress = musician.StreetAddress;
-                newMusician.Rating = musician.Rating;
                 newMusician.Genre = musician.Genre;
                 newMusician.Bio = musician.Bio;
                 newMusician.Zip = musician.Zip;

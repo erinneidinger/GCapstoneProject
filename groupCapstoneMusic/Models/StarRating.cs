@@ -16,8 +16,7 @@ namespace groupCapstoneMusic.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        public double Rating { get; set; }
+
     }
 }
