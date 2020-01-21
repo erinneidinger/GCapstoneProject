@@ -54,6 +54,9 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
+        [Display(Name ="YouTube Video Name")]
+        public string youtubeVideoName { get; set; }
+
 
     }
 

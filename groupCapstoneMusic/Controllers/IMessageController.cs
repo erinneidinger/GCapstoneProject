@@ -32,6 +32,11 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Details(int id)
         {
             var message = db.Messages.Where(m => m.Id == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            if (message.SenderId == userId)
+            {
+                return View(message);
+            }
             message.UnRead = false;//Changes the bool not show a checkmark
             db.SaveChanges();
             return View(message);
@@ -51,12 +56,15 @@ namespace groupCapstoneMusic.Controllers
             try
             {               
                 var userId = User.Identity.GetUserId();
-                var user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
-                string userName = user.UserName;
+                var userSender = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+                var userReceiver = db.Users.Where(u => u.Id == id).FirstOrDefault();
+                string userNameSender = userSender.UserName;
+                string userNameReceiver = userReceiver.UserName;
                 message.SenderId = userId;
                 message.ReceiverId = id;
                 message.DatePosted = DateTime.Now;
-                message.From = userName;
+                message.From = userNameSender;
+                message.To = userNameReceiver;
                 message.UnRead = true;
                 db.Messages.Add(message);
                 db.SaveChanges();

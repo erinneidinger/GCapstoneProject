@@ -193,9 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001211509222_ReReReReReSeed.cs" />
-    <Compile Include="Migrations\202001211509222_ReReReReReSeed.Designer.cs">
-      <DependentUpon>202001211509222_ReReReReReSeed.cs</DependentUpon>
+    <Compile Include="Migrations\202001212037547_NewNew.cs" />
+    <Compile Include="Migrations\202001212037547_NewNew.Designer.cs">
+      <DependentUpon>202001212037547_NewNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -292,6 +292,7 @@
     <Content Include="Views\IMessage\Details.cshtml" />
     <Content Include="Views\IMessage\Index.cshtml" />
     <Content Include="Views\Musician\FilteredSearch.cshtml" />
+    <Content Include="Views\IMessage\SentMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -319,8 +320,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001211509222_ReReReReReSeed.resx">
-      <DependentUpon>202001211509222_ReReReReReSeed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001212037547_NewNew.resx">
+      <DependentUpon>202001212037547_NewNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
