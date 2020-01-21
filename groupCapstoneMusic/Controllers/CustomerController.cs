@@ -33,21 +33,6 @@ namespace groupCapstoneMusic.Controllers
             return RedirectToAction("Create", "Concert", customer);
         }
 
-        public ActionResult Search()
-        {
-            CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
-            var userID = User.Identity.GetUserId();
-            var customer = db.Customers.Where(u => u.ApplicationId == userID).FirstOrDefault();
-            customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == customer.City).ToList();
-            return View(customerMusiciansViewModel); //Change it to ratings or something after
-        }
-
-        [HttpPost]
-        public ActionResult Search(CustomerMusiciansViewModel customerMusiciansViewModel)
-        {
-            return View();
-        }
-
         public ActionResult Details(int id) //view musicians information
         {
             return View();
@@ -103,7 +88,7 @@ namespace groupCapstoneMusic.Controllers
                 updatedCustomer.City = customer.City;
                 updatedCustomer.CustomerId = customer.CustomerId;
                 updatedCustomer.Email = customer.Email;
-                updatedCustomer.events = customer.events;
+                updatedCustomer.gigs = customer.gigs;
                 updatedCustomer.FirstName = customer.FirstName;
                 updatedCustomer.LastName = customer.LastName;
                 updatedCustomer.MaxBudget = customer.MaxBudget;

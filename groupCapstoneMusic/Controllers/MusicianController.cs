@@ -58,6 +58,30 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
+        public ActionResult Search()
+        {
+            var userID = User.Identity.GetUserId();
+            CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
+            customerMusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
+            customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
+            
+            return View(customerMusiciansViewModel); //Change it to ratings or something after
+        }
+
+        [HttpPost]
+        public ActionResult Search(CustomerMusiciansViewModel customerMusiciansViewModel)
+        {
+            CustomerMusiciansViewModel customermusiciansViewModel = new CustomerMusiciansViewModel();
+            customermusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            string selectGenre = customerMusiciansViewModel.selectGenre;
+            var Id = User.Identity.GetUserId();
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            customermusiciansViewModel.musicians = db.Musicians.Where(a => a.Genre == foundConcert.Genre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            
+            return View(customermusiciansViewModel);
+        }
+
         public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)
         {
             var e = musician;
