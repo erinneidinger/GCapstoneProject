@@ -58,7 +58,7 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        public ActionResult Search()
+        public ActionResult FilteredSearch()
         {
             var userID = User.Identity.GetUserId();
             CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
@@ -70,7 +70,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(CustomerMusiciansViewModel customerMusiciansViewModel)
+        public ActionResult FilteredSearch(CustomerMusiciansViewModel customerMusiciansViewModel)
         {
             CustomerMusiciansViewModel customermusiciansViewModel = new CustomerMusiciansViewModel();
             customermusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });

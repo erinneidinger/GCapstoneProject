@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<groupCapstoneMusic.Models.Customer>
+
 <h2>Customer Quality Rating - Please Rate</h2>
 
-<button class="button0" type="button" onclick="cRate0()">Rate 0 Stars</button>
+<button class="button0" type="button" onclick="location.href='@Url.Action("cRate0", "StarRating")'">Rate 0 Stars</button>
 <br />
-<button class="button1" type="button" onclick="cRate1()">Rate 1 Stars</button>
+<button class="button1" type="button" onclick="location.href='@Url.Action("cRate1", "StarRating")'">Rate 1 Stars</button>
 <br />
-<button class="button2" type="button" onclick="cRate2()">Rate 2 Stars</button>
+<button class="button2" type="button" onclick="location.href='@Url.Action("cRate2", "StarRating")'">Rate 2 Stars</button>
 <br />
-<button class="button3" type="button" onclick="cRate3()">Rate 3 Stars</button>
+<button class="button3" type="button" onclick="location.href='@Url.Action("cRate3", "StarRating")'">Rate 3 Stars</button>
 <br />
-<button class="button4" type="button" onclick="cRate4()">Rate 4 Stars</button>
+<button class="button4" type="button" onclick="location.href='@Url.Action("cRate4", "StarRating")'">Rate 4 Stars</button>
 <br />
-<button class="button5" type="button" onclick="cRate5()">Rate 5 Stars</button>
+<button class="button5" type="button" onclick="location.href='@Url.Action("cRate5", "StarRating")'">Rate 5 Stars</button>
 
-@*<script src="ecssr.js" type="application/javascript"></script>*@
+@*@Html.ActionLink("Rate Zero Stars", "mRate0", "StarRating", new { @class = "button0" })*@
