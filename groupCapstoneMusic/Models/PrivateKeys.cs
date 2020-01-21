@@ -21,5 +21,10 @@ namespace groupCapstoneMusic.Models
         public static string directionsURLP1 = "https://maps.googleapis.com/maps/api/directions/json?";
 
         public static string directionsURLP2 = "&origin=";
+
+        public static string youtubeURL1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=";
+
+        public static string youtubeURL2 = "&type=video&key=";
+
     }
 }

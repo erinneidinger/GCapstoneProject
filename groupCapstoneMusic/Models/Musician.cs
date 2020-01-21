@@ -16,7 +16,7 @@ namespace groupCapstoneMusic.Models
         public string ApplicationId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
-        [Display(Name = "Band Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name ="Last Name")]
@@ -54,8 +54,13 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
+
         [NotMapped]
         public List<StarRating> ratings { get; set; }
+
+        [Display(Name ="YouTube Video Name")]
+        public string youtubeVideoName { get; set; }
+
 
 
     }

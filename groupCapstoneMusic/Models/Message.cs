@@ -24,8 +24,15 @@ namespace groupCapstoneMusic.Models
         [Required]
         public string Subject { get; set; }
         [Required]
+        [Display(Name ="Message")]
         public string MessageToPost { get; set; }
         public string From { get; set; }
+
+        public string To { get; set; }
+
         public DateTime DatePosted { get; set; }
+
+        [Display(Name ="Unread")]
+        public bool UnRead { get; set; }
     }
 }

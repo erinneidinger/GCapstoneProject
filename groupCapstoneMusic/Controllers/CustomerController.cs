@@ -17,13 +17,9 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View();
-            //var Id = User.Identity.GetUserId();
-            //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();
-            //return View(oneCustomer);
-            //---------------By default what should the customer see upon logging in?-----------------
-            //put it here
+            var userId = User.Identity.GetUserId();
+            var foundCustomer = db.Customers.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            return View(foundCustomer);
         }
 
         public ActionResult CreateConcert()
@@ -35,7 +31,8 @@ namespace groupCapstoneMusic.Controllers
 
         public ActionResult Details(int id) //view musicians information
         {
-            return View();
+            Customer customerDetails = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            return View(customerDetails);
         }
 
         // GET: Customer/Create
@@ -54,8 +51,8 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
-                var email = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
-                customer.Email = email.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
+                var foundCustomer = db.Users.Where(e => e.Id == customer.ApplicationId).FirstOrDefault();
+                customer.Email = foundCustomer.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 // TODO: Add insert logic here

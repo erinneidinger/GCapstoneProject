@@ -20,16 +20,15 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var Musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            return View(Musician);
+            var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            return View(foundMusician);
         }
 
         // GET: Musician/Details/5
         public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
         {
-            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
-
-            return View();
+            var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
+            return View(musicianDetails);
         }
 
         // GET: Musician/Create
@@ -48,8 +47,8 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
-                var email = db.Users.Where(e => e.Id == musician.ApplicationId).FirstOrDefault();
-                musician.Email = email.Email;
+                db.Musicians.Add(musician);
+                db.SaveChanges();
                 return RedirectToAction("GetLatNLngAsync", musician); //This works
             }
             catch
@@ -127,6 +126,7 @@ namespace groupCapstoneMusic.Controllers
                 newMusician.Email = musician.Email;
                 newMusician.SetRate = musician.SetRate;
                 newMusician.FirstName = musician.FirstName;
+                newMusician.LastName = musician.LastName;
                 newMusician.DatesAvailable = musician.DatesAvailable;
                 newMusician.BandName = musician.BandName;
                 newMusician.Lat = musician.Lat;
@@ -143,19 +143,19 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician/Delete/5
         public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
-            var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
-            return View(musician);
+            var foundMusician = db.Musicians.Find(id);
+            return View(foundMusician);
         }
 
         // POST: Musician/Delete/5
         [HttpPost]
-        public ActionResult Delete(Musician musician) //Delete Profile
+        public ActionResult Delete(int id, Musician musician) //Delete Profile
         {
             try
             {
                 // TODO: Add delete logic here
-                var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).FirstOrDefault();
-                db.Musicians.Remove(newMusician);
+                var foundMusician = db.Musicians.Find(id);
+                db.Musicians.Remove(foundMusician);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
