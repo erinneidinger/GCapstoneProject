@@ -17,14 +17,9 @@ namespace groupCapstoneMusic.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var musician = db.Musicians.ToList();
-            return View(musician);
-            //var Id = User.Identity.GetUserId();
-            //var foundCustomer = db.Customers.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            //var oneCustomer = db.Musicians.Where(a => a.City == foundCustomer.City).ToList();
-            //return View(oneCustomer);
-            //---------------By default what should the customer see upon logging in?-----------------
-            //put it here
+            var userId = User.Identity.GetUserId();
+            var foundCustomer = db.Customers.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            return View(foundCustomer);
         }
 
         public ActionResult CreateConcert()
@@ -36,7 +31,8 @@ namespace groupCapstoneMusic.Controllers
 
         public ActionResult Details(int id) //view musicians information
         {
-            return View();
+            Customer customerDetails = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            return View(customerDetails);
         }
 
         // GET: Customer/Create

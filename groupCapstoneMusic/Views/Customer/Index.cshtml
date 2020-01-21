@@ -1,4 +1,4 @@
-﻿@model IEnumerable<groupCapstoneMusic.Models.Customer>
+﻿@model groupCapstoneMusic.Models.Customer
 
 @{
     ViewBag.Title = "Index";
@@ -11,7 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -21,9 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Bio)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
@@ -48,49 +46,55 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
     <tr>
-        
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Bio)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.StreetAddress)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.City)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.State)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.ZipCode)
+        </td>
+
+        <td>
+            @Html.DisplayNameFor(model => model.MinBudget)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayNameFor(model => model.MaxBudget)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Bio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinBudget)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxBudget)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
+            @Html.DisplayFor(model => model.Rating)
         </td>
     </tr>
-}
+
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = Model.CustomerId  }) |
+            @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })
+        </td>
+    </tr>
+
 
 </table>
 

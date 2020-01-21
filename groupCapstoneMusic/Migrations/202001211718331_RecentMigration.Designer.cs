@@ -7,13 +7,13 @@ namespace groupCapstoneMusic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ReReReReReSeed : IMigrationMetadata
+    public sealed partial class RecentMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ReReReReReSeed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RecentMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001211509222_ReReReReReSeed"; }
+            get { return "202001211718331_RecentMigration"; }
         }
         
         string IMigrationMetadata.Source

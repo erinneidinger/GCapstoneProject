@@ -1,4 +1,4 @@
-﻿@model IEnumerable<groupCapstoneMusic.Models.Musician>
+﻿@model groupCapstoneMusic.Models.Musician
 
 @{
     ViewBag.Title = "Index";
@@ -11,9 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -53,71 +50,70 @@
         <th>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lng)
-        </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationId)
+            @Html.DisplayFor(model => model.FirstName)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(model => model.LastName)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(model => model.BandName)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.BandName)
+            @Html.DisplayFor(model => model.Email)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(model => model.City)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @Html.DisplayFor(model => model.State)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.State)
+            @Html.DisplayFor(model => model.Zip)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Zip)
+            @Html.DisplayFor(model => model.Bio)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Bio)
+            @Html.DisplayFor(model => model.Genre)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Genre)
+            @Html.DisplayFor(model => model.Rating)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Rating)
+            @Html.DisplayFor(model => model.SetRate)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.SetRate)
+            @Html.DisplayFor(model => model.DatesAvailable)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.DatesAvailable)
+            @Html.DisplayFor(model => model.StreetAddress)
         </td>
+
+    </tr>
+    <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.StreetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lng)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = Model.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+
         </td>
     </tr>
-}
+
 
 </table>

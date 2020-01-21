@@ -19,9 +19,9 @@ namespace groupCapstoneMusic.Controllers
         // GET: Musician
         public ActionResult Index()
         {
-            //var userId = User.Identity.GetUserId();
-            //var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            return View();
+            var userId = User.Identity.GetUserId();
+            var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            return View(foundMusician);
         }
 
         // GET: Musician/Details/5
@@ -125,6 +125,7 @@ namespace groupCapstoneMusic.Controllers
                 newMusician.Email = musician.Email;
                 newMusician.SetRate = musician.SetRate;
                 newMusician.FirstName = musician.FirstName;
+                newMusician.LastName = musician.LastName;
                 newMusician.DatesAvailable = musician.DatesAvailable;
                 newMusician.BandName = musician.BandName;
                 newMusician.Lat = musician.Lat;
