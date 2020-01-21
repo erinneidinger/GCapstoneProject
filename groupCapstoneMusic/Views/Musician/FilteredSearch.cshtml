@@ -18,15 +18,7 @@
                 @Html.ValidationMessageFor(model => model.selectGenre, "", new { @class = "text-danger" })
             </div>
         </div>
-        <h4>Fit your budget:</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.selectRate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.selectRate, Model.RateRange)
-                @Html.ValidationMessageFor(model => model.selectRate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+      
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
