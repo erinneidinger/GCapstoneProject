@@ -211,10 +211,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs" />
-    <Compile Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.Designer.cs">
-      <DependentUpon>202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -338,11 +334,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.resx">
-      <DependentUpon>202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
