@@ -77,11 +77,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create(Concert concert)
         {
             try
-            {
-                //var userId = User.Identity.GetUserId();
-                //concert.ApplicationId = userId;
-                //db.Concerts.Add(concert);
-                //db.SaveChanges();
+            { 
                 return RedirectToAction("GetLatNLngAsync", concert);
             }
             catch
@@ -107,12 +103,16 @@ namespace groupCapstoneMusic.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
+            db.Concerts.Add(e);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            var foundConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == userId).FirstOrDefault();
             return View(foundConcert);
         }
 

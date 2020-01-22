@@ -65,7 +65,7 @@ namespace groupCapstoneMusic.Controllers
             }
         }
         // GET: Customer/Edit/5
-        public ActionResult Edit() //Edit Profile
+        public ActionResult Edit(int id) //Edit Profile
         {
             var userId = User.Identity.GetUserId();
             var customer = db.Customers.Where(a => a.ApplicationId == userId).FirstOrDefault();
@@ -78,6 +78,7 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
+                var userID = User.Identity.GetUserId();
                 var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
                 updatedCustomer.ApplicationId = customer.ApplicationId;
                 updatedCustomer.ApplicationUser = customer.ApplicationUser;

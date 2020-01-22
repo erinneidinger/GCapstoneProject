@@ -85,17 +85,28 @@
             @Html.DisplayFor(model => model.MaxBudget)
         </td>
 
-
+    </tr>
         @*<td>
             @Html.DisplayFor(model => model.Rating) / AM commented out becuase we changed to musician/customerrating
         </td>*@
-    </tr>
+    
+
+    @*<tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+
+        <td>
+            @Html.DisplayFor(model => model.AverageCustomerRating)
+        </td>
+    </tr>*@
+
+
     <tr>
        <td>
-            @Html.ActionLink("Edit", "Edit", new {id = Model.CustomerId  }) |
-            @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) | @*this is causing a nullreference no object instance exception. I believe it has to do with the model.customerId*@
+            @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) | @*commented and reviewed by Adam M*@
             @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) |
-            @Html.ActionLink("Create a Concert Request", "Create", "Concert")
+            @Html.ActionLink("Create a Concert Request", "Create", "Concert") |
        </td>
     </tr>
 
