@@ -37,7 +37,7 @@ namespace groupCapstoneMusic.Models
 
         public string Genre { get; set; }
 
-        public double MusicianRating { get; set; }
+        public  double MusicianRating { get; set; }
 
         public double CustomerRating { get; set; }
 
@@ -53,7 +53,6 @@ namespace groupCapstoneMusic.Models
         public double Lat { get; set; }
 
         public double Lng { get; set; }
-
 
         [NotMapped]
         public List<StarRating> ratings { get; set; }

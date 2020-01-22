@@ -21,7 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Bio)
         </th>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
@@ -40,9 +40,9 @@
         <th>
             @Html.DisplayNameFor(model => model.MaxBudget)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Rating) / AM commented out becuase we changed to musician/customerrating
+        </th>*@
         <th></th>
     </tr>
 
@@ -82,14 +82,14 @@
             @Html.DisplayNameFor(model => model.MaxBudget)
         </td>
 
-        <td>
-            @Html.DisplayFor(model => model.Rating)
-        </td>
+        @*<td>
+            @Html.DisplayFor(model => model.Rating) / AM commented out becuase we changed to musician/customerrating
+        </td>*@
     </tr>
 
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = Model.CustomerId  }) |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
             @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
             @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) |
             @Html.ActionLink("Create a Concert Request", "Create", "Concert")
