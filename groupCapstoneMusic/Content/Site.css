@@ -69,3 +69,14 @@ textarea {
     height: 50px;
     border: none;
 }
+
+.Info1 {
+    width: 80%;
+    background-color:black;
+    color:white;
+    border-radius: 15px 50px 15px 5px;
+    font-family:'Comic Sans MS'
+}
+.BackGround{
+    color:darkgray
+}

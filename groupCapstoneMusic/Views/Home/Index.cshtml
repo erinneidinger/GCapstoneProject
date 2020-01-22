@@ -1,33 +1,42 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
 <div class="jumbotron">
-    <h1>Welcome to DontKnow!</h1>
+    <h1>Welcome to ♫Book!</h1>
     <p class="lead">Are you ready to spread your talent? Or are you on the search for the next best thing? Register above now and let DontKnow help you reach your goal!</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Who we are&raquo;</a></p>
+    <p><a href="https://giphy.com/gifs/rick-roll-F67XmWgGzxYBO" class="btn btn-primary btn-lg">Who we are&raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Schedule Concerts!</h2>
-        <p class="info1">
-            "DontKnow" can help you communicate with your Musician or "Customer" to make sure both sides 
+        <h2 class="Info1">Schedule Concerts!</h2>
+        <p>
+            ♫Book can help you communicate with your Musician 
+            or "Customer" to make sure both sides
             can come to an agreement fast and easily!
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <h2 class="Info1">Use our integrated messaging system!</h2>
+        <p>No need to go out and waste precious time getting
+        Phone numbers or emails! Contact directly through the 
+        app and avoid sending out information.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <h2 class="Info1">Update your Professional Profile!</h2>
+        <p>As a "customer" or Musician, you can build a 
+        profile and show off what you have to offer. Wether 
+        that be how many concerts you have available and how 
+        beautiful your venues are or how many concerts you've 
+        sold out and how beautiful your performances were, 
+        MAKE IT BE KNOWN!</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
 
 @*@{ Html.RenderPartial("_CustRating"); }
-@{ Html.RenderPartial("_MusiRating"); }*@
+    @{ Html.RenderPartial("_MusiRating"); }*@
 
