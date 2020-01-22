@@ -34,9 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Genre)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.SetRate)
         </th>
@@ -45,6 +43,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageMusicianRating)
         </th>
         <th></th>
     </tr>
@@ -86,10 +87,6 @@
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.Rating)
-        </td>
-
-        <td>
             @Html.DisplayFor(model => model.SetRate)
         </td>
 
@@ -100,7 +97,9 @@
         <td>
             @Html.DisplayFor(model => model.StreetAddress)
         </td>
-
+        <td>
+            @Html.DisplayFor(model => model.AverageMusicianRating)
+        </td>
     </tr>
     <tr>
         <td>

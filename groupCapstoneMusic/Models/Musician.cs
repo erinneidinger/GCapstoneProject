@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Models
 {
@@ -37,9 +38,19 @@ namespace groupCapstoneMusic.Models
 
         public string Genre { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        [Display(Name = "Selected Genre")]
+        public string SelectedGenre { get; set; } //FOR FILTERED SEARCH, not a double, keep
+
+        [Display(Name = "Genre Types")]
+        public SelectList ListOfGenres { get; set; } //FOR FILTERED SEARCH, keep
+
+        public List<Musician> musicians { get; set; } //For Filtered search, keep
+        public double MusicianRating { get; set; }
+
+        [Display(Name = "Overall Rating")]
+        public double AverageMusicianRating { get; set; }
+
+        public double CustomerRating { get; set; }
 
         [Display(Name = "Set Rate Per Hour")]
         public double SetRate { get; set; }
@@ -53,6 +64,10 @@ namespace groupCapstoneMusic.Models
         public double Lat { get; set; }
 
         public double Lng { get; set; }
+
+
+        [NotMapped]
+        public List<StarRating> ratings { get; set; }
 
         [Display(Name ="YouTube Video Name")]
         public string youtubeVideoName { get; set; }

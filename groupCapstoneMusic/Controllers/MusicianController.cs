@@ -58,7 +58,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult FilteredSearch()
         {
             var userID = User.Identity.GetUserId();
-            CustomerMusiciansViewModel customerMusiciansViewModel = new CustomerMusiciansViewModel();
+            Musician customerMusiciansViewModel = new Musician();
             customerMusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
@@ -67,15 +67,14 @@ namespace groupCapstoneMusic.Controllers
         }
 
         [HttpPost]
-        public ActionResult FilteredSearch(CustomerMusiciansViewModel customerMusiciansViewModel)
+        public ActionResult FilteredSearch(Musician customerMusiciansViewModel)
         {
-            CustomerMusiciansViewModel customermusiciansViewModel = new CustomerMusiciansViewModel();
+            Musician customermusiciansViewModel = new Musician();
             customermusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
-            string selectGenre = customerMusiciansViewModel.selectGenre;
+            string selectGenre = customerMusiciansViewModel.SelectedGenre;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
             customermusiciansViewModel.musicians = db.Musicians.Where(a => a.Genre == foundConcert.Genre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
-            
             return View(customermusiciansViewModel);
         }
 
@@ -133,7 +132,6 @@ namespace groupCapstoneMusic.Controllers
                 // TODO: Add update logic here
                 var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).Single();
                 newMusician.StreetAddress = musician.StreetAddress;
-                newMusician.Rating = musician.Rating;
                 newMusician.Genre = musician.Genre;
                 newMusician.Bio = musician.Bio;
                 newMusician.Zip = musician.Zip;

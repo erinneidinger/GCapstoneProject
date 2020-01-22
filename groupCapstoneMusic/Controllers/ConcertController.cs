@@ -45,6 +45,7 @@ namespace groupCapstoneMusic.Controllers
                 var userId = User.Identity.GetUserId();
                 concert.ApplicationId = userId;
                 db.Concerts.Add(concert);
+                db.SaveChanges();
                 return RedirectToAction("GetLatNLngAsync", concert);
             }
             catch
@@ -67,7 +68,6 @@ namespace groupCapstoneMusic.Controllers
                 db.Concerts.Add(e);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-
             }
             return RedirectToAction("Index");
         }
