@@ -81,14 +81,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.SetRate)
         </dt>
 
@@ -104,8 +96,18 @@
             @Html.DisplayFor(model => model.DatesAvailable)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.AverageMusicianRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AverageMusicianRating)
+        </dd>
+
     </dl>
 </div>
+<iframe width="420" height="345" src="@ViewBag.URL">
+</iframe> @*YoutubeVideo*@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
