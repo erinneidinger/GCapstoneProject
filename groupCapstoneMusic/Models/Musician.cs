@@ -41,8 +41,8 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Selected Genre")]
         public string SelectedGenre { get; set; } //FOR FILTERED SEARCH, not a double, keep
 
-        //[Display(Name = "Genre Types")]
-        //public SelectList ListOfGenres { get; set; } //FOR FILTERED SEARCH, keep
+        [Display(Name = "Genre Types")]
+        public SelectList ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" }); //FOR FILTERED SEARCH, keep
 
         public List<Musician> musicians { get; set; } //For Filtered search, keep
         public double MusicianRating { get; set; }
