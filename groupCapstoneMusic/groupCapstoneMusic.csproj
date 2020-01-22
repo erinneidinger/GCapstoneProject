@@ -211,9 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001221704153_NEWNEWNEW.cs" />
-    <Compile Include="Migrations\202001221704153_NEWNEWNEW.Designer.cs">
-      <DependentUpon>202001221704153_NEWNEWNEW.cs</DependentUpon>
+    <Compile Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs" />
+    <Compile Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.Designer.cs">
+      <DependentUpon>202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -340,8 +340,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001221704153_NEWNEWNEW.resx">
-      <DependentUpon>202001221704153_NEWNEWNEW.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001222048594_AnotherMigrationToUpdateAfterGitPullPush.resx">
+      <DependentUpon>202001222048594_AnotherMigrationToUpdateAfterGitPullPush.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

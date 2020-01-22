@@ -144,6 +144,7 @@ namespace groupCapstoneMusic.Controllers
                 newMusician.BandName = musician.BandName;
                 newMusician.Lat = musician.Lat;
                 newMusician.Lng = musician.Lng;
+                //leave for Adam N, have to resend to be decerealized for youtube video edit
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

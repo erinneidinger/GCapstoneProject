@@ -57,7 +57,7 @@ namespace groupCapstoneMusic.Controllers
                 db.SaveChanges();
                 // TODO: Add insert logic here
 
-                return View("Index"); //This works
+                return RedirectToAction("Index"); //This works
             }
             catch
             {
@@ -78,6 +78,7 @@ namespace groupCapstoneMusic.Controllers
         {
             try
             {
+                var userID = User.Identity.GetUserId();
                 var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
                 updatedCustomer.ApplicationId = customer.ApplicationId;
                 updatedCustomer.ApplicationUser = customer.ApplicationUser;
