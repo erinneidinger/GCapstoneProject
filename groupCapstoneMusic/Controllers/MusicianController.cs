@@ -75,7 +75,7 @@ namespace groupCapstoneMusic.Controllers
             string selectGenre = FilterView.SelectedGenre;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == foundConcert.Genre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
             return View(filterView);
         }
 
