@@ -74,6 +74,10 @@ namespace groupCapstoneMusic.Models
         public string youtubeSearch { get; set; }
 
         public string iFrameUrl = "https://www.youtube.com/embed/";
+
+        [Display(Name ="Profile Photo Url")]
+        public string ImageURL { get; set; }
+
     }
 
 }

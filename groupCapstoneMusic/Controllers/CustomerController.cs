@@ -57,11 +57,11 @@ namespace groupCapstoneMusic.Controllers
                 db.SaveChanges();
                 // TODO: Add insert logic here
 
-                return View("Index"); //This works
+                return RedirectToAction("Index"); //This works
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index"); //This works
             }
         }
         // GET: Customer/Edit/5

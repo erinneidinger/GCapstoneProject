@@ -211,10 +211,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001221600088_newMigration.cs" />
-    <Compile Include="Migrations\202001221600088_newMigration.Designer.cs">
-      <DependentUpon>202001221600088_newMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerMusiciansViewModel.cs" />
@@ -312,6 +308,8 @@
     <Content Include="Views\IMessage\SentMail.cshtml" />
     <Content Include="Views\Musician\Index.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
+    <Content Include="Views\Concert\MusicianConfirmation.cshtml" />
+    <Content Include="Views\Concert\EditConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -322,6 +320,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Views\Geo\" />
     <Folder Include="Views\StarRating\" />
   </ItemGroup>
@@ -337,11 +336,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001221600088_newMigration.resx">
-      <DependentUpon>202001221600088_newMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

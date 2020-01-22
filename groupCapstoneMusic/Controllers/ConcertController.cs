@@ -30,6 +30,42 @@ namespace groupCapstoneMusic.Controllers
             db.SaveChanges();
             return View(concertDetails);
         }
+        public ActionResult MusicianConfirmation(string id)
+        {
+            var concerts = db.Concerts.Where(c => c.ApplicationId == id).ToList(); //Musician comes here and finds a list of concerts connected to Customer who messaged them
+            return View(concerts);
+        }
+
+        public ActionResult EditConfirm(int id)
+        {
+            var foundConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault(); //Musician clicks on comfirm for the venue
+            return View(foundConcert);
+        }
+
+        [HttpPost]
+        public ActionResult EditConfirm(int id, Concert concert)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                var editedConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+                editedConcert.ConfirmationOfMusician = concert.ConfirmationOfMusician;
+                if(editedConcert.ConfirmationOfMusician == true)
+                {
+                    var userId = User.Identity.GetUserId();
+                    var musician = db.Musicians.Where(u => u.ApplicationId == userId).FirstOrDefault(); //Confirmation is confirmed and band name is assigned to venu
+                    editedConcert.Musician = musician.BandName;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "IMessage");
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index", "IMessage");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "IMessage");
+            }
+        }
 
         public ActionResult Create(Customer customer)
         {

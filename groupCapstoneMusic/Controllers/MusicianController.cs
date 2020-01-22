@@ -21,6 +21,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var userId = User.Identity.GetUserId();
             var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            ViewBag.URL = foundMusician.iFrameUrl + foundMusician.youtubeSearch;
             return View(foundMusician);
         }
 
@@ -56,7 +57,15 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        public ActionResult FilteredSearch()
+        //public ActionResult ConcertSearch()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+        //    var foundConcerts = db.Concerts.Where(m => m.Genre == musician.Genre && m.State == musician.State).ToList();---------- //Working on this come back to it.
+        //    return View(foundConcerts);
+        //}
+
+        public ActionResult FilteredSearch(int id)
         {
             var userID = User.Identity.GetUserId();
             Musician filteredMusician = new Musician();

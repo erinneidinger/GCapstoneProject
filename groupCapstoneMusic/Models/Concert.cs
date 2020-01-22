@@ -41,7 +41,10 @@ namespace groupCapstoneMusic.Models
 
         public string apiMapCall = PrivateKeys.googleMap;
 
+        [Display(Name ="Confirm")]
         public bool ConfirmationOfMusician { get; set; }
+
+        public string Musician { get; set; } //I will have it grab the musicians band name if confimation of music it true.
 
     }
 }
