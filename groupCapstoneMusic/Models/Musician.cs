@@ -57,7 +57,7 @@ namespace groupCapstoneMusic.Models
         [Display(Name ="YouTube Video Name")]
         public string youtubeVideoName { get; set; }
 
-
+        public string youtubeSearch { get; set; }
     }
 
 }

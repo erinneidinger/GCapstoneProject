@@ -22,7 +22,7 @@ namespace groupCapstoneMusic.Models
 
         public static string directionsURLP2 = "&origin=";
 
-        public static string youtubeURL1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=";
+        public static string youtubeURL1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="; //youtube video name
 
         public static string youtubeURL2 = "&type=video&key=";
 

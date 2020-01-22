@@ -121,25 +121,6 @@ namespace groupCapstoneMusic.Controllers
                 return RedirectToAction("Index");
 
             }
-        }
-
-        //// POST: IMessage/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(Message message)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-        //        //var message = db.Messages.Find(id);
-        //        db.Messages.Remove(message);
-        //        db.SaveChanges();
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }       
+        }   
     }
 }

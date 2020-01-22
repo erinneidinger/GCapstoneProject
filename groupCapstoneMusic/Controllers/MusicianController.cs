@@ -28,14 +28,14 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
         {
             var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
-            return View(musicianDetails);
+            return View(musicianDetails);//this works A.N
         }
 
         // GET: Musician/Create
         public ActionResult Create()
         {
             Musician musician = new Musician();
-            return View(musician); //this works
+            return View(musician); //this works A.N
         }
 
         // POST: Musician/Create
@@ -47,9 +47,7 @@ namespace groupCapstoneMusic.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
-                db.Musicians.Add(musician);
-                db.SaveChanges();
-                return RedirectToAction("GetLatNLngAsync", musician); //This works
+                return RedirectToAction("GetLatNLngAsync", musician); //this works A.N
             }
             catch
             {
@@ -81,7 +79,7 @@ namespace groupCapstoneMusic.Controllers
             return View(customermusiciansViewModel);
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)
+        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)//when musician edits we will have to send them back here
         {
             var e = musician;
             string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
@@ -93,10 +91,26 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
+                return RedirectToAction("GetYouTubeAddress", e); //this works A.N
+
+            }
+            return RedirectToAction("GetYouTubeAddress", e);
+        }
+
+        public async System.Threading.Tasks.Task<ActionResult> GetYouTubeAddress(Musician musician)//when musician edits we will have to send them back here
+        {
+            var e = musician;
+            string url = PrivateKeys.youtubeURL1 + e.youtubeVideoName + PrivateKeys.youtubeURL2 + PrivateKeys.googleKey;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            string jsonResult = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                YoutubeJSON youtube = JsonConvert.DeserializeObject<YoutubeJSON>(jsonResult);
+                e.youtubeSearch = youtube.items[0].id.videoId;
                 db.Musicians.Add(e);
                 db.SaveChanges();
-                return RedirectToAction("Index"); //This works
-
+                return RedirectToAction("Index");//this works A.N
             }
             return RedirectToAction("Index");
         }

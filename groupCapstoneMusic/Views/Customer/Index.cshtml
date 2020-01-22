@@ -76,10 +76,10 @@
         </td>
 
         <td>
-            @Html.DisplayNameFor(model => model.MinBudget)
+            @Html.DisplayFor(model => model.MinBudget)
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.MaxBudget)
+            @Html.DisplayFor(model => model.MaxBudget)
         </td>
 
         <td>
@@ -88,11 +88,12 @@
     </tr>
 
     <tr>
-        <td>
+       <td>
             @Html.ActionLink("Edit", "Edit", new {id = Model.CustomerId  }) |
             @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
             @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) |
             @Html.ActionLink("Create a Concert Request", "Create", "Concert")
+       </td>
     </tr>
 
 
