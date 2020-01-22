@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,49 +22,9 @@
                 @if (User.IsInRole("Musician"))
                 {
                 <ul class="nav navbar-nav">
-                    <li>
-                        @if (User.IsInRole("Musician") == true)
-                        {
-                            @Html.ActionLink("Profile", "Index", "Musician")
-                        }
-                        else if (User.IsInRole("Customer") == true)
-                        {
-                            @Html.ActionLink("Profile", "Index", "Customer")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Home", "Index", "Home")
-                        }
-                    </li>
-                    <li>
-                        @if (User.IsInRole("Musician") == true)
-                        {
-                            @Html.ActionLink("Customers", "Index", "Employee")
-                        }
-                        else if (User.IsInRole("Customer") == true)
-                        {
-                            @Html.ActionLink("Concerts", "Index", "Concert")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("About", "About", "Home")
-                        }
-                    </li>
-
-                    <li>
-                        @if (User.IsInRole("Musician") == true)
-                        {
-                            @Html.ActionLink("Inbox", "Index", "IMessage")
-                        }
-                        else if (User.IsInRole("Customer") == true)
-                        {
-                            @Html.ActionLink("Inbox", "Index", "IMessage")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Contact", "Contact", "Home")
-                        }
-                    </li>
+                    <li>@Html.ActionLink("Profile", "Index", "Musician")</li>
+                    <li>@Html.ActionLink("what Goes here?", "FilteredSearch", "Musician")</li>
+                    <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
                 </ul>
                 }
                 @if (User.IsInRole("Customer"))
@@ -75,7 +34,6 @@
                 @*<li>@Html.ActionLink("Profile", "Details", "Customer")</li>*@
                 <li>@Html.ActionLink("Create Event", "CreateConcert", "Customer")</li>
                 <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-
             </ul>
                 }
                 @Html.Partial("_LoginPartial")
@@ -86,10 +44,9 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ErinnTeam Corporation</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
