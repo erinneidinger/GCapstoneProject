@@ -16,14 +16,14 @@
         <h4>Find your desired genre:</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-<<<<<<< HEAD
-            @Html.LabelFor(model => model.selectGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.selectGenre, Model.ListOfGenres)
-                @Html.ValidationMessageFor(model => model.selectGenre, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
+                @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
             </div>
         </div>
-=======
+
             @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
