@@ -35,6 +35,7 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Concert Time")]
         public string ConcertTime { get; set; }
 
+        public List<Concert> foundConcerts { get; set; }
         public double Lat { get; set; }
 
         public double Lng { get; set; }
