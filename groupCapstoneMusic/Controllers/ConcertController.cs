@@ -74,9 +74,10 @@ namespace groupCapstoneMusic.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            var foundConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == userId).FirstOrDefault();
             return View(foundConcert);
         }
 
