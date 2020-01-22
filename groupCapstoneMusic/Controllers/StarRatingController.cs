@@ -14,6 +14,8 @@ namespace groupCapstoneMusic.Controllers
     public class StarRatingController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        Musician musician;
+        Customer customer;
         // GET: StarRating
         public ActionResult Index()
         {
@@ -159,88 +161,21 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-        public void mRate0(StarRating starrating, Musician musician)
+        public void mRate(int rating, Musician musician)
         {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "0").State = EntityState.Modified;
+            var userId = User.Identity.GetUserId();
+            musician = db.Musicians.Where(c => c.ApplicationId == userId).SingleOrDefault();
+            musician.MusicianRating = rating;
+            db.Entry(musician).State = EntityState.Modified;
             db.SaveChanges();
         }
-        public void mRate1(StarRating starrating, Musician musician)
+        
+        public void cRate(int rating, Customer customer)
         {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "1").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void mRate2(StarRating starrating, Musician musician)
-        {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "2").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void mRate3(StarRating starrating, Musician musician)
-        {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "3").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void mRate4(StarRating starrating, Musician musician)
-        {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "4").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void mRate5(StarRating starrating, Musician musician)
-        {
-            var musiId = musician.ApplicationId;
-            starrating.ApplicationId = musician.ApplicationId;
-            //db.Entry(musician.Rating = "5").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate0(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "0").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate1(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "1").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate2(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "2").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate3(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "3").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate4(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "4").State = EntityState.Modified;
-            db.SaveChanges();
-        }
-        public void cRate5(StarRating starrating, Customer customer)
-        {
-            var custId = customer.ApplicationId;
-            starrating.ApplicationId = customer.ApplicationId;
-            //db.Entry(customer.Rating = "5").State = EntityState.Modified;
+            var userId = User.Identity.GetUserId();
+            customer = db.Customers.Where(c => c.ApplicationId == userId).SingleOrDefault();
+            customer.CustomerRating = rating;
+            db.Entry(customer).State = EntityState.Modified;
             db.SaveChanges();
         }
     }

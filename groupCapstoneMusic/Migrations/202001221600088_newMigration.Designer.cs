@@ -7,13 +7,13 @@ namespace groupCapstoneMusic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RoleExistsMigration : IMigrationMetadata
+    public sealed partial class newMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RoleExistsMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001221451565_RoleExistsMigration"; }
+            get { return "202001221600088_newMigration"; }
         }
         
         string IMigrationMetadata.Source

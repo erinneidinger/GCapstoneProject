@@ -65,15 +65,15 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
-
         [NotMapped]
         public List<StarRating> ratings { get; set; }
 
         [Display(Name ="YouTube Video Name")]
         public string youtubeVideoName { get; set; }
 
+        public string youtubeSearch { get; set; }
 
-
+        public string iFrameUrl = "https://www.youtube.com/embed/";
     }
 
 }

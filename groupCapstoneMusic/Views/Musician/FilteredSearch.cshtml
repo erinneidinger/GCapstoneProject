@@ -6,30 +6,27 @@
 
 <h2>Filtered Search</h2>
 
-@*Dropdown...Figuring out whether I should use it*@
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        <h4>Find your desired genre:</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
-                @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <hr />
+    <h4>Find your desired genre:</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
+            @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <p>
@@ -37,12 +34,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.BandName)
         </th>
@@ -62,9 +53,8 @@
             @Html.DisplayNameFor(model => model.Bio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.DisplayNameFor(model => model.SelectedGenre)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.SetRate)
         </th>
@@ -81,21 +71,12 @@
     </tr>
     <tr>
         <td>
-            @Html.DisplayFor(model => model.FirstName)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.LastName)
-        </td>
-
-        <td>
             @Html.DisplayFor(model => model.BandName)
         </td>
 
         <td>
             @Html.DisplayFor(model => model.Email)
         </td>
-
         <td>
             @Html.DisplayFor(model => model.City)
         </td>
@@ -113,7 +94,7 @@
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.Genre)
+            @Html.DisplayFor(model => model.SelectedGenre)
         </td>
 
         <td>
@@ -131,12 +112,13 @@
             @Html.DisplayFor(model => model.AverageMusicianRating)
         </td>
     </tr>
-    <td>
-        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-    </td>
+    <tr>
+<td>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+    @Html.ActionLink("Message", "Create", "IMessage", new {id=Model.ApplicationId }, null)
+</td>
     </tr>
-    }
 
 </table>

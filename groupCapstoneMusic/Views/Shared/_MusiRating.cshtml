@@ -1,16 +1,16 @@
-﻿@model IEnumerable<groupCapstoneMusic.Models.Musician>
+﻿@model groupCapstoneMusic.Models.Musician
 
 <h2>Musician Quality Rating - Please Rate</h2>
 
-<button class="button0" type="button" onclick="location.href='@Url.Action("mRate0", "StarRating")'">Rate 0 Stars</button>
+<button class="button0" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 0, musician = Model})'">Rate 0 Stars</button>
 <br />
-<button class="button1" type="button" onclick="location.href='@Url.Action("mRate1", "StarRating")'">Rate 1 Stars</button>
+<button class="button1" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 1, musician = Model})'">Rate 1 Stars</button>
 <br />
-<button class="button2" type="button" onclick="location.href='@Url.Action("mRate2", "StarRating")'">Rate 2 Stars</button>
+<button class="button2" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 2, musician = Model})'">Rate 2 Stars</button>
 <br />
-<button class="button3" type="button" onclick="location.href='@Url.Action("mRate3", "StarRating")'">Rate 3 Stars</button>
+<button class="button3" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 3, musician = Model})'">Rate 3 Stars</button>
 <br />
-<button class="button4" type="button" onclick="location.href='@Url.Action("mRate4", "StarRating")'">Rate 4 Stars</button>
+<button class="button4" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 4, musician = Model})'">Rate 4 Stars</button>
 <br />
-<button class="button5" type="button" onclick="location.href='@Url.Action("mRate5", "StarRating")'">Rate 5 Stars</button>
+<button class="button5" type="button" onclick="location.href='@Url.Action("mRate", "StarRating", new { rating = 5, musician = Model})'">Rate 5 Stars</button>
 
