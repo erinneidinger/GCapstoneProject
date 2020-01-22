@@ -17,16 +17,66 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+<<<<<<< HEAD
+                @Html.ActionLink("DontKnow", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+=======
                 @Html.ActionLink("TalentSearch", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+>>>>>>> 8a6589ae625994dae68d8c7bbe24232a58c45698
             </div>
             <div class="navbar-collapse collapse">
                 @if (User.IsInRole("Musician"))
                 {
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
+                    <li>
+                        @if (User.IsInRole("Musician") == true)
+                        {
+                            @Html.ActionLink("Profile", "Index", "Musician")
+                        }
+                        else if (User.IsInRole("Customer") == true)
+                        {
+                            @Html.ActionLink("Profile", "Index", "Customer")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Home", "Index", "Home")
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Musician") == true)
+                        {
+                            @Html.ActionLink("Customers", "Index", "Employee")
+                        }
+                        else if (User.IsInRole("Customer") == true)
+                        {
+                            @Html.ActionLink("Concerts", "Index", "Concert")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("About", "About", "Home")
+                        }
+                    </li>
+
+                    <li>
+                        @if (User.IsInRole("Musician") == true)
+                        {
+                            @Html.ActionLink("Inbox", "Index", "IMessage")
+                        }
+                        else if (User.IsInRole("Customer") == true)
+                        {
+                            @Html.ActionLink("Inbox", "Index", "IMessage")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Contact", "Contact", "Home")
+                        }
+                    </li>
+=======
                     <li>@Html.ActionLink("Home", "Index", "Musician")</li>
                     <li>@Html.ActionLink("Profile", "Details", "Musician")</li>
                     <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
 
+>>>>>>> 8a6589ae625994dae68d8c7bbe24232a58c45698
                 </ul>
                 }
                 @if (User.IsInRole("Customer"))
