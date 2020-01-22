@@ -28,6 +28,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
         {
             var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
+            ViewBag.URL = musicianDetails.iFrameUrl + musicianDetails.youtubeSearch;
             return View(musicianDetails);//this works A.N
         }
 
@@ -59,7 +60,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var userID = User.Identity.GetUserId();
             Musician customerMusiciansViewModel = new Musician();
-            customerMusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            //customerMusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             customerMusiciansViewModel.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
             
@@ -70,7 +71,7 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult FilteredSearch(Musician customerMusiciansViewModel)
         {
             Musician customermusiciansViewModel = new Musician();
-            customermusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            //customermusiciansViewModel.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             string selectGenre = customerMusiciansViewModel.SelectedGenre;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
@@ -119,7 +120,6 @@ namespace groupCapstoneMusic.Controllers
         {
             var userId = User.Identity.GetUserId();
             var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            //var musician = db.Musicians.Where(m => m.ID == id).Select(m => m).FirstOrDefault();
             return View(musician);
         }
 

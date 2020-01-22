@@ -41,8 +41,8 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Selected Genre")]
         public string SelectedGenre { get; set; } //FOR FILTERED SEARCH, not a double, keep
 
-        [Display(Name = "Genre Types")]
-        public SelectList ListOfGenres { get; set; } //FOR FILTERED SEARCH, keep
+        //[Display(Name = "Genre Types")]
+        //public SelectList ListOfGenres { get; set; } //FOR FILTERED SEARCH, keep
 
         public List<Musician> musicians { get; set; } //For Filtered search, keep
         public double MusicianRating { get; set; }
@@ -65,7 +65,6 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
-
         [NotMapped]
         public List<StarRating> ratings { get; set; }
 
@@ -73,6 +72,8 @@ namespace groupCapstoneMusic.Models
         public string youtubeVideoName { get; set; }
 
         public string youtubeSearch { get; set; }
+
+        public string iFrameUrl = "https://www.youtube.com/embed/";
     }
 
 }
