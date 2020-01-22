@@ -30,6 +30,7 @@ namespace groupCapstoneMusic.Models
 
         public string To { get; set; }
 
+        [Display(Name ="Time Sent")]
         public DateTime DatePosted { get; set; }
 
         [Display(Name ="Unread")]
