@@ -59,24 +59,24 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult FilteredSearch()
         {
             var userID = User.Identity.GetUserId();
-            Musician filteredMusician = new Musician();
-            filteredMusician.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            FilterViewModel filterView = new FilterViewModel();
+            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
-            filteredMusician.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
+            filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
             
-            return View(filteredMusician); //Change it to ratings or something after
+            return View(filterView); //Change it to ratings or something after
         }
 
         [HttpPost]
-        public ActionResult FilteredSearch(Musician filteredMusician)
+        public ActionResult FilteredSearch(FilterViewModel FilterView)
         {
-            Musician filteredmusician = new Musician();
-            filteredmusician.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
-            string selectGenre = filteredMusician.SelectedGenre;
+            FilterViewModel filterView = new FilterViewModel();
+            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            string selectGenre = FilterView.SelectedGenre;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            filteredmusician.musicians = db.Musicians.Where(a => a.SelectedGenre == foundConcert.Genre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
-            return View(filteredmusician);
+            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == foundConcert.Genre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            return View(filterView);
         }
 
         public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)//when musician edits we will have to send them back here
@@ -116,7 +116,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Edit/5
-        public ActionResult Edit() // This works
+        public ActionResult Edit(int id) // This works
         {
             var userId = User.Identity.GetUserId();
             var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();

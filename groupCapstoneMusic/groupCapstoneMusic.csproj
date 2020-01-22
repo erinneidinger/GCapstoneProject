@@ -211,13 +211,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001221600088_newMigration.cs" />
-    <Compile Include="Migrations\202001221600088_newMigration.Designer.cs">
-      <DependentUpon>202001221600088_newMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202001221748147_FilterViewMigration.cs" />
+    <Compile Include="Migrations\202001221748147_FilterViewMigration.Designer.cs">
+      <DependentUpon>202001221748147_FilterViewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CustomerMusiciansViewModel.cs" />
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\GeoCode.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Concert.cs" />
@@ -339,8 +339,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001221600088_newMigration.resx">
-      <DependentUpon>202001221600088_newMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001221748147_FilterViewMigration.resx">
+      <DependentUpon>202001221748147_FilterViewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

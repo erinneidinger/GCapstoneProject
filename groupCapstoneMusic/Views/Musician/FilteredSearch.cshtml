@@ -1,4 +1,4 @@
-﻿@model groupCapstoneMusic.Models.Musician
+﻿@model groupCapstoneMusic.Models.FilterViewModel
 
 @{
     ViewBag.Title = "FilteredSearch";
@@ -35,90 +35,90 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BandName)
+            @Html.DisplayNameFor(model => model.musicians[0].BandName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.musicians[0].Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.musicians[0].City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.musicians[0].State)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zip)
+            @Html.DisplayNameFor(model => model.musicians[0].Zip)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bio)
+            @Html.DisplayNameFor(model => model.musicians[0].Bio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SelectedGenre)
+            @Html.DisplayNameFor(model => model.musicians[0].SelectedGenre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SetRate)
+            @Html.DisplayNameFor(model => model.musicians[0].SetRate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DatesAvailable)
+            @Html.DisplayNameFor(model => model.musicians[0].DatesAvailable)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StreetAddress)
+            @Html.DisplayNameFor(model => model.musicians[0].StreetAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AverageMusicianRating)
+            @Html.DisplayNameFor(model => model.musicians[0].AverageMusicianRating)
         </th>
         <th></th>
     </tr>
-    <tr>
-        <td>
-            @Html.DisplayFor(model => model.BandName)
-        </td>
+    @foreach (var item in Model.musicians)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].BandName)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.City)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].City)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.State)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].State)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.Zip)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].Zip)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.Bio)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].Bio)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.SelectedGenre)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].SelectedGenre)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.SetRate)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].SetRate)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.DatesAvailable)
-        </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].DatesAvailable)
+            </td>
 
-        <td>
-            @Html.DisplayFor(model => model.StreetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.AverageMusicianRating)
-        </td>
-    </tr>
-    <tr>
-<td>
-    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-    @Html.ActionLink("Message", "Create", "IMessage", new {id=Model.ApplicationId }, null)
-</td>
-    </tr>
-
-</table>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.musicians[0].AverageMusicianRating)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = Model.musicians[0].ID }) |
+                @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.musicians[0].ApplicationId }, null)
+            </td>
+        </tr>
+    }
+    </table>
