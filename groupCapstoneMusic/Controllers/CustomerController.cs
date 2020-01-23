@@ -36,6 +36,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Customer/Create
+        [Authorize(Roles = "Customer")]
         public ActionResult Create()
         {
             Customer customer = new Customer();
@@ -43,6 +44,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Customer/Create
+        [Authorize(Roles = "Customer")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
@@ -55,7 +57,6 @@ namespace groupCapstoneMusic.Controllers
                 customer.Email = foundCustomer.Email;//this should grab the email from there registration and assign it to there profile so we don't have to ask them twice
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                // TODO: Add insert logic here
 
                 return View("Index"); //This works
             }
@@ -65,6 +66,7 @@ namespace groupCapstoneMusic.Controllers
             }
         }
         // GET: Customer/Edit/5
+        [Authorize(Roles = "Customer")]
         public ActionResult Edit(int id) //Edit Profile
         {
             var userId = User.Identity.GetUserId();
@@ -73,6 +75,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Customer/Edit/5
+        [Authorize(Roles = "Customer")]
         [HttpPost]
         public ActionResult Edit(Customer customer)
         {
@@ -103,12 +106,14 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Customer/Delete/5
+        [Authorize(Roles = "Customer")]
         public ActionResult Delete(int id)
         {
             return View();
         }
 
         // POST: Customer/Delete/5
+        [Authorize(Roles = "Customer")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
