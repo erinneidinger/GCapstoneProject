@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -43,13 +45,17 @@ namespace groupCapstoneMusic.Controllers
         // POST: Musician/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Musician musician)
+        public async Task<ActionResult> Create(Musician musician)
         {
             try
             {
                 var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
-                return RedirectToAction("GetLatNLngAsync", musician); //this works A.N
+                musician = await GetLatNLngAsync(musician);
+                musician =  await GetYouTubeAddress(musician);
+                db.Musicians.Add(musician);
+                db.SaveChanges();
+                return RedirectToAction("Index"); //this works A.N
             }
             catch
             {
@@ -87,7 +93,7 @@ namespace groupCapstoneMusic.Controllers
             return View(filterView);
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Musician musician)//when musician edits we will have to send them back here
+        public async System.Threading.Tasks.Task<Musician> GetLatNLngAsync(Musician musician)//when musician edits we will have to send them back here
         {
             var e = musician;
             string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
@@ -99,13 +105,17 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
-                return RedirectToAction("GetYouTubeAddress", e); //this works A.N
+                if(e.youtubeSearch != null)
+                {
+                   return e; //
+                }
+                return e; //this works A.N
 
             }
-            return RedirectToAction("GetYouTubeAddress", e);
+            return e;
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> GetYouTubeAddress(Musician musician)//when musician edits we will have to send them back here
+        public async System.Threading.Tasks.Task<Musician> GetYouTubeAddress(Musician musician)//when musician edits we will have to send them back here
         {
             var e = musician;
             string url = PrivateKeys.youtubeURL1 + e.youtubeVideoName + PrivateKeys.youtubeURL2 + PrivateKeys.googleKey;
@@ -116,65 +126,61 @@ namespace groupCapstoneMusic.Controllers
             {
                 YoutubeJSON youtube = JsonConvert.DeserializeObject<YoutubeJSON>(jsonResult);
                 e.youtubeSearch = youtube.items[0].id.videoId;
-                db.Musicians.Add(e);
-                db.SaveChanges();
-                return RedirectToAction("Index");//this works A.N
+                return e;//this works A.N
+            }
+            return e;
+        }
+
+        // GET: Musician/Edit/5
+        public ActionResult Edit(int id) // This works
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var musician = db.Customers.Find(id);
+            if (musician == null)
+            {
+                return HttpNotFound();
+            }
+            return View(musician);           
+        }
+
+        // POST: Musician/Edit/5
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
+        {
+            if (ModelState.IsValid)
+            {
+
+                var userId = User.Identity.GetUserId();
+                musician.ApplicationId = userId;
+                musician = await GetLatNLngAsync(musician);
+                musician = await GetYouTubeAddress(musician);
+                db.Entry(musician).State = EntityState.Modified;
+                db.SaveChanges();                
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
         }
 
-        // GET: Musician/Edit/5
-        
-        public ActionResult Edit(int id) // This works
+        // GET: Musician/Delete/5
+        public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
-            var userId = User.Identity.GetUserId();
-            var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var musician = db.Musicians.Find(id);
+            if (musician == null)
+            {
+                return HttpNotFound();
+            }
             return View(musician);
         }
 
-        // POST: Musician/Edit/5
-        
-        [HttpPost]
-        public ActionResult Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
-        {
-            try
-            {
-                // TODO: Add update logic here
-                var newMusician = db.Musicians.Where(m => m.ID == musician.ID).Select(m => m).Single();
-                newMusician.StreetAddress = musician.StreetAddress;
-                newMusician.SelectedGenre = musician.SelectedGenre;
-                newMusician.Bio = musician.Bio;
-                newMusician.Zip = musician.Zip;
-                newMusician.City = musician.City;
-                newMusician.Email = musician.Email;
-                newMusician.SetRate = musician.SetRate;
-                newMusician.FirstName = musician.FirstName;
-                newMusician.LastName = musician.LastName;
-                newMusician.DatesAvailable = musician.DatesAvailable;
-                newMusician.BandName = musician.BandName;
-                newMusician.ImageURL = musician.ImageURL;
-                newMusician.Lat = musician.Lat;
-                newMusician.Lng = musician.Lng;
-                //leave for Adam N, have to resend to be decerealized for youtube video edit
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Musician/Delete/5
-        
-        public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
-        {
-            var foundMusician = db.Musicians.Find(id);
-            return View(foundMusician);
-        }
-
         // POST: Musician/Delete/5
-       
         [HttpPost]
         public ActionResult Delete(int id, Musician musician) //Delete Profile
         {
