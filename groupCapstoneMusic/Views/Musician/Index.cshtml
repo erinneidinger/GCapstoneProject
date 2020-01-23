@@ -3,101 +3,100 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<h2>Profile</h2>
 <table class="table">
     <tr>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.BandName)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.City)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.State)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.Zip)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.Bio)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.SelectedGenre)
         </th>
 
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.SetRate)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.DatesAvailable)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
-        <th>
+        <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.AverageMusicianRating)
         </th>
         <th></th>
     </tr>
     <tr>
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.FirstName)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.LastName)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.BandName)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.Email)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.City)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.State)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.Zip)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.Bio)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.SelectedGenre)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.SetRate)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.DatesAvailable)
         </td>
 
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.StreetAddress)
         </td>
-        <td>
+        <td style="border:solid; border-color:dimgray;">
             @Html.DisplayFor(model => model.AverageMusicianRating)
         </td>
     </tr>
@@ -107,7 +106,11 @@
         <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.ID })</a></p></th>
     </tr>
 </table>
-<img src="@Model.ImageURL" alt="@Model.ImageURL" max-height="345" @*width="200"*@>
+<div>
+    <img src="@Model.ImageURL" alt="@Model.ImageURL" max-height="345" @*width="200"*@>
+</div>
 <iframe width="420" height="345" src="@ViewBag.URL">
 </iframe> @*YoutubeVideo*@
+
+
 
