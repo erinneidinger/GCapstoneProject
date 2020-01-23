@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
@@ -18,8 +19,9 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var foundCustomer = db.Customers.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            return View(foundCustomer);
+            var user  = db.Users.Where(c => c.Id == userId).FirstOrDefault();
+            var customer = db.Customers.Where(c => c.ApplicationId == userId).FirstOrDefault();
+            return View(customer);
         }
 
         public ActionResult CreateConcert()
@@ -58,19 +60,27 @@ namespace groupCapstoneMusic.Controllers
                 db.Customers.Add(customer);
                 db.SaveChanges();
 
-                return View("Index"); //This works
+                return RedirectToAction("Index"); //This works
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index"); //This works
             }
         }
         // GET: Customer/Edit/5
         [Authorize(Roles = "Customer")]
         public ActionResult Edit(int id) //Edit Profile
         {
-            var userId = User.Identity.GetUserId();
-            var customer = db.Customers.Where(a => a.ApplicationId == userId).FirstOrDefault();
+            //var userId = User.Identity.GetUserId();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
             return View(customer);
         }
 
@@ -79,30 +89,40 @@ namespace groupCapstoneMusic.Controllers
         [HttpPost]
         public ActionResult Edit(Customer customer)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
-                updatedCustomer.ApplicationId = customer.ApplicationId;
-                updatedCustomer.ApplicationUser = customer.ApplicationUser;
-                updatedCustomer.Bio = customer.Bio;
-                updatedCustomer.City = customer.City;
-                updatedCustomer.CustomerId = customer.CustomerId;
-                updatedCustomer.Email = customer.Email;
-                updatedCustomer.events = customer.events;
-                updatedCustomer.FirstName = customer.FirstName;
-                updatedCustomer.LastName = customer.LastName;
-                updatedCustomer.MaxBudget = customer.MaxBudget;
-                updatedCustomer.MinBudget = customer.MinBudget;
-                updatedCustomer.State = customer.State;
-                updatedCustomer.StreetAddress = customer.StreetAddress;
-                updatedCustomer.ZipCode = customer.ZipCode;
+                var userId = User.Identity.GetUserId();
+                customer.ApplicationId = userId;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
+            //try
+            //{
+            //    //var userID = User.Identity.GetUserId();
+            //    //var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
+            //    //updatedCustomer.ApplicationId = customer.ApplicationId;
+            //    //updatedCustomer.ApplicationUser = customer.ApplicationUser;
+            //    //updatedCustomer.Bio = customer.Bio;
+            //    //updatedCustomer.City = customer.City;
+            //    //updatedCustomer.CustomerId = customer.CustomerId;
+            //    //updatedCustomer.Email = customer.Email;
+            //    //updatedCustomer.events = customer.events;
+            //    //updatedCustomer.FirstName = customer.FirstName;
+            //    //updatedCustomer.LastName = customer.LastName;
+            //    //updatedCustomer.MaxBudget = customer.MaxBudget;
+            //    //updatedCustomer.MinBudget = customer.MinBudget;
+            //    //updatedCustomer.State = customer.State;
+            //    //updatedCustomer.StreetAddress = customer.StreetAddress;
+            //    //updatedCustomer.ZipCode = customer.ZipCode;
+            //    //db.SaveChanges();
+            //    //return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
 
         // GET: Customer/Delete/5
