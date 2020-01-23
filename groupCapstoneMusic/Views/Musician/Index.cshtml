@@ -6,6 +6,10 @@
 
 <h2>Profile</h2>
 
+<img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
+<br />
+<br />
+
 <table class="table">
     <tr>
         <th class="active" style="border:solid; border-color:dimgray;">
@@ -99,6 +103,7 @@
             @Html.DisplayFor(model => model.StreetAddress)
         </td>
 
+
         <td style="border:solid; border-color:dimgray;">
 
             @Html.DisplayFor(model => model.AverageMusicianRating)
@@ -111,12 +116,7 @@
     </tr>
 </table>
 
-<div>
-    <img src="@Model.ImageURL" alt="@Model.ImageURL" max-height="345" @*width="200"*@>
-</div>
-<iframe width="420" height="345" src="@ViewBag.URL">
-</iframe> @*YoutubeVideo*@
 
-
-
+<p align="center"><iframe width="420" height="345" src="@ViewBag.URL">
+    </iframe></p> @*YoutubeVideo*@
 
