@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<h2>My Concerts</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -66,7 +65,7 @@
         </td>
         <td>
          
-            @Html.ActionLink("Search Musicians", "FilteredSearch", "Musician", new {id=item.Id }) |
+            @Html.ActionLink("Search Musicians", "FilteredSearch", "Musician")
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
