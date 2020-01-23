@@ -2,38 +2,55 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Welcome to ♫Book!</h1>
-    <p class="lead">Are you ready to spread your talent? Or are you on the search for the next best thing? Register above now and let DontKnow help you reach your goal!</p>
-    <p><a href="https://giphy.com/gifs/rick-roll-F67XmWgGzxYBO" class="btn btn-primary btn-lg">Who we are&raquo;</a></p>
+<div class="jumbotron" style="padding-right: 200px; padding-left: 200px;">
+    <img src="~/Content/Images/band.jpg" style="width:100%; opacity:0.3;" />
+    <div>
+        <h1>Welcome to ♫Book!</h1>
+        <p>
+            Are you ready to spread your talent
+            ? Or are you on the search for the next best thing?
+            Register above now and let ♫Book help you reach your goal!
+        </p>
+    </div>
+    <p><a class="btn btn-success" @Html.ActionLink("Who we are", "WhoWeAre")</a></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2 class="Info1">Schedule Concerts!</h2>
-        <p>
-            ♫Book can help you communicate with your Musician 
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Schedule Concerts!</h2>
+        </div>
+        <div class="panel-body">
+            ♫Book can help you communicate with your Musician
             or "Customer" to make sure both sides
             can come to an agreement fast and easily!
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <p><a class="btn btn-info" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2 class="Info1">Use our integrated messaging system!</h2>
-        <p>No need to go out and waste precious time getting
-        Phone numbers or emails! Contact directly through the 
-        app and avoid sending out information.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Use our integrated messaging system!</h2>
+        </div>
+        <div class="panel-body">
+            No need to go out and waste precious time getting
+            Phone numbers or emails! Contact directly through the
+            app and avoid sending out information.
+        </div>
+        <p><a class="btn btn-info" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2 class="Info1">Update your Professional Profile!</h2>
-        <p>As a "customer" or Musician, you can build a 
-        profile and show off what you have to offer. Wether 
-        that be how many concerts you have available and how 
-        beautiful your venues are or how many concerts you've 
-        sold out and how beautiful your performances were, 
-        MAKE IT BE KNOWN!</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Update your Professional Profile!</h2>
+        </div>
+        <div class="panel-body">
+            As a "customer" or Musician, you can build a
+            profile and show off what you have to offer. Wether
+            that be how many concerts you have available and how
+            beautiful your venues are or how many concerts you've
+            sold out and how beautiful your performances were,
+            MAKE IT BE KNOWN!
+        </div>
+        <p><a class="btn btn-info" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
 

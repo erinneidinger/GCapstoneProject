@@ -38,7 +38,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Customer/Create
-        [Authorize(Roles = "Customer")]
+    
         public ActionResult Create()
         {
             Customer customer = new Customer();
@@ -46,7 +46,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Customer/Create
-        [Authorize(Roles = "Customer")]
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)

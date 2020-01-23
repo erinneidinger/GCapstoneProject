@@ -36,7 +36,6 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Create
-        //[Authorize(Roles = "Musician")]
         public ActionResult Create()
         {
             Musician musician = new Musician();
@@ -44,7 +43,6 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Create
-        //[Authorize(Roles = "Musician")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Musician musician)
@@ -135,7 +133,6 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Edit/5
-        //[Authorize(Roles = "Musician")]
         public ActionResult Edit(int id) // This works
         {
             if (id == null)
@@ -151,12 +148,13 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Edit/5
-        //[Authorize(Roles = "Musician")]
+
         [HttpPost]
         public async Task<ActionResult> Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
         {
             if (ModelState.IsValid)
             {
+
                 var userId = User.Identity.GetUserId();
                 musician.ApplicationId = userId;
                 musician = await GetLatNLngAsync(musician);
@@ -169,7 +167,6 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Delete/5
-        //[Authorize(Roles = "Musician")]
         public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
             if (id == null)
@@ -185,7 +182,6 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Delete/5
-        //[Authorize(Roles = "Musician")]
         [HttpPost]
         public ActionResult Delete(int id, Musician musician) //Delete Profile
         {
