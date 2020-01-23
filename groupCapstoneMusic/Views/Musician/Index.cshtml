@@ -107,7 +107,7 @@
         <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.ID })</a></p></th>
     </tr>
 </table>
-<img src="@Model.ImageURL" alt="@Model.ImageURL" width="200" height="200">
+<img src="@Model.ImageURL" alt="@Model.ImageURL" max-height="345" @*width="200"*@>
 <iframe width="420" height="345" src="@ViewBag.URL">
 </iframe> @*YoutubeVideo*@
 
