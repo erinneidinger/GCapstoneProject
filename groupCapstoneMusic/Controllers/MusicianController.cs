@@ -79,14 +79,13 @@ namespace groupCapstoneMusic.Controllers
             return View(concert);
         }
 
-        public ActionResult FilteredSearch(int id)
+        public ActionResult FilteredSearch()
         {
             var userID = User.Identity.GetUserId();
             FilterViewModel filterView = new FilterViewModel();
             filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
-            
             return View(filterView); //Change it to ratings or something after
         }
 

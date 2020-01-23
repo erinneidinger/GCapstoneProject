@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>My Profile</h2>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -101,12 +101,14 @@
     </tr>*@
 
 
-<tr>
-    <th><p><a class="btn btn-success" @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) </a></p></th> @*this is causing a nullreference no object instance exception. I believe it has to do with the model.customerId*@
-    <th><p><a class="btn btn-warning" @Html.ActionLink("Details", "Details", new { id = Model.CustomerId })</a></p></th> @*commented and reviewed by Adam M*@
-    <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })</a></p></th>
-    <th><p><a class="btn btn-success" @Html.ActionLink("Create a Concert Request", "Create", "Concert")</a></p></th>
-</tr>
+    <tr>
+       <td>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) | @*this is causing a nullreference no object instance exception. I believe it has to do with the model.customerId*@
+            @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) | @*commented and reviewed by Adam M*@
+            @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) 
+          
+       </td>
+    </tr>
 
 
 </table>
