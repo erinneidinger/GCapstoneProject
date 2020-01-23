@@ -53,6 +53,8 @@ namespace groupCapstoneMusic.Controllers
                 musician.ApplicationId = userId;
                 musician = await GetLatNLngAsync(musician);
                 musician =  await GetYouTubeAddress(musician);
+                var foundMusician = db.Users.Where(e => e.Id == musician.ApplicationId).FirstOrDefault();
+                musician.Email = foundMusician.Email;
                 db.Musicians.Add(musician);
                 db.SaveChanges();
                 return RedirectToAction("Index"); //this works A.N
@@ -63,13 +65,19 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        //public ActionResult ConcertSearch()
-        //{
-        //    var userId = User.Identity.GetUserId();
-        //    var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-        //    var foundConcerts = db.Concerts.Where(m => m.Genre == musician.Genre && m.State == musician.State).ToList();---------- //Working on this come back to it.
-        //    return View(foundConcerts);
-        //}
+        public ActionResult ConcertSearch()
+        {
+            var userId = User.Identity.GetUserId();
+            var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            var foundConcerts = db.Concerts.Where(m => m.Musician == musician.BandName || m.Musician == musician.FirstName + "" + musician.LastName).ToList(); //Working on this come back to it.
+            return View(foundConcerts);
+        }
+
+        public ActionResult ConcertDetailsForMusician(int id)
+        {
+            var concert = db.Concerts.Where(c => c.Id == id).FirstOrDefault();
+            return View(concert);
+        }
 
         public ActionResult FilteredSearch()
         {
