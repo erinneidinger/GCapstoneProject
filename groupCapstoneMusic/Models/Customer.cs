@@ -58,5 +58,8 @@ namespace groupCapstoneMusic.Models
         [NotMapped]
         public List<StarRating> ratings { get; set; }
 
+        [Display(Name = "Profile Photo Url")]
+        public string ImageURL { get; set; }
+
     }
 }

@@ -21,6 +21,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var userId = User.Identity.GetUserId();
             var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+            ViewBag.URL = foundMusician.iFrameUrl + foundMusician.youtubeSearch;
             return View(foundMusician);
         }
 
@@ -33,6 +34,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Create
+        [Authorize(Roles = "Musician")]
         public ActionResult Create()
         {
             Musician musician = new Musician();
@@ -40,6 +42,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Create
+        [Authorize(Roles = "Musician")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Musician musician)
@@ -56,7 +59,15 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        public ActionResult FilteredSearch()
+        //public ActionResult ConcertSearch()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
+        //    var foundConcerts = db.Concerts.Where(m => m.Genre == musician.Genre && m.State == musician.State).ToList();---------- //Working on this come back to it.
+        //    return View(foundConcerts);
+        //}
+
+        public ActionResult FilteredSearch(int id)
         {
             var userID = User.Identity.GetUserId();
             FilterViewModel filterView = new FilterViewModel();
@@ -116,6 +127,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Edit/5
+        [Authorize(Roles = "Musician")]
         public ActionResult Edit(int id) // This works
         {
             var userId = User.Identity.GetUserId();
@@ -124,6 +136,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Edit/5
+        [Authorize(Roles = "Musician")]
         [HttpPost]
         public ActionResult Edit(Musician musician) //Need to make sure everything gets transferred in the edit.
         {
@@ -155,6 +168,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Delete/5
+        [Authorize(Roles = "Musician")]
         public ActionResult Delete(int id) // Need to make sure a Musician can delete there profile
         {
             var foundMusician = db.Musicians.Find(id);
@@ -162,6 +176,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Delete/5
+        [Authorize(Roles = "Musician")]
         [HttpPost]
         public ActionResult Delete(int id, Musician musician) //Delete Profile
         {
