@@ -34,7 +34,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Create
-        [Authorize(Roles = "Musician")]
+        //[Authorize(Roles = "Musician")]
         public ActionResult Create()
         {
             Musician musician = new Musician();
@@ -42,7 +42,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Musician/Create
-        [Authorize(Roles = "Musician")]
+        //[Authorize(Roles = "Musician")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Musician musician)

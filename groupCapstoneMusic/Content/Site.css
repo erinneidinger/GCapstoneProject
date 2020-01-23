@@ -81,6 +81,7 @@ textarea {
 .BackGround{
     color:darkgray
 }
+
 .Info2 {
     width: 50%;
     background-color: darkgrey;
@@ -88,4 +89,10 @@ textarea {
     border-radius: 15px 50px 15px 5px;
     font-family: 'Comic Sans MS';
     font-size: 30px;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

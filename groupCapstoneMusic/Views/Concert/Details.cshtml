@@ -112,5 +112,13 @@
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @if (User.IsInRole("Customer"))
+        {
+            @Html.ActionLink("Back to List", "Index")
+        }
+        @if (User.IsInRole("Musician"))
+        {
+            @Html.ActionLink("Back to List", "MusicianConfirmation", new { id=ViewBag.CID})
+        }
+
     </p>

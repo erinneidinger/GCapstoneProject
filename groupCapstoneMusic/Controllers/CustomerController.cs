@@ -38,7 +38,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Customer/Create
-        [Authorize(Roles = "Customer")]
+    
         public ActionResult Create()
         {
             Customer customer = new Customer();
@@ -46,7 +46,7 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // POST: Customer/Create
-        [Authorize(Roles = "Customer")]
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
@@ -71,7 +71,6 @@ namespace groupCapstoneMusic.Controllers
         [Authorize(Roles = "Customer")]
         public ActionResult Edit(int id) //Edit Profile
         {
-            //var userId = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -98,31 +97,6 @@ namespace groupCapstoneMusic.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
-            //try
-            //{
-            //    //var userID = User.Identity.GetUserId();
-            //    //var updatedCustomer = db.Customers.Where(c => c.CustomerId == customer.CustomerId).FirstOrDefault();
-            //    //updatedCustomer.ApplicationId = customer.ApplicationId;
-            //    //updatedCustomer.ApplicationUser = customer.ApplicationUser;
-            //    //updatedCustomer.Bio = customer.Bio;
-            //    //updatedCustomer.City = customer.City;
-            //    //updatedCustomer.CustomerId = customer.CustomerId;
-            //    //updatedCustomer.Email = customer.Email;
-            //    //updatedCustomer.events = customer.events;
-            //    //updatedCustomer.FirstName = customer.FirstName;
-            //    //updatedCustomer.LastName = customer.LastName;
-            //    //updatedCustomer.MaxBudget = customer.MaxBudget;
-            //    //updatedCustomer.MinBudget = customer.MinBudget;
-            //    //updatedCustomer.State = customer.State;
-            //    //updatedCustomer.StreetAddress = customer.StreetAddress;
-            //    //updatedCustomer.ZipCode = customer.ZipCode;
-            //    //db.SaveChanges();
-            //    //return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
         }
 
         // GET: Customer/Delete/5
