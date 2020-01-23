@@ -16,25 +16,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 @Html.ActionLink("♫Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 @if (User.IsInRole("Musician"))
                 {
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Profile", "Index", "Musician")</li>
-                    <li>@Html.ActionLink("what Goes here?", "FilteredSearch", "Musician")</li>
-                    <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-                </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Musician")</li>
+                        <li>@Html.ActionLink("Profile", "Details", "Musician")</li>
+                        <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
+                    </ul>
                 }
                 @if (User.IsInRole("Customer"))
                 {
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Profile", "Index", "Customer")</li>
-                @*<li>@Html.ActionLink("Profile", "Details", "Customer")</li>*@
-                <li>@Html.ActionLink("Create Event", "CreateConcert", "Customer")</li>
-                <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-            </ul>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Profile", "Index", "Customer")</li>
+                        @*<li>@Html.ActionLink("Profile", "Details", "Customer")</li>*@
+                        <li>@Html.ActionLink("Create Event", "CreateConcert", "Customer")</li>
+                        <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
+                    </ul>
+
                 }
                 @Html.Partial("_LoginPartial")
             </div>

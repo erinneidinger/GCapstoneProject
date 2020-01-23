@@ -46,7 +46,13 @@
         <td>
             @Html.ActionLink("Reply", "Create", new { id = item.SenderId }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+
+                 @if (User.IsInRole("Musician"))
+                 {
+                     @Html.ActionLink("View Concerts", "MusicianConfirmation", "Concert", new { id = item.SenderId }, null )
+                 }
+
         </td>
     </tr>
     }

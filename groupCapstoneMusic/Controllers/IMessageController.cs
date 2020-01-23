@@ -28,7 +28,6 @@ namespace groupCapstoneMusic.Controllers
             return View(sentMessages); //Shows the user mail they sent
         }
 
-        // GET: IMessage/Details/5
         public ActionResult Details(int id)
         {
             var message = db.Messages.Where(m => m.Id == id).FirstOrDefault();
