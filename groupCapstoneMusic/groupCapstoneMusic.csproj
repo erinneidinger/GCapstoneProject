@@ -311,6 +311,9 @@
     <Content Include="Views\Home\WhoWeAre.cshtml" />
     <Content Include="Views\Concert\MusicianConfirmation.cshtml" />
     <Content Include="Views\Concert\EditConfirm.cshtml" />
+    <Content Include="Views\Home\WhoWeAre2.cshtml" />
+    <Content Include="Views\Home\WhoWeAre3.cshtml" />
+    <Content Include="Views\Home\WhoWeAre4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
