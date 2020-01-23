@@ -1,17 +1,13 @@
 ﻿@model groupCapstoneMusic.Models.Musician
 
 @*@{
-    Layout = null;
-}*@
+        Layout = null;
+    }*@
 
-<!DOCTYPE html>
-
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
 </head>
-<body>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -43,6 +39,7 @@
                 @Html.EditorFor(model => model.BandName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BandName, "", new { @class = "text-danger" })
             </div>
+        </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.StreetAddress, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,6 +55,7 @@
                     @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -91,21 +89,21 @@
                     </div>
                 </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SetRate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SetRate, Model.ListOfGenres)
-                @Html.ValidationMessageFor(model => model.SetRate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SetRate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.SetRate, Model.ListOfGenres)
+                        @Html.ValidationMessageFor(model => model.SetRate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatesAvailable, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatesAvailable, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatesAvailable, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DatesAvailable, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DatesAvailable, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DatesAvailable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.youtubeVideoName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -129,10 +127,12 @@
                     </div>
                 </div>
             </div>
-            }
 
             <div>
                 @Html.ActionLink("Back to List", "Index")
             </div>
-</body>
-</html>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
