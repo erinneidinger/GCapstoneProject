@@ -33,7 +33,7 @@ namespace groupCapstoneMusic.Controllers
 
         public ActionResult Details(int id) //view musicians information
         {
-            Customer customerDetails = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
+            var customerDetails = db.Customers.Where(a => a.CustomerId == id).FirstOrDefault();
             return View(customerDetails);
         }
 
@@ -107,7 +107,7 @@ namespace groupCapstoneMusic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var customer = db.Musicians.Find(id);
+            var customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();

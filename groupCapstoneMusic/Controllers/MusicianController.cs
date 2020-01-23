@@ -138,7 +138,7 @@ namespace groupCapstoneMusic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var musician = db.Customers.Find(id);
+            var musician = db.Musicians.Find(id);
             if (musician == null)
             {
                 return HttpNotFound();

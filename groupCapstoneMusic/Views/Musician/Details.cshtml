@@ -52,7 +52,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StreetAddress)
         </dd>
@@ -109,8 +108,18 @@
 <iframe width="420" height="345" src="@ViewBag.URL">
 </iframe> @*YoutubeVideo*@
 <p>
+    @if (User.IsInRole("Musician"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+    }
+    |
+    @if (User.IsInRole("Musician"))
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
 
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-   
+    @if (User.IsInRole("Customer"))
+    {
+        @Html.ActionLink("Back to List", "FilteredSearch", "Musician")
+    }
 </p>
