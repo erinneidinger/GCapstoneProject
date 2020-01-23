@@ -30,5 +30,11 @@ namespace groupCapstoneMusic.Controllers
 
             return View();
         }
+        public ActionResult WhoWeAre()
+        {
+            ViewBag.Message = "Who We Are:";
+
+            return View();
+        }
     }
 }
