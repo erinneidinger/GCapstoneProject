@@ -23,10 +23,11 @@
                 @if (User.IsInRole("Musician"))
                 {
 
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Musician")</li>
-                        <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Musician")</li>
+                    <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
+                    <li>@Html.ActionLink("Gigs", "ConcertSearch", "Musician")</li>
+                </ul>
                 }
                 @if (User.IsInRole("Customer"))
                 {

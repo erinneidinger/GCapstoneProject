@@ -61,9 +61,22 @@ namespace groupCapstoneMusic.Controllers
                 {
                     var userId = User.Identity.GetUserId();
                     var musician = db.Musicians.Where(u => u.ApplicationId == userId).FirstOrDefault(); //Confirmation is confirmed and band name is assigned to venu
-                    editedConcert.Musician = musician.BandName;
+                    if(musician.BandName == null)
+                    {
+                        editedConcert.Musician = musician.FirstName + "" + musician.LastName;
+                    }
+                    if(musician.BandName != null)
+                    {
+                        editedConcert.Musician = musician.BandName;
+                    }
                     db.SaveChanges();
                     return RedirectToAction("Index", "IMessage");
+                }
+                if(editedConcert.ConfirmationOfMusician != true)
+                {
+                    editedConcert.Musician = null;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "IMessage");//if the musician decides to cancel it changes everything back
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index", "IMessage");

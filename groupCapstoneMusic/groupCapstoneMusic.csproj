@@ -211,10 +211,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001231748312_newnewnewwwww.cs" />
-    <Compile Include="Migrations\202001231748312_newnewnewwwww.Designer.cs">
-      <DependentUpon>202001231748312_newnewnewwwww.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
@@ -315,6 +311,8 @@
     <Content Include="Views\Home\WhoWeAre.cshtml" />
     <Content Include="Views\Concert\MusicianConfirmation.cshtml" />
     <Content Include="Views\Concert\EditConfirm.cshtml" />
+    <Content Include="Views\Musician\ConcertSearch.cshtml" />
+    <Content Include="Views\Musician\ConcertDetailsForMusician.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -341,11 +339,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001231748312_newnewnewwwww.resx">
-      <DependentUpon>202001231748312_newnewnewwwww.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

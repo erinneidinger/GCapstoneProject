@@ -1,0 +1,38 @@
+﻿@model IEnumerable<groupCapstoneMusic.Models.Concert>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConcertSearch</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConcertDate)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Venue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConcertDate)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "ConcertDetailsForMusician", new { id = item.Id })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>
