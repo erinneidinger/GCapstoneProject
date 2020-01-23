@@ -211,9 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001231519357_newMigraton.cs" />
-    <Compile Include="Migrations\202001231519357_newMigraton.Designer.cs">
-      <DependentUpon>202001231519357_newMigraton.cs</DependentUpon>
+    <Compile Include="Migrations\202001222223140_newmigrationafterpullpush.cs" />
+    <Compile Include="Migrations\202001222223140_newmigrationafterpullpush.Designer.cs">
+      <DependentUpon>202001222223140_newmigrationafterpullpush.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -312,6 +312,7 @@
     <Content Include="Views\IMessage\SentMail.cshtml" />
     <Content Include="Views\Musician\Index.cshtml" />
     <Content Include="Views\Musician\Create.cshtml" />
+    <Content Include="Views\Home\WhoWeAre.cshtml" />
     <Content Include="Views\Concert\MusicianConfirmation.cshtml" />
     <Content Include="Views\Concert\EditConfirm.cshtml" />
   </ItemGroup>
@@ -342,8 +343,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001231519357_newMigraton.resx">
-      <DependentUpon>202001231519357_newMigraton.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001222223140_newmigrationafterpullpush.resx">
+      <DependentUpon>202001222223140_newmigrationafterpullpush.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
