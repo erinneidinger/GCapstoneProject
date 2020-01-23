@@ -103,18 +103,28 @@ namespace groupCapstoneMusic.Controllers
         [Authorize(Roles = "Customer")]
         public ActionResult Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var customer = db.Musicians.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
         // POST: Customer/Delete/5
         [Authorize(Roles = "Customer")]
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Customer customer)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var foundCustomer = db.Customers.Find(id);
+                db.Customers.Remove(foundCustomer);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

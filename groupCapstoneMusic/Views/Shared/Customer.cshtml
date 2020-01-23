@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,23 +20,12 @@
                 @Html.ActionLink("♫Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                @if (User.IsInRole("Musician"))
-                {
-
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Musician")</li>
+                        <li>@Html.ActionLink("Profile", "Index", "Customer")</li>
+                        @*<li>@Html.ActionLink("Profile", "Details", "Customer")</li>*@
+                        <li>@Html.ActionLink("Create Event", "CreateConcert", "Customer")</li>
                         <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
                     </ul>
-                }
-                @if (User.IsInRole("Customer"))
-                {
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Customer")</li>
-                        <li>@Html.ActionLink("My Concerts", "Index", "Concert")</li>
-                        <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-                    </ul>
-
-                }
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
