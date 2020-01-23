@@ -25,15 +25,13 @@
 
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Musician")</li>
-                        <li>@Html.ActionLink("Profile", "Details", "Musician")</li>
                         <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
                     </ul>
                 }
                 @if (User.IsInRole("Customer"))
                 {
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Profile", "Index", "Customer")</li>
-                        @*<li>@Html.ActionLink("Profile", "Details", "Customer")</li>*@
+                        <li>@Html.ActionLink("Home", "Index", "Customer")</li>
                         <li>@Html.ActionLink("Create Event", "CreateConcert", "Customer")</li>
                         <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
                     </ul>
