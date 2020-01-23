@@ -3,8 +3,11 @@ using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,7 +21,6 @@ namespace groupCapstoneMusic.Controllers
         {
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).ToList();
-            //var oneConcert = db.Concerts.Where(a => a.Id == foundConcert.Id).ToList();
             return View(foundConcert);
         }
        
@@ -79,18 +81,23 @@ namespace groupCapstoneMusic.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Concert concert)
+        public async Task<ActionResult> Create(Concert concert)
         {
             try
-            { 
-                return RedirectToAction("GetLatNLngAsync", concert);
+            {
+                var userId = User.Identity.GetUserId();
+                concert.ApplicationId = userId;
+                concert = await GetLatNLngAsync(concert);
+                db.Concerts.Add(concert);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
         }
-        public async System.Threading.Tasks.Task<ActionResult> GetLatNLngAsync(Concert concert)
+        public async System.Threading.Tasks.Task<Concert> GetLatNLngAsync(Concert concert)
         {
             var e = concert;
             string url = PrivateKeys.geoURLP1 + e.StreetAddress + ",+" + e.City + "+" + e.State + PrivateKeys.geoURLP2 + PrivateKeys.googleKey;
@@ -102,48 +109,44 @@ namespace groupCapstoneMusic.Controllers
                 GeoCode location = JsonConvert.DeserializeObject<GeoCode>(jsonResult);
                 e.Lat = location.results[0].geometry.location.lat;
                 e.Lng = location.results[0].geometry.location.lng;
-                var userId = User.Identity.GetUserId();
-                e.ApplicationId = userId;
-                db.Concerts.Add(e);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return e;
             }
            
             db.Concerts.Add(e);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return e;
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            var userId = User.Identity.GetUserId();
-            var foundConcert = db.Concerts.Where(a => a.ApplicationId == userId).FirstOrDefault();
-            return View(foundConcert);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var concert = db.Concerts.Find(id);
+            if (concert == null)
+            {
+                return HttpNotFound();
+            }
+            return View(concert);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Concert concert)
+        public async Task<ActionResult> Edit(int id, Concert concert)
         {
-            try
+            if (ModelState.IsValid)
             {
                 // TODO: Add update logic here
-                var editedConcert = db.Concerts.Where(a => a.Id == id).FirstOrDefault();
-                editedConcert.Venue = concert.Venue;
-                editedConcert.Audience = concert.Audience;
-                editedConcert.Genre = concert.Genre;
-                editedConcert.StreetAddress = concert.StreetAddress;
-                editedConcert.City = concert.City;
-                editedConcert.State = concert.State;
-                editedConcert.ConcertDate = concert.ConcertDate;
-                editedConcert.ConcertTime = concert.ConcertTime;
+                var userId = User.Identity.GetUserId();
+                concert.ApplicationId = userId;
+                concert = await GetLatNLngAsync(concert);
+                db.Entry(concert).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
+
         }
 
         // GET: Event/Delete/5
