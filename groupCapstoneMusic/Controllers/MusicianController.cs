@@ -118,14 +118,14 @@ namespace groupCapstoneMusic.Controllers
                 {
                     filterView.musicians = db.Musicians.Where(a => a.SetRate == selectBudget && a.City == foundConcert.City && a.State == foundConcert.State).ToList();
                 }
-                else
+                else if(selectBudget == null)
                 {
                     filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.City == foundConcert.City && a.State == foundConcert.State).ToList();
                 }
-            }
-            else if(selectLocation == "Search by Location" && selectGenre == null && selectBudget == null)
-            {
-                filterView.musicians = db.Musicians.Where(a => a.City == foundConcert.City && a.State == foundConcert.State).ToList();
+                else
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.SetRate == selectBudget && a.City == foundConcert.City && a.State == foundConcert.State).ToList();
+                }
             }
             else if( selectLocation == null && selectGenre != null || selectLocation == null && selectBudget != null)
             {
@@ -133,10 +133,17 @@ namespace groupCapstoneMusic.Controllers
                 {
                     filterView.musicians = db.Musicians.Where(a => a.SetRate == selectBudget).ToList();
                 }
-                else
-                {
+                else if (selectBudget == null){
                     filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre).ToList();
                 }
+                else
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.SetRate == selectBudget).ToList();
+                }
+            }
+            else if (selectLocation == "Search by Location" && selectGenre == null && selectBudget == null)
+            {
+                filterView.musicians = db.Musicians.Where(a => a.City == foundConcert.City && a.State == foundConcert.State).ToList();
             }
             else
             {
