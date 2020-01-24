@@ -98,18 +98,11 @@
                 @Html.DisplayFor(model => model.AverageCustomerRating)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageURL)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ImageURL)
-            </dd>
-
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Back to Gigs", "ConcertSearch")
+        @Html.ActionLink("Back to Gigs", "ConcertSearch") |
+        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) 
     </p>
 </body>
 
