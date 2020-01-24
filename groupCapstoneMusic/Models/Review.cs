@@ -16,7 +16,7 @@ namespace groupCapstoneMusic.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        [Display(Name ="Feed Back")]
+        [Display(Name ="Feedback")]
         public string FeedBack { get; set; }
 
         [Display(Name ="From User")]
