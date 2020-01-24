@@ -102,7 +102,10 @@
     </div>
     <p>
         @Html.ActionLink("Back to Gigs", "ConcertSearch") |
-        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) 
+        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+        @Html.ActionLink("Leave A Review", "Create", "Review", new { id = Model.ApplicationId }, null) |
+        @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId }, null)
+
     </p>
 </body>
 

@@ -112,6 +112,7 @@
     <tr>
         <th><p><a class="btn btn-warning" @Html.ActionLink("Edit", "Edit", new { id = Model.ID })</a></p></th>
         <th><p><a class="btn btn-success" @Html.ActionLink("Details", "Details", new { id = Model.ID })</a></p></th>
+        <th><p><a class="btn btn-success @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId }, null)</a></p></th>
         <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.ID })</a></p></th>
     </tr>
 </table>

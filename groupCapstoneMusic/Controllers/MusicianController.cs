@@ -28,10 +28,11 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Details/5
-        public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
+        public ActionResult Details(int id) //Customer uses this to view Musicians Profile
         {
             var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
             ViewBag.URL = musicianDetails.iFrameUrl + musicianDetails.youtubeSearch;
+            ViewBag.key = false;//Means the musician is hired so you can leave a review now
             return View(musicianDetails);//this works A.N
         }
 
@@ -83,7 +84,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
             return View(customer);
-        }
+        }//---------------------------------------------------------------------------------------
 
         public ActionResult FilteredSearch()
         {
@@ -94,6 +95,7 @@ namespace groupCapstoneMusic.Controllers
             filterView.SearchByLocation = new SelectList(new List<string> { null, "Search by Location" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             filterView.musicians = db.Musicians.ToList();
+            ViewBag.key = true;
             return View(filterView); //Change it to ratings or something after
         }
 
@@ -108,6 +110,7 @@ namespace groupCapstoneMusic.Controllers
             string selectBudget = FilterView.ConcertRate;
             string selectLocation = FilterView.LocationAnswer;
             var Id = User.Identity.GetUserId();
+
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
             if(selectLocation == "Search by Location" && selectGenre != null || selectLocation == "Search by Location" && selectBudget != null)
             {
@@ -138,7 +141,8 @@ namespace groupCapstoneMusic.Controllers
             else
             {
                 filterView.musicians = db.Musicians.ToList();
-            }
+            }          
+            ViewBag.key = true;
             return View(filterView);
         }
 

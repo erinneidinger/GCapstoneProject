@@ -117,12 +117,26 @@
     </p>
 }
 
-@if (User.IsInRole("Customer"))
+@if (User.IsInRole("Customer") && ViewBag.key == true)
+{
+    @*@if(ViewBag.key == true)
+        {*@
+    <p>
+        @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
+        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+        @Html.ActionLink("Back to List", "FilteredSearch", "Musician")
+    </p>
+    //}
+
+
+}
+@if (User.IsInRole("Customer") && ViewBag.key == false)
 {
 <p>
     @Html.ActionLink("Back to Concerts", "Index", "Concert") |
     @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
-    @Html.ActionLink("Back to List", "FilteredSearch", "Musician")
+    @Html.ActionLink("Leave A Review", "Create", "Review", new { id = Model.ApplicationId }, null) |
+    @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId,}, null)
 </p>
 }
 
