@@ -35,7 +35,6 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult Create(string id)
         {
             Review review = new Review();
-            //ViewBag.reviewedId = id;
             return View(review);
         }
 
@@ -52,21 +51,27 @@ namespace groupCapstoneMusic.Controllers
                 review.ApplicationId = id;
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                if (User.IsInRole("Customer"))
-                {
-                    return RedirectToAction("Index", "Customer");
-                }
-                if (User.IsInRole("Musician"))
-                {
-                    return RedirectToAction("Index", "Musician");
-                }
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Rate", review);
             }
             catch
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+
+        public ActionResult Rate(Review review)
+        {
+            if (User.IsInRole("Customer"))
+            {
+                ViewBag.key = "mus";
+                return View(review);
+            }
+            if (User.IsInRole("Musician"))
+            {
+                ViewBag.key = "cus";
+                return View(review);
+            }
+            return View(review);
         }
 
         // GET: Review/Edit/5

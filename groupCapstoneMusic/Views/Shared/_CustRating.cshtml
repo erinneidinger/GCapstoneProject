@@ -1,15 +1,15 @@
-﻿@model IEnumerable<groupCapstoneMusic.Models.Customer>
+﻿@model groupCapstoneMusic.Models.Review
 
 <h2>Customer Quality Rating - Please Rate</h2>
 
-<button class="button0" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 0, customer = Model})'">Rate 0 Stars</button>
+<button class="button0" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 0, id = Model.ApplicationId})'">Rate 0 Stars</button>
 <br />
-<button class="button1" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 1, customer = Model})'">Rate 1 Stars</button>
+<button class="button1" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 1, id= Model.ApplicationId})'">Rate 1 Stars</button>
 <br />
-<button class="button2" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 2, customer = Model})'">Rate 2 Stars</button>
+<button class="button2" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 2, id= Model.ApplicationId})'">Rate 2 Stars</button>
 <br />
-<button class="button3" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 3, customer = Model})'">Rate 3 Stars</button>
+<button class="button3" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 3, id= Model.ApplicationId})'">Rate 3 Stars</button>
 <br />
-<button class="button4" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 4, customer = Model})'">Rate 4 Stars</button>
+<button class="button4" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 4, id= Model.ApplicationId})'">Rate 4 Stars</button>
 <br />
-<button class="button5" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 5, customer = Model})'">Rate 5 Stars</button>
+<button class="button5" type="button" onclick="location.href='@Url.Action("cRate", "StarRating", new { rating = 5, id= Model.ApplicationId})'">Rate 5 Stars</button>
