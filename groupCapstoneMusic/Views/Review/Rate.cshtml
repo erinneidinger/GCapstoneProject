@@ -1,0 +1,16 @@
+﻿@model groupCapstoneMusic.Models.Review
+
+@if (ViewBag.key == "cus")
+{
+    <div>
+        @{ Html.RenderPartial("_CustRating", Model); }
+
+    </div>
+}
+@if (ViewBag.key == "mus")
+{
+    <div>
+        @{ Html.RenderPartial("_MusiRating", Model); }
+
+    </div>
+}

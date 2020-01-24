@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Models
 {
@@ -36,12 +37,6 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
-        [Display(Name = "Minimum Budget")]
-        public double MinBudget { get; set; }
-
-        [Display(Name = "Maximum Budget")]
-        public double MaxBudget { get; set; }
-
         public double MusicianRating { get; set; }
 
         public double CustomerRating { get; set; }
@@ -69,5 +64,6 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Twitter profile Url")]
         public string twitterURL { get; set; }
 
+        //public List<Review> Reviews { get; set; }
     }
 }

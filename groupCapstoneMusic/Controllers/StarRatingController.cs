@@ -161,22 +161,23 @@ namespace groupCapstoneMusic.Controllers
                 return View();
             }
         }
-        public void mRate(int rating, Musician musician)
+        public ActionResult mRate(int rating, string id)
         {
-            var userId = User.Identity.GetUserId();
-            musician = db.Musicians.Where(c => c.ApplicationId == userId).SingleOrDefault();
+            musician = db.Musicians.Where(c => c.ApplicationId == id).SingleOrDefault();
             musician.MusicianRating = rating;
             db.Entry(musician).State = EntityState.Modified;
             db.SaveChanges();
+            return RedirectToAction("Index", "Customer");
         }
         
-        public void cRate(int rating, Customer customer)
+        public ActionResult cRate(int rating, string id)
         {
-            var userId = User.Identity.GetUserId();
-            customer = db.Customers.Where(c => c.ApplicationId == userId).SingleOrDefault();
+           
+            customer = db.Customers.Where(c => c.ApplicationId == id).SingleOrDefault();
             customer.CustomerRating = rating;
             db.Entry(customer).State = EntityState.Modified;
             db.SaveChanges();
+            return RedirectToAction("Index", "Musician");
         }
     }
 }

@@ -38,7 +38,9 @@ namespace groupCapstoneMusic.Controllers
         }
         public ActionResult MusicianConfirmation(string id)
         {
-            var concerts = db.Concerts.Where(c => c.ApplicationId == id).ToList(); //Musician comes here and finds a list of concerts connected to Customer who messaged them
+            var musicianId = User.Identity.GetUserId();
+            var musician = db.Musicians.Where(m => m.ApplicationId == musicianId).FirstOrDefault();
+            var concerts = db.Concerts.Where(c => c.ApplicationId == id && c.MusicianId == musician.ID || c.ApplicationId == id && c.ConfirmationOfMusician == false).ToList(); //Musician comes here and finds a list of concerts connected to Customer who messaged them
             ViewBag.CID = id;
             return View(concerts);
         }
@@ -64,10 +66,12 @@ namespace groupCapstoneMusic.Controllers
                     if(musician.BandName == null)
                     {
                         editedConcert.Musician = musician.FirstName + "" + musician.LastName;
+                        editedConcert.MusicianId = musician.ID;
                     }
                     if(musician.BandName != null)
                     {
                         editedConcert.Musician = musician.BandName;
+                        editedConcert.MusicianId = musician.ID;
                     }
                     db.SaveChanges();
                     return RedirectToAction("Index", "IMessage");
@@ -75,6 +79,7 @@ namespace groupCapstoneMusic.Controllers
                 if(editedConcert.ConfirmationOfMusician != true)
                 {
                     editedConcert.Musician = null;
+                    editedConcert.MusicianId = null;
                     db.SaveChanges();
                     return RedirectToAction("Index", "IMessage");//if the musician decides to cancel it changes everything back
                 }

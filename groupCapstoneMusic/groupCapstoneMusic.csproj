@@ -205,15 +205,16 @@
     <Compile Include="Controllers\IMessageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusicianController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StarRatingController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001242156024_new.cs" />
-    <Compile Include="Migrations\202001242156024_new.Designer.cs">
-      <DependentUpon>202001242156024_new.cs</DependentUpon>
+    <Compile Include="Migrations\202001242039401_newmigration.cs" />
+    <Compile Include="Migrations\202001242039401_newmigration.Designer.cs">
+      <DependentUpon>202001242039401_newmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\Musician.cs" />
     <Compile Include="Models\MusicianCustomersViewModel.cs" />
     <Compile Include="Models\PrivateKeys.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\StarRating.cs" />
     <Compile Include="Models\YoutubeJSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -320,6 +322,11 @@
     <Content Include="Views\Home\WhoWeAre2.cshtml" />
     <Content Include="Views\Home\WhoWeAre3.cshtml" />
     <Content Include="Views\Home\WhoWeAre4.cshtml" />
+    <Content Include="Views\Musician\CustomerProfileForMusician.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Review\Details.cshtml" />
+    <Content Include="Views\Review\Rate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
@@ -348,8 +355,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001242156024_new.resx">
-      <DependentUpon>202001242156024_new.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001242039401_newmigration.resx">
+      <DependentUpon>202001242039401_newmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
