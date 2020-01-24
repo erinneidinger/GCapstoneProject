@@ -36,10 +36,10 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
-        [Display(Name = "Minimum Budget")]
+        [Display(Name = "Minimum Budget/Hour")]
         public double MinBudget { get; set; }
 
-        [Display(Name = "Maximum Budget")]
+        [Display(Name = "Maximum Budget/Hour")]
         public double MaxBudget { get; set; }
 
         public double MusicianRating { get; set; }

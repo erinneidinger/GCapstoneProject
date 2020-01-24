@@ -52,7 +52,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StreetAddress)
         </dd>
@@ -120,9 +119,11 @@
 
 @if (User.IsInRole("Customer"))
 {
-    <p>
-        @Html.ActionLink("Back to Concerts", "Index", "Concert") |
-        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null)
-    </p>
+<p>
+    @Html.ActionLink("Back to Concerts", "Index", "Concert") |
+    @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+    @Html.ActionLink("Back to List", "FilteredSearch", "Musician")
+</p>
 }
+
 
