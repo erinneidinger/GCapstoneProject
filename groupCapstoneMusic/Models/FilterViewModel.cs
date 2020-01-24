@@ -22,5 +22,11 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name = "Concert Rate")]
         public string ConcertRate { get; set; }
+
+        [Display(Name = "Search by location")]
+        public SelectList SearchByLocation { get; set; }
+
+        [Display(Name = "Location")]
+        public string LocationAnswer { get; set; }
     }
 }
