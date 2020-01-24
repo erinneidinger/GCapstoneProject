@@ -69,9 +69,6 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
-        [NotMapped]
-        public List<StarRating> ratings { get; set; }
-
         [Display(Name ="YouTube Video Name")]
         public string youtubeVideoName { get; set; }
 
@@ -81,6 +78,7 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name ="Profile Photo Url")]
         public string ImageURL { get; set; }
+
         public string bannerPic { get; set; }
         [Display(Name = "Facebook profile Url")]
         public string facebookURL { get; set; }
@@ -90,6 +88,7 @@ namespace groupCapstoneMusic.Models
         public string twitterURL { get; set; }
 
         //public List<Review> Reviews { get; set; }
+
 
     }
 

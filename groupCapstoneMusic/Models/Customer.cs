@@ -50,10 +50,8 @@ namespace groupCapstoneMusic.Models
         public List<Concert> events { get; set; }
 
 
-        [NotMapped]
-        public List<StarRating> ratings { get; set; }
+        [Display(Name = "Profile Photo Url")]
 
-        [Display(Name = "Profile Photo URL")]
         public string ImageURL { get; set; }
         [Display(Name = "Profile banner URL")]
         public string bannerPic { get; set; }
@@ -64,6 +62,5 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Twitter profile Url")]
         public string twitterURL { get; set; }
 
-        //public List<Review> Reviews { get; set; }
     }
 }
