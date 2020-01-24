@@ -16,7 +16,7 @@ namespace groupCapstoneMusic.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index() //This is the customers profile. We need to add there Profile Picture ****
         {
             var userId = User.Identity.GetUserId();
             var user  = db.Users.Where(c => c.Id == userId).FirstOrDefault();

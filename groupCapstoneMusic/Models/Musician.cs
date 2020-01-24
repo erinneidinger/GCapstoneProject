@@ -78,6 +78,8 @@ namespace groupCapstoneMusic.Models
         [Display(Name ="Profile Photo Url")]
         public string ImageURL { get; set; }
 
+        //public List<Review> Reviews { get; set; }
+
     }
 
 }

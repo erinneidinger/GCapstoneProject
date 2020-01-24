@@ -29,6 +29,8 @@ namespace groupCapstoneMusic.Models
         public DbSet<StarRating> Stars { get; set; }
 
         public DbSet<Message> Messages { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -28,10 +28,11 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Details/5
-        public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
+        public ActionResult Details(int id) //Customer uses this to view Musicians Profile
         {
             var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
             ViewBag.URL = musicianDetails.iFrameUrl + musicianDetails.youtubeSearch;
+            ViewBag.key = false;//Means the musician is hired so you can leave a review now
             return View(musicianDetails);//this works A.N
         }
 
@@ -83,7 +84,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
             return View(customer);
-        }
+        }//---------------------------------------------------------------------------------------
 
         public ActionResult FilteredSearch()
         {
@@ -92,6 +93,7 @@ namespace groupCapstoneMusic.Controllers
             filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
+            ViewBag.key = true;
             return View(filterView); //Change it to ratings or something after
         }
 
@@ -104,6 +106,7 @@ namespace groupCapstoneMusic.Controllers
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
             filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            ViewBag.key = true;
             return View(filterView);
         }
 
