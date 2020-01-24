@@ -121,11 +121,12 @@
 {
     @*@if(ViewBag.key == true)
         {*@
-    <p>
-        @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
-        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
-        @Html.ActionLink("Back to List", "FilteredSearch", "Musician")
-    </p>
+<p>
+    @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
+    @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+    @Html.ActionLink("Back to List", "FilteredSearch", "Musician") |
+    @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
+</p>
     //}
 
 

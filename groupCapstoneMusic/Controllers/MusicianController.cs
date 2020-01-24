@@ -20,7 +20,7 @@ namespace groupCapstoneMusic.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Musician
         public ActionResult Index()
-        {
+         {
             var userId = User.Identity.GetUserId();
             var foundMusician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
             ViewBag.URL = foundMusician.iFrameUrl + foundMusician.youtubeSearch;
