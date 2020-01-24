@@ -89,10 +89,11 @@ namespace groupCapstoneMusic.Controllers
         {
             var userID = User.Identity.GetUserId();
             FilterViewModel filterView = new FilterViewModel();
-            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
-            filterView.ListOfBudgetRanges = new SelectList(new List<string> { "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
+            filterView.ListOfGenres = new SelectList(new List<string> { null, "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
+            filterView.ListOfBudgetRanges = new SelectList(new List<string> { null, "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
+            filterView.SearchByLocation = new SelectList(new List<string> { null, "Search by Location" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
-            filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
+            filterView.musicians = db.Musicians.ToList();
             return View(filterView); //Change it to ratings or something after
         }
 
@@ -100,13 +101,44 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult FilteredSearch(FilterViewModel FilterView)
         {
             FilterViewModel filterView = new FilterViewModel();
-            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
-            filterView.ListOfBudgetRanges = new SelectList(new List<string> { "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
+            filterView.ListOfGenres = new SelectList(new List<string> { null, "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
+            filterView.ListOfBudgetRanges = new SelectList(new List<string> { null, "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
+            filterView.SearchByLocation = new SelectList(new List<string> { null, "Search by Location" });
             string selectGenre = FilterView.SelectedGenre;
             string selectBudget = FilterView.ConcertRate;
+            string selectLocation = FilterView.LocationAnswer;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre || a.SetRate == selectBudget && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            if(selectLocation == "Search by Location" && selectGenre != null || selectLocation == "Search by Location" && selectBudget != null)
+            {
+                if (selectGenre == null)
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SetRate == selectBudget && a.City == foundConcert.City && a.State == foundConcert.State).ToList();
+                }
+                else
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.City == foundConcert.City && a.State == foundConcert.State).ToList();
+                }
+            }
+            else if(selectLocation == "Search by Location" && selectGenre == null && selectBudget == null)
+            {
+                filterView.musicians = db.Musicians.Where(a => a.City == foundConcert.City && a.State == foundConcert.State).ToList();
+            }
+            else if( selectLocation == null && selectGenre != null || selectLocation == null && selectBudget != null)
+            {
+                if(selectGenre == null)
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SetRate == selectBudget).ToList();
+                }
+                else
+                {
+                    filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre).ToList();
+                }
+            }
+            else
+            {
+                filterView.musicians = db.Musicians.ToList();
+            }
             return View(filterView);
         }
 
