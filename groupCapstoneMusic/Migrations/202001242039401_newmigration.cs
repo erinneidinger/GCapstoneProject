@@ -3,7 +3,7 @@ namespace groupCapstoneMusic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newnew : DbMigration
+    public partial class newmigration : DbMigration
     {
         public override void Up()
         {
