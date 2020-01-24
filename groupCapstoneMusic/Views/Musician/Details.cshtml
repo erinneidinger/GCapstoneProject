@@ -7,10 +7,11 @@
 <h2>Details</h2>
 
 <div>
+    <img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
     <h4>Musician</h4>
     @*@{ Html.RenderPartial("_MusiRating"); }*@ @*code to pull partialview w/ Rating for musician*@
     <hr />
-    <dl class="dl-horizontal">       
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.BandName)
         </dt>

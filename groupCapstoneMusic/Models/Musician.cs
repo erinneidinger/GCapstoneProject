@@ -77,6 +77,13 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name ="Profile Photo Url")]
         public string ImageURL { get; set; }
+        public string bannerPic { get; set; }
+        [Display(Name = "Facebook profile Url")]
+        public string facebookURL { get; set; }
+        [Display(Name = "Instagram profile Url")]
+        public string instagramURL { get; set; }
+        [Display(Name = "Twitter profile Url")]
+        public string twitterURL { get; set; }
 
     }
 
