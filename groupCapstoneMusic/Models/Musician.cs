@@ -48,10 +48,6 @@ namespace groupCapstoneMusic.Models
         //public List<Musician> musicians { get; set; } //For Filtered search, keep
         public double MusicianRating { get; set; }
 
-        //[Display(Name = "Overall Rating")]
-        //public double AverageMusicianRating { get; set; }
-
-        //public double CustomerRating { get; set; }
 
         [Display(Name = "Set Rate Per Hour")]
         public string SetRate { get; set; }
@@ -69,9 +65,6 @@ namespace groupCapstoneMusic.Models
 
         public double Lng { get; set; }
 
-        //[NotMapped]
-        //public List<StarRating> ratings { get; set; }
-
         [Display(Name ="YouTube Video Name")]
         public string youtubeVideoName { get; set; }
 
@@ -86,6 +79,17 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name ="Rating")]
         public double averageRate { get; set; }
+
+        public string bannerPic { get; set; }
+
+        [Display(Name = "Facebook profile Url")]
+        public string facebookURL { get; set; }
+
+        [Display(Name = "Instagram profile Url")]
+        public string instagramURL { get; set; }
+
+        [Display(Name = "Twitter profile Url")]
+        public string twitterURL { get; set; }
     }
 
 }

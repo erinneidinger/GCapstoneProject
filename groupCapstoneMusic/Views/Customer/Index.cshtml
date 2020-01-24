@@ -5,89 +5,60 @@
 }
 
 <h2>My Profile</h2>
-
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
-<br />
-<br />
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bio)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.StreetAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.averageRate)
-        </th>
-        <th></th>
-    </tr>
-
-    <tr>
-        <td>
-            @Html.DisplayFor(model => model.FirstName)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.LastName)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.Bio)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.StreetAddress)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.City)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.State)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.ZipCode)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => model.averageRate)
-        </td>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="~/Content/Site.css" />
 
 
-    </tr>
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) |
-            @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId }, null)
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
 
-        </td>
-    </tr>
+            <div class="card hovercard">
+                <div class="cardheader">
 
+                </div>
+                <div class="avatar">
+                    <img alt="" src="~/Content/Images/yup.jpg">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="https://scripteden.com/">@Html.DisplayFor(model => model.FirstName)</a>
+                    </div>
+                    <div class="desc">@Html.DisplayNameFor(model => model.StreetAddress)||@Html.DisplayFor(model => model.StreetAddress)</div>
+                    <div class="desc">@Html.DisplayNameFor(model => model.City)||@Html.DisplayFor(model => model.City)</div>
+                    <div class="desc">@Html.DisplayNameFor(model => model.State)||@Html.DisplayFor(model => model.State)</div>
+                    <div class="desc">@Html.DisplayNameFor(model => model.averageRate)||@Html.DisplayFor(model => model.averageRate)</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+                <tr>
+                    <th><p><a class="btn btn-warning" @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId })</a></p></th>
+                    <th><p><a class="btn btn-success" @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId }, null)</a></p></th>                    
+                    <th><p><a class="btn btn-success" @Html.ActionLink("Details", "Details", new { id = Model.CustomerId })</a></p></th>
+                    <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })</a></p></th>
+                </tr>
+            </div>
 
-</table>
+        </div>
+
+    </div>
+</div>
+
 

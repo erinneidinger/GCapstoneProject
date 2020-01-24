@@ -322,7 +322,6 @@
     <Content Include="Views\Review\Create.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Review\Details.cshtml" />
-    <Content Include="Views\Review\Rate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Create.cshtml" />
