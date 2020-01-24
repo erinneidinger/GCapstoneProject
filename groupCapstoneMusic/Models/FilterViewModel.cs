@@ -16,5 +16,11 @@ namespace groupCapstoneMusic.Models
 
         [Display(Name = "Genre Types")]
         public SelectList ListOfGenres { get; set; }
+
+        [Display(Name = "Range of Budget")]
+        public SelectList ListOfBudgetRanges { get; set; }
+
+        [Display(Name = "Concert Rate")]
+        public string ConcertRate { get; set; }
     }
 }

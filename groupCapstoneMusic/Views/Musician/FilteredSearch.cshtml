@@ -9,114 +9,160 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
 <div class="form-horizontal">
-    <hr />
-    <h4>Find your desired genre:</h4>
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
+        <hr />
+        <table align="center">
+            <tr>
+                <th>
 
-        @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
-            @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
-        </div>
+                    <h4>Find your desired genre:</h4>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.SelectedGenre, Model.ListOfGenres)
+                            @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    <br />
+        <table align="center">
+            <tr>
+                <th>
+                    <h4>Find Musicians according to your budget:</h4>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.ConcertRate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.ConcertRate, Model.ListOfBudgetRanges)
+                            @Html.ValidationMessageFor(model => model.ConcertRate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].BandName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].Zip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].Bio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].SelectedGenre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].SetRate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].DatesAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].StreetAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.musicians[0].AverageMusicianRating)
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model.musicians)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].BandName)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].Email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].City)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].State)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].Zip)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].Bio)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].SelectedGenre)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].SetRate)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].DatesAvailable)
-            </td>
-
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].StreetAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.musicians[0].AverageMusicianRating)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = Model.musicians[0].ID }) |
-                @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.musicians[0].ApplicationId }, null)
-            </td>
-        </tr>
     }
+
+    <br />
+
+    <p>
+        @Html.ActionLink("Refresh Search", "FilteredSearch", "Musician")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].BandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].Zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].Bio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].SelectedGenre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].SetRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].DatesAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].StreetAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musicians[0].AverageMusicianRating)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.musicians)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].BandName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].City)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].State)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].Zip)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].Bio)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].SelectedGenre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].SetRate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].DatesAvailable)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].StreetAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.musicians[0].AverageMusicianRating)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = Model.musicians[0].ID }) |
+                    @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.musicians[0].ApplicationId }, null)
+                </td>
+            </tr>
+        }
     </table>
