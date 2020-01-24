@@ -37,12 +37,12 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
-        public double MusicianRating { get; set; }
+        //public double MusicianRating { get; set; }
 
         public double CustomerRating { get; set; }
 
-        [Display(Name = "Overall Rating")]
-        public double AverageCustomerRating { get; set; }
+        //[Display(Name = "Overall Rating")]
+        //public double AverageCustomerRating { get; set; }
 
         public List<Concert> gigs { get; set; }
 
@@ -50,12 +50,16 @@ namespace groupCapstoneMusic.Models
         public List<Concert> events { get; set; }
 
 
-        [NotMapped]
-        public List<StarRating> ratings { get; set; }
+        //[NotMapped]
+        //public List<StarRating> ratings { get; set; }
 
         [Display(Name = "Profile Photo Url")]
         public string ImageURL { get; set; }
 
-        //public List<Review> Reviews { get; set; }
+        public int rateCount { get; set; }
+
+        [Display(Name = "Rating")]
+        public double averageRate { get; set; }
+
     }
 }

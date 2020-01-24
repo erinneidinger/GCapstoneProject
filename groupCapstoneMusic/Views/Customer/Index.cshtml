@@ -7,8 +7,11 @@
 <h2>My Profile</h2>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
+<br />
+<br />
 <table class="table">
     <tr>
 
@@ -34,12 +37,8 @@
         <th>
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
-        
-        @*<th>
-            @Html.DisplayNameFor(model => model.Rating) / AM commented out becuase we changed to musician/customerrating
-        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.AverageCustomerRating)
+            @Html.DisplayNameFor(model => model.averageRate)
         </th>
         <th></th>
     </tr>
@@ -73,30 +72,20 @@
             @Html.DisplayFor(model => model.ZipCode)
         </td>
 
+        <td>
+            @Html.DisplayFor(model => model.averageRate)
+        </td>
+
 
     </tr>
-        @*<td>
-            @Html.DisplayFor(model => model.Rating) / AM commented out becuase we changed to musician/customerrating
-        </td>*@
-    
-
-    @*<tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
-
-        <td>
-            @Html.DisplayFor(model => model.AverageCustomerRating)
-        </td>
-    </tr>*@
-
     <tr>
-       <td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
             @Html.ActionLink("Details", "Details", new { id = Model.CustomerId }) |
             @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }) |
-            @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId}, null)
-          
-       </td>
+            @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId }, null)
+
+        </td>
     </tr>
 
 
