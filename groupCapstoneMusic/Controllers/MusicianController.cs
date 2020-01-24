@@ -65,18 +65,24 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        public ActionResult ConcertSearch()
+        public ActionResult ConcertSearch()//Searches for all the concerts the musician has confirmed on
         {
             var userId = User.Identity.GetUserId();
             var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            var foundConcerts = db.Concerts.Where(m => m.Musician == musician.BandName || m.Musician == musician.FirstName + "" + musician.LastName).ToList(); //Working on this come back to it.
+            var foundConcerts = db.Concerts.Where(m => m.MusicianId == musician.ID).ToList(); //Working on this come back to it.
             return View(foundConcerts);
         }
 
-        public ActionResult ConcertDetailsForMusician(int id)
+        public ActionResult ConcertDetailsForMusician(int id)//Gets the details of that specific concert
         {
             var concert = db.Concerts.Where(c => c.Id == id).FirstOrDefault();
             return View(concert);
+        }
+
+        public ActionResult CustomerProfileForMusician(string id)//Allows the musician to view that host of the concerts profile
+        {
+            var customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
+            return View(customer);
         }
 
         public ActionResult FilteredSearch()

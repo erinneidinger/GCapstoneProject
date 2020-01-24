@@ -30,6 +30,9 @@
         <td>
             @Html.ActionLink("Details", "ConcertDetailsForMusician", new { id = item.Id })
         </td>
+        <td>
+            @Html.ActionLink("Hosts Profile", "CustomerProfileForMusician", new { id = item.ApplicationId })
+        </td>
     </tr>
     }
     
