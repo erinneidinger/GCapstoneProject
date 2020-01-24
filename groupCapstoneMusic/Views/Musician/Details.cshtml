@@ -10,7 +10,7 @@
     <h4>Musician</h4>
     @*@{ Html.RenderPartial("_MusiRating"); }*@ @*code to pull partialview w/ Rating for musician*@
     <hr />
-    <dl class="dl-horizontal">       
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.BandName)
         </dt>
@@ -108,9 +108,21 @@
 </div>
 <iframe width="420" height="345" src="@ViewBag.URL">
 </iframe> @*YoutubeVideo*@
-<p>
+@if (User.IsInRole("Musician"))
+{
+    <p>
 
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-   
-</p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+
+    </p>
+}
+
+@if (User.IsInRole("Customer"))
+{
+    <p>
+        @Html.ActionLink("Back to Concerts", "Index", "Concert") |
+        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null)
+    </p>
+}
+

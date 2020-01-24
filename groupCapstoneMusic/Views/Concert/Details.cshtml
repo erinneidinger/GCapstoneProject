@@ -107,6 +107,16 @@
             <dd>
                 @Html.DisplayFor(model => model.ConcertTime)
             </dd>
+            @if (Model.Musician != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Musician)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Musician)
+                </dd>
+            }
 
         </dl>
     </div>
