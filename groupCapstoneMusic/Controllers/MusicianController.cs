@@ -28,10 +28,11 @@ namespace groupCapstoneMusic.Controllers
         }
 
         // GET: Musician/Details/5
-        public ActionResult Details(int id) //not viewing there own details, view customer or make another so they can see both
+        public ActionResult Details(int id) //Customer uses this to view Musicians Profile
         {
             var musicianDetails = db.Musicians.Where(a => a.ID == id).FirstOrDefault();
             ViewBag.URL = musicianDetails.iFrameUrl + musicianDetails.youtubeSearch;
+            ViewBag.key = false;//Means the musician is hired so you can leave a review now
             return View(musicianDetails);//this works A.N
         }
 
@@ -83,7 +84,7 @@ namespace groupCapstoneMusic.Controllers
         {
             var customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
             return View(customer);
-        }
+        }//---------------------------------------------------------------------------------------
 
         public ActionResult FilteredSearch()
         {
@@ -93,6 +94,7 @@ namespace groupCapstoneMusic.Controllers
             filterView.ListOfBudgetRanges = new SelectList(new List<string> { "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
+            ViewBag.key = true;
             return View(filterView); //Change it to ratings or something after
         }
 
@@ -105,7 +107,8 @@ namespace groupCapstoneMusic.Controllers
             string selectGenre = FilterView.SelectedGenre;
             string selectBudget = FilterView.ConcertRate;
             var Id = User.Identity.GetUserId();
-            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
+            var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();           
+            ViewBag.key = true;
             filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre || a.SetRate == selectBudget && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
             return View(filterView);
         }

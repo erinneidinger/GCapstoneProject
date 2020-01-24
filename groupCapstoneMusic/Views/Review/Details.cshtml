@@ -1,0 +1,51 @@
+﻿@model IEnumerable<groupCapstoneMusic.Models.Review>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FeedBack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePosted)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FeedBack)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePosted)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    @if (User.IsInRole("Customer"))
+    {
+        @Html.ActionLink("Back", "Index", "Customer")
+    }
+    @if (User.IsInRole("Musician"))
+    {
+        @Html.ActionLink("Back", "Index", "Musician")
+    }
+</body>
+</html>
