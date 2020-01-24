@@ -47,5 +47,6 @@ namespace groupCapstoneMusic.Models
 
         public string Musician { get; set; } //I will have it grab the musicians band name if confimation of music it true. Maybe add the musician id here so they can see there venue
 
+        public int? MusicianId  { get; set; }
     }
 }

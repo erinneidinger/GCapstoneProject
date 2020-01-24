@@ -65,25 +65,32 @@ namespace groupCapstoneMusic.Controllers
             }
         }
 
-        public ActionResult ConcertSearch()
+        public ActionResult ConcertSearch()//Searches for all the concerts the musician has confirmed on
         {
             var userId = User.Identity.GetUserId();
             var musician = db.Musicians.Where(m => m.ApplicationId == userId).FirstOrDefault();
-            var foundConcerts = db.Concerts.Where(m => m.Musician == musician.BandName || m.Musician == musician.FirstName + "" + musician.LastName).ToList(); //Working on this come back to it.
+            var foundConcerts = db.Concerts.Where(m => m.MusicianId == musician.ID).ToList(); //Working on this come back to it.
             return View(foundConcerts);
         }
 
-        public ActionResult ConcertDetailsForMusician(int id)
+        public ActionResult ConcertDetailsForMusician(int id)//Gets the details of that specific concert
         {
             var concert = db.Concerts.Where(c => c.Id == id).FirstOrDefault();
             return View(concert);
+        }
+
+        public ActionResult CustomerProfileForMusician(string id)//Allows the musician to view that host of the concerts profile
+        {
+            var customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
+            return View(customer);
         }
 
         public ActionResult FilteredSearch()
         {
             var userID = User.Identity.GetUserId();
             FilterViewModel filterView = new FilterViewModel();
-            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
+            filterView.ListOfBudgetRanges = new SelectList(new List<string> { "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
             var foundConcert = db.Concerts.Where(u => u.ApplicationId == userID).FirstOrDefault();
             filterView.musicians = db.Musicians.Where(u => u.City == foundConcert.City && u.State == foundConcert.State).ToList();
             return View(filterView); //Change it to ratings or something after
@@ -93,11 +100,13 @@ namespace groupCapstoneMusic.Controllers
         public ActionResult FilteredSearch(FilterViewModel FilterView)
         {
             FilterViewModel filterView = new FilterViewModel();
-            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka" });
+            filterView.ListOfGenres = new SelectList(new List<string> { "Folk", "Country", "Reggae", "Rap", "Classical", "Pop", "Jazz", "Blues", "Electronic", "Rock", "Metal", "Instrumental", "Gospel", "Bluegrass", "Ska", "Indie Rock", "Accapella", "R&B", "Symphony", "Cover Songs", "Sing-Along", "Polka", "Other" });
+            filterView.ListOfBudgetRanges = new SelectList(new List<string> { "Free", "$20.00 or less", "$20.00 to $50.00", "$50.00 to $100.00", "$100.00 to $150.00", "$150.00 to $200.00", "$200.00 to $250.00", "$250.00 to $300.00", "$300.00 to $350.00", "$350.00 to $400.00", "$400.00 to $500.00", "$500.00+" });
             string selectGenre = FilterView.SelectedGenre;
+            string selectBudget = FilterView.ConcertRate;
             var Id = User.Identity.GetUserId();
             var foundConcert = db.Concerts.Where(a => a.ApplicationId == Id).FirstOrDefault();
-            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
+            filterView.musicians = db.Musicians.Where(a => a.SelectedGenre == selectGenre || a.SetRate == selectBudget && a.State == foundConcert.State && a.City == foundConcert.City).ToList();
             return View(filterView);
         }
 

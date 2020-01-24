@@ -97,7 +97,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SetRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SetRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.SetRate, Model.ListOfBudgetRanges)
                 @Html.ValidationMessageFor(model => model.SetRate, "", new { @class = "text-danger" })
             </div>
         </div>

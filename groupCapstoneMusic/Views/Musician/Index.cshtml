@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Profile</h2>
+
+<h2>My Profile</h2>
 
 <img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
 <br />
@@ -38,6 +39,7 @@
         <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.SelectedGenre)
         </th>
+
         <th class="active" style="border:solid; border-color:dimgray;">
             @Html.DisplayNameFor(model => model.SetRate)
         </th>
@@ -101,7 +103,9 @@
             @Html.DisplayFor(model => model.StreetAddress)
         </td>
 
+
         <td style="border:solid; border-color:dimgray;">
+
             @Html.DisplayFor(model => model.AverageMusicianRating)
         </td>
     </tr>
@@ -112,5 +116,7 @@
     </tr>
 </table>
 
+
 <p align="center"><iframe width="420" height="345" src="@ViewBag.URL">
     </iframe></p> @*YoutubeVideo*@
+

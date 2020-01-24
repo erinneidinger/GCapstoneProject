@@ -9,11 +9,8 @@
 <div>
     <h4>Customer</h4>
     <hr />
+    <img src="@Model.ImageURL" alt="@Model.ImageURL" width="200" height="200">
     <dl class="dl-horizontal">
-
-        <dd>
-            <img src="@Model.ImageURL" alt="@Model.ImageURL" width="200" height="200">
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -80,12 +77,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Rating)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.AverageCustomerRating)
