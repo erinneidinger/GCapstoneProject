@@ -4,7 +4,7 @@
     ViewBag.Title = "FilteredSearch";
 }
 
-<h2>Filtered Search</h2>
+<h2>Find your perfect Musician:</h2>
 
 @using (Html.BeginForm())
 {
@@ -108,7 +108,7 @@
             @Html.DisplayNameFor(model => model.musicians[0].StreetAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.musicians[0].AverageMusicianRating)
+            @*@Html.DisplayNameFor(model => model.musicians[0].AverageMusicianRating)*@
         </th>
         <th></th>
     </tr>
@@ -155,7 +155,7 @@
                 @Html.DisplayFor(model => item.StreetAddress)
             </td>
             <td>
-                @Html.DisplayFor(model => item.AverageMusicianRating)
+                @*@Html.DisplayFor(model => item.AverageMusicianRating)*@
             </td>
 
             <td>
