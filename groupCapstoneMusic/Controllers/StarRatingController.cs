@@ -16,11 +16,12 @@ namespace groupCapstoneMusic.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         Musician musician;
         Customer customer;
-
         public ActionResult mRate(int rating, string id)
         {
             musician = db.Musicians.Where(c => c.ApplicationId == id).SingleOrDefault();
-            musician.MusicianRating = rating;
+            musician.MusicianRating += rating;
+            musician.rateCount += 1;
+            musician.averageRate = (musician.MusicianRating / musician.rateCount);
             db.Entry(musician).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index", "Customer");
@@ -30,7 +31,9 @@ namespace groupCapstoneMusic.Controllers
         {
            
             customer = db.Customers.Where(c => c.ApplicationId == id).SingleOrDefault();
-            customer.CustomerRating = rating;
+            customer.CustomerRating += rating;
+            customer.rateCount += 1;
+            customer.averageRate = (customer.CustomerRating / customer.rateCount);
             db.Entry(customer).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index", "Musician");

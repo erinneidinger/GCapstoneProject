@@ -5,7 +5,9 @@
 }
 
 <h2>Details</h2>
-
+<img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
+<br />
+<br />
 <div>
     <h4>Musician</h4>
     @*@{ Html.RenderPartial("_MusiRating"); }*@ @*code to pull partialview w/ Rating for musician*@
@@ -96,11 +98,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AverageMusicianRating)
+            @Html.DisplayNameFor(model => model.averageRate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AverageMusicianRating)
+            @Html.DisplayFor(model => model.averageRate)
         </dd>
 
     </dl>
@@ -121,12 +123,12 @@
 {
     @*@if(ViewBag.key == true)
         {*@
-<p>
-    @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
-    @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
-    @Html.ActionLink("Back to List", "FilteredSearch", "Musician") |
-    @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
-</p>
+    <p>
+        @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
+        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+        @Html.ActionLink("Back to List", "FilteredSearch", "Musician") |
+        @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
+    </p>
     //}
 
 

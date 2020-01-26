@@ -37,12 +37,8 @@ namespace groupCapstoneMusic.Models
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
-        public double MusicianRating { get; set; }
 
         public double CustomerRating { get; set; }
-
-        [Display(Name = "Overall Rating")]
-        public double AverageCustomerRating { get; set; }
 
         public List<Concert> gigs { get; set; }
 
@@ -50,7 +46,24 @@ namespace groupCapstoneMusic.Models
         public List<Concert> events { get; set; }
 
         [Display(Name = "Profile Photo Url")]
+
         public string ImageURL { get; set; }
 
+        [Display(Name = "Profile banner URL")]
+        public string bannerPic { get; set; }
+
+        [Display(Name = "Facebook profile Url")]
+        public string facebookURL { get; set; }
+
+        [Display(Name = "Instagram profile Url")]
+        public string instagramURL { get; set; }
+
+        [Display(Name = "Twitter profile Url")]
+        public string twitterURL { get; set; }
+
+        public int rateCount { get; set; }
+
+        [Display(Name = "Rating")]
+        public double averageRate { get; set; }
     }
 }
