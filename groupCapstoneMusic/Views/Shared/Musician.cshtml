@@ -20,13 +20,12 @@
                 @Html.ActionLink("♫Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Musician")</li>
+                    <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
+                    <li>@Html.ActionLink("Gigs", "ConcertSearch", "Musician")</li>
+                </ul>
 
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Musician")</li>
-                        <li>@Html.ActionLink("Profile", "Details", "Musician")</li>
-                        <li>@Html.ActionLink("Inbox", "Index", "IMessage")</li>
-                    </ul>
-                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

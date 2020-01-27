@@ -192,7 +192,7 @@ namespace groupCapstoneMusic.Controllers
                     }
                     else if (model.UserRoles.Equals("Musician"))
                     {
-                        return RedirectToAction("Create", "Musician");
+                        return RedirectToAction("Create", "Musician"); 
                     }
                     else
                     {
