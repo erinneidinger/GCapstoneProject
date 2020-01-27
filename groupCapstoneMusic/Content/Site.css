@@ -25,47 +25,52 @@ textarea {
 .button0 {
     background: url(/images/0.png) no-repeat;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
 
 .button1 {
-    background: url(/images/1.png) no-repeat;
+    background: url(Images/new1.png) no-repeat;
+    background-position: center;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
 
 .button2 {
-    background: url(/images/2.png) no-repeat;
+    background: url(Images/new2.png) no-repeat;
+    background-position: center;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
 
 .button3 {
-    background: url(/images/3.png) no-repeat;
+    background: url(Images/new3.png) no-repeat;
+    background-position: center;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
 
 .button4 {
-    background: url(/images/4.png) no-repeat;
+    background: url(Images/new4.png) no-repeat;
+    background-position: center;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
 
 .button5 {
-    background: url(/images/5.png) no-repeat;
+    background: url(Images/new5.png) no-repeat;
+    background-position: center;
     cursor: pointer;
-    width: 250px;
+    width: 100px;
     height: 50px;
     border: none;
 }
@@ -96,11 +101,6 @@ textarea {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-
-
-
-
 
     .card {
         padding-top: 20px;
@@ -348,4 +348,4 @@ textarea {
         width: 32px;
         height: 32px;
         line-height: 18px;
-   
+    }
