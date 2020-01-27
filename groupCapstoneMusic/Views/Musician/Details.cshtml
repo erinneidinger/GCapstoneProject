@@ -4,142 +4,105 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="~/Content/Site.css" />
 
-<div>
-    <img src="@Model.ImageURL" alt="@Model.ImageURL" height="100">
-    <h4>Musician</h4>
-    @*@{ Html.RenderPartial("_MusiRating"); }*@ @*code to pull partialview w/ Rating for musician*@
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BandName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BandName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <div class="card hovercard">
+                <div class="cardheader">
+                    <img src="@Model.bannerPic" alt="@Model.bannerPic" style="background-size: auto; height: 135px;" width="450" ;>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StreetAddress)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StreetAddress)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SelectedGenre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SelectedGenre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SetRate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SetRate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatesAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatesAvailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AverageMusicianRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AverageMusicianRating)
-        </dd>
-
-    </dl>
+                </div>
+                <div class="avatar">
+                    <img src="@Model.ImageURL" alt="@Model.ImageURL">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a>@Html.DisplayFor(model => model.FirstName)</a>
+                    </div>
+                    <div>@Html.DisplayNameFor(model => model.StreetAddress)||@Html.DisplayFor(model => model.StreetAddress)</div>
+                    <div>@Html.DisplayNameFor(model => model.City)||@Html.DisplayFor(model => model.City)</div>
+                    <div>@Html.DisplayNameFor(model => model.State)||@Html.DisplayFor(model => model.State)</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="@Model.twitterURL" style="color:lightblue">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="@Model.facebookURL" style="color:blue">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="@Model.instagramURL" style="color:deeppink">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th><p><a class="btn btn-primary" style="color:lightgreen" @Html.ActionLink("Reviews", "Details", "Review", new { id = Model.ApplicationId }, null)</a></p></th>
+                <th><p><a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Edit", "Edit", new { id = Model.ID })</a></p></th>
+                <th><p><a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Details", "Details", new { id = Model.ID })</a></p></th>
+                <th><p><a class="btn btn-primary" style="color:red" @Html.ActionLink("Delete", "Delete", new { id = Model.ID })</a></p></th>
+            </tr>
+        </table>
+    </div>
 </div>
-<iframe width="420" height="345" src="@ViewBag.URL">
-</iframe> @*YoutubeVideo*@
-@if (User.IsInRole("Musician"))
-{
-    <p>
-
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-
-    </p>
-}
-
-@if (User.IsInRole("Customer") && ViewBag.key == true)
-{
-    @*@if(ViewBag.key == true)
-        {*@
-<p>
-    @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
-    @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
-    @Html.ActionLink("Back to List", "FilteredSearch", "Musician") |
-    @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
-</p>
-    //}
 
 
-}
-@if (User.IsInRole("Customer") && ViewBag.key == false)
-{
-    <p>
-        @Html.ActionLink("Back to Concerts", "Index", "Concert") |
-        @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
-        @Html.ActionLink("Leave A Review", "Create", "Review", new { id = Model.ApplicationId }, null) |
-        @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
-    </p>
-}
 
 
+<p align="center">
+    <iframe width="420" height="345" src="@ViewBag.URL">
+    </iframe>
+</p> @*YoutubeVideo*@
+
+
+
+
+    
+    @if (User.IsInRole("Musician"))
+    {
+        <td>
+
+            <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Edit", "Edit", new { id = Model.ID })|
+            <a class="btn btn-primary" style="color:lightgreen" @Html.ActionLink("Back to List", "Index")|
+
+        </td>
+    }
+
+    @if (User.IsInRole("Customer") && ViewBag.key == true)
+    {
+        @*@if(ViewBag.key == true)
+            {*@
+        <p>
+            @*@Html.ActionLink("Back to Concerts", "Index", "Concert") |*@
+           <a class="btn btn-primary" style="color:lightgreen" @Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+           <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Back to List", "FilteredSearch", "Musician") |
+           <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
+        </p>
+        //}
+
+
+    }
+    @if (User.IsInRole("Customer") && ViewBag.key == false)
+    {
+        <p>
+           <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Back to Concerts", "Index", "Concert") |
+            <a class="btn btn-primary" style="color:lightgreen"@Html.ActionLink("Message", "Create", "IMessage", new { id = Model.ApplicationId }, null) |
+            <a class="btn btn-primary" style="color:lightgreen"@Html.ActionLink("Leave A Review", "Create", "Review", new { id = Model.ApplicationId }, null) |
+            <a class="btn btn-primary" style="color:aqua"@Html.ActionLink("Reviews", "Index", "Review", new { id = Model.ApplicationId, }, null)
+        </p>
+    }
+    
+
+        

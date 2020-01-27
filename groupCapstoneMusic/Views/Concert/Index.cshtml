@@ -51,9 +51,6 @@
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Audience)
             </td>
             <td>
@@ -67,22 +64,23 @@
                 var musician = item.Musician;
 
                 <td>
-                    @Html.ActionLink("Musicians Profile", "Details", "Musician", new { id = item.MusicianId }, null) |
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:lightgreen" @Html.ActionLink("Musicians Profile", "Details", "Musician", new { id = item.MusicianId }, null)
+                    <a class="btn btn-primary btn-sm" style="color:yellow" @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:yellow" @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:darkred" @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             }
             @if (item.Musician == null)
             {
                 <td>
-                    @Html.ActionLink("Search Musicians", "FilteredSearch", "Musician") |
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:lightgreen" @Html.ActionLink("Search Musicians", "FilteredSearch", "Musician")
+                    <a class="btn btn-primary btn-sm" style="color:yellow"@Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:yellow"@Html.ActionLink("Details", "Details", new { id = item.Id })
+                    <a class="btn btn-primary btn-sm" style="color:darkred"@Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             }
         </tr>
+
     }
 
 </table>

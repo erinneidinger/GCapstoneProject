@@ -113,14 +113,14 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
         @if (User.IsInRole("Customer"))
         {
-            @Html.ActionLink("Back to List", "Index")
+            <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Back to List", "Index")></a>
         }
         @if (User.IsInRole("Musician"))
         {
-            @Html.ActionLink("Back to List", "MusicianConfirmation", new { id=ViewBag.CID})
+            <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Back to List", "MusicianConfirmation", new { id=ViewBag.CID})></a>
         }
 
     </p>

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace groupCapstoneMusic.Controllers
-{ 
+{
     public class ReviewController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -18,8 +18,8 @@ namespace groupCapstoneMusic.Controllers
             ViewBag.reviedId = id;
             if (User.IsInRole("Customer"))
             {
-                    var musician = db.Musicians.Where(m => m.ApplicationId == id).FirstOrDefault();
-                    ViewBag.musicianId = musician.ID;
+                var musician = db.Musicians.Where(m => m.ApplicationId == id).FirstOrDefault();
+                ViewBag.musicianId = musician.ID;
             }
             return View(reviews);
         }

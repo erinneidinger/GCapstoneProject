@@ -4,57 +4,59 @@
     ViewBag.Title = "Index";
 }
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="~/Content/Site.css" />
 
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 <div class="container">
     <div class="row">
         <div class="jumbotron">
 
             <div class="card hovercard">
                 <div class="cardheader">
+                    <img src="@Model.bannerPic" alt="@Model.bannerPic" style="background-size: auto; height: 135px;" width="450" ;>
 
                 </div>
                 <div class="avatar">
-                    <img alt="" src="~/Content/Images/yup.jpg">
+                    <img src="@Model.ImageURL" alt="@Model.ImageURL">
                 </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" href="https://scripteden.com/">@Html.DisplayFor(model => model.FirstName)</a>
+                        <a>@Html.DisplayFor(model => model.FirstName)</a>
                     </div>
-                    <div class="desc">@Html.DisplayNameFor(model => model.StreetAddress)||@Html.DisplayFor(model => model.StreetAddress)</div>
-                    <div class="desc">@Html.DisplayNameFor(model => model.City)||@Html.DisplayFor(model => model.City)</div>
-                    <div class="desc">@Html.DisplayNameFor(model => model.State)||@Html.DisplayFor(model => model.State)</div>
+                    <div>@Html.DisplayNameFor(model => model.StreetAddress)||@Html.DisplayFor(model => model.StreetAddress)</div>
+                    <div>@Html.DisplayNameFor(model => model.City)||@Html.DisplayFor(model => model.City)</div>
+                    <div>@Html.DisplayNameFor(model => model.State)||@Html.DisplayFor(model => model.State)</div>
+                    <div>@Html.DisplayNameFor(model => model.Email)||@Html.DisplayFor(model => model.Email)</div>
+                    <div><h3>@Html.DisplayFor(model => model.Bio)</h3></div>
                 </div>
                 <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="@Model.twitterURL" target="_blank" style="color:lightblue">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
-                       href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
                     <a class="btn btn-primary btn-sm" rel="publisher"
-                       href="https://plus.google.com/shahnuralam">
+                       href="@Model.facebookURL" target="_blank" style="color:blue">
                         <i class="fa fa-facebook"></i>
                     </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="@Model.instagramURL" target="_blank" style="color:deeppink">
+                        <i class="fa fa-instagram"></i>
                     </a>
                 </div>
-                                <tr>
-                    <th><p><a class="btn btn-warning" @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId })</a></p></th>
-                    <th><p><a class="btn btn-success" @Html.ActionLink("Details", "Details", new { id = Model.CustomerId })</a></p></th>
-                    <th><p><a class="btn btn-danger" @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })</a></p></th>
-                </tr>
             </div>
-
         </div>
-
+       <table>
+        <tr>
+            <th><p><a class="btn btn-primary" style="color: yellow" @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId })</a></p></th>
+            <th><p><a class="btn btn-primary" style="color: lightgreen" @Html.ActionLink("Details", "Details", new { id = Model.CustomerId })</a></p></th>
+            <th><p><a class="btn btn-primary" style="color: darkred" @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId })</a></p></th>
+        </tr>
+        </table>
     </div>
 </div>
 

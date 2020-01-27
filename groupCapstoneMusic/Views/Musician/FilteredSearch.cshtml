@@ -1,4 +1,4 @@
-﻿@model groupCapstoneMusic.Models.FilterViewModel
+﻿ @model groupCapstoneMusic.Models.FilterViewModel
 
 @{
     ViewBag.Title = "FilteredSearch";
@@ -9,15 +9,14 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div class="form-horizontal">
-    <hr />
-    <table align="center">
+<div>
+    <table>
         <tr>
             <th>
                 <h4>Search by Genre:</h4>
             </th>
-        </tr>
-        <tr>
+
+
             <td>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -27,23 +26,20 @@
                         @Html.ValidationMessageFor(model => model.SelectedGenre, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <br />
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Save" class="btn btn-default" />
                     </div>
                 </div>
             </td>
-        </tr>
-    </table>
-    <br />
-    <table align="center">
-        <tr>
+
+
+
             <th>
                 <h4>Find Musicians based on Budget:</h4>
             </th>
-        </tr>
-        <tr>
+
+
             <td>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -60,16 +56,14 @@
                 </div>
 
             </td>
-        </tr>
-    </table>
-    <br />
-    <table align="center">
-        <tr>
+
+
+
             <th>
                 <h4>Search by your Concert's Location:</h4>
             </th>
-        </tr>
-        <tr>
+
+
             <td>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -88,13 +82,11 @@
             </td>
         </tr>
     </table>
+    <p>
+        <a class="btn btn-primary" style="position:; color:lightgreen" @Html.ActionLink("Refresh Search", "FilteredSearch", "Musician")
+    </p>
 </div>
 }
-<br />
-
-<p>
-    @Html.ActionLink("Refresh Search", "FilteredSearch", "Musician")
-</p>
 
 
     <table class="table">
@@ -114,9 +106,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.musicians[0].Zip)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.musicians[0].Bio)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.musicians[0].SelectedGenre)
             </th>
@@ -158,10 +148,6 @@
         </td>
 
         <td>
-            @Html.DisplayFor(model => item.Bio)
-        </td>
-
-        <td>
             @Html.DisplayFor(model => item.SelectedGenre)
         </td>
 
@@ -181,8 +167,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Message", "Create", "IMessage", new { id = item.ApplicationId }, null)
+            <a class="btn btn-primary" style="color:yellow" @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            <a class="btn btn-primary"style="color:lightgreen" @Html.ActionLink("Message", "Create", "IMessage", new { id = item.ApplicationId }, null)
         </td>
     </tr>
 }
